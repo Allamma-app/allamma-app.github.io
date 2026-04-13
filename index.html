@@ -14,20 +14,62 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Cairo', sans-serif; background: #0f0509; color: #fff; overflow-x: hidden; }
+body { font-family: 'Cairo', sans-serif; background: #fff; color: #1A0810; overflow-x: hidden; }
 a { text-decoration: none; color: inherit; }
+
+/* ── Header ── */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 60px;
+  background: #8B1A2E;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+.header-logo {
+  font-size: 28px;
+  font-weight: 900;
+  color: #fff;
+}
+.header-nav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.header-link {
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: background 0.15s;
+}
+.header-link:hover { background: rgba(255,255,255,0.15); color: #fff; }
+.header-dl {
+  background: #fff;
+  color: #8B1A2E;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 8px 20px;
+  border-radius: 20px;
+  transition: transform 0.15s;
+}
+.header-dl:hover { transform: scale(1.05); }
 
 /* ── Hero ── */
 .hero {
   min-height: 100vh;
-  background: linear-gradient(160deg, #6B0F24 0%, #4A0916 50%, #3D0812 100%);
+  background: linear-gradient(160deg, #6B0F24 0%, #4A0916 55%, #3D0812 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 60px 24px;
+  padding: 100px 24px 60px;
   position: relative;
-  overflow: hidden;
 }
 .hero::before {
   content: '';
@@ -36,293 +78,153 @@ a { text-decoration: none; color: inherit; }
     radial-gradient(circle at 20% 30%, rgba(255,215,100,0.08) 0%, transparent 40%),
     radial-gradient(circle at 80% 70%, rgba(255,215,100,0.08) 0%, transparent 40%);
 }
-.hero-brand {
-  font-size: 80px;
-  font-weight: 900;
-  color: #fff;
-  text-shadow: 0 6px 30px rgba(0,0,0,0.5);
-  z-index: 2;
-  margin-bottom: 8px;
-}
-.hero-tagline {
-  color: #ffccbb;
-  font-size: 24px;
-  font-weight: 700;
-  z-index: 2;
-  margin-bottom: 30px;
-  text-align: center;
-}
-.hero-falcon {
-  width: 340px;
-  height: auto;
-  z-index: 2;
-  filter: drop-shadow(0 20px 50px rgba(0,0,0,0.6));
-  margin-bottom: 30px;
-}
-.hero-desc {
-  color: rgba(255,255,255,0.85);
-  font-size: 20px;
-  font-weight: 600;
-  text-align: center;
-  max-width: 600px;
-  line-height: 1.8;
-  z-index: 2;
-  margin-bottom: 40px;
-}
-.hero-buttons {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
-  z-index: 2;
-}
+.hero-brand { font-size: 80px; font-weight: 900; color: #fff; text-shadow: 0 6px 30px rgba(0,0,0,0.5); z-index: 2; margin-bottom: 8px; }
+.hero-tagline { color: #ffccbb; font-size: 24px; font-weight: 700; z-index: 2; margin-bottom: 24px; text-align: center; }
+.hero-falcon { width: 300px; height: auto; z-index: 2; filter: drop-shadow(0 20px 50px rgba(0,0,0,0.6)); margin-bottom: 24px; }
+.hero-desc { color: rgba(255,255,255,0.85); font-size: 20px; font-weight: 600; text-align: center; max-width: 600px; line-height: 1.8; z-index: 2; margin-bottom: 36px; }
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; z-index: 2; }
 .dl-btn {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: #fff;
-  color: #1a1a1a;
-  padding: 16px 32px;
-  border-radius: 16px;
-  font-size: 18px;
-  font-weight: 800;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.3);
-  transition: transform 0.15s, box-shadow 0.15s;
+  display: flex; align-items: center; gap: 12px; background: #fff; color: #1a1a1a;
+  padding: 14px 28px; border-radius: 16px; font-size: 18px; font-weight: 800;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.3); transition: transform 0.15s;
 }
-.dl-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(0,0,0,0.4); }
+.dl-btn:hover { transform: translateY(-3px); }
 .dl-btn img { width: 32px; height: 32px; object-fit: contain; }
 .dl-btn.soon { opacity: 0.5; }
 .dl-sub { font-size: 12px; color: #888; font-weight: 600; }
-.scroll-hint {
-  position: absolute;
-  bottom: 30px;
-  color: rgba(255,255,255,0.4);
-  font-size: 16px;
-  font-weight: 600;
-  z-index: 2;
-}
 
 /* ── Section ── */
-.section {
-  padding: 80px 24px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.section-title {
-  font-size: 40px;
-  font-weight: 900;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 16px;
-}
-.section-sub {
-  color: #ffccbb;
-  font-size: 18px;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 50px;
-}
+.section { padding: 70px 24px; max-width: 1100px; margin: 0 auto; }
+.section-white { background: #fff; }
+.section-light { background: #faf5f7; }
+.section-title { font-size: 36px; font-weight: 900; color: #8B1A2E; text-align: center; margin-bottom: 12px; }
+.section-sub { color: #9E7080; font-size: 16px; font-weight: 600; text-align: center; margin-bottom: 40px; }
+
+/* ── Stats ── */
+.stats-row { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; padding: 40px 0; }
+.stat { text-align: center; }
+.stat-num { font-size: 48px; font-weight: 900; color: #8B1A2E; }
+.stat-label { font-size: 16px; font-weight: 700; color: #9E7080; }
 
 /* ── Modes ── */
-.modes-bg {
-  background: linear-gradient(180deg, #0f0509 0%, #1a0810 50%, #0f0509 100%);
+.modes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
+@media (max-width: 700px) { .modes-grid { grid-template-columns: 1fr; max-width: 360px; } }
+.mode-card {
+  background: #fff; border: 1px solid #F2D5DC; border-radius: 24px; padding: 30px 20px;
+  text-align: center; transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(139,26,46,0.08);
 }
-.modes-grid {
+.mode-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(139,26,46,0.15); }
+.mode-card img { width: 120px; height: 120px; object-fit: contain; margin-bottom: 16px; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15)); }
+.mode-name { font-size: 22px; font-weight: 900; color: #1A0810; margin-bottom: 8px; }
+.mode-desc { font-size: 14px; color: #9E7080; font-weight: 600; line-height: 1.6; }
+
+/* ── Categories (game style) ── */
+.cats-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
   max-width: 900px;
   margin: 0 auto;
 }
-@media (max-width: 700px) { .modes-grid { grid-template-columns: 1fr; max-width: 360px; } }
-.mode-card {
-  background: linear-gradient(135deg, rgba(139,26,46,0.3), rgba(60,8,18,0.5));
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 24px;
-  padding: 30px 20px;
-  text-align: center;
-  transition: transform 0.2s, border-color 0.2s;
-}
-.mode-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.25); }
-.mode-card img { width: 120px; height: 120px; object-fit: contain; margin-bottom: 16px; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4)); }
-.mode-name { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 8px; }
-.mode-desc { font-size: 14px; color: rgba(255,255,255,0.6); font-weight: 600; line-height: 1.6; }
-
-/* ── Categories ── */
-.cats-bg {
-  background: linear-gradient(180deg, #0f0509 0%, #170a10 100%);
-}
-.cats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  max-width: 800px;
-  margin: 0 auto;
-}
-@media (max-width: 700px) { .cats-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 900px) { .cats-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) { .cats-grid { grid-template-columns: repeat(2, 1fr); } }
 .cat-card {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 20px;
+  position: relative;
+  border-radius: 18px;
   overflow: hidden;
+  aspect-ratio: 3/2;
   transition: transform 0.2s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
 }
-.cat-card:hover { transform: scale(1.03); }
-.cat-card img { width: 100%; height: 140px; object-fit: cover; }
-.cat-card-name {
-  padding: 12px;
-  font-size: 16px;
-  font-weight: 800;
-  text-align: center;
+.cat-card:hover { transform: scale(1.04); }
+.cat-card img { width: 100%; height: 100%; object-fit: cover; }
+.cat-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(139,26,46,0.85) 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 14px;
+}
+.cat-name {
   color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
-.cat-badge {
-  display: inline-block;
+.cat-new {
+  position: absolute;
+  top: 8px;
+  right: 8px;
   background: #2E7D32;
   color: #fff;
   font-size: 11px;
   font-weight: 800;
-  padding: 2px 8px;
+  padding: 3px 10px;
   border-radius: 20px;
-  margin-right: 6px;
 }
 
-/* ── Screenshots placeholder ── */
-.screenshots-bg {
-  background: linear-gradient(180deg, #170a10 0%, #1a0810 100%);
-}
+/* ── Screenshots ── */
 .screenshots-placeholder {
-  background: rgba(255,255,255,0.04);
-  border: 2px dashed rgba(255,255,255,0.15);
-  border-radius: 24px;
-  padding: 60px 40px;
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
+  background: #faf5f7; border: 2px dashed #F2D5DC; border-radius: 24px;
+  padding: 60px 40px; text-align: center; max-width: 800px; margin: 0 auto;
 }
-.screenshots-placeholder-text {
-  color: rgba(255,255,255,0.4);
-  font-size: 20px;
-  font-weight: 700;
-}
-
-/* ── Stats ── */
-.stats-row {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-  margin-bottom: 50px;
-}
-.stat {
-  text-align: center;
-}
-.stat-num {
-  font-size: 48px;
-  font-weight: 900;
-  color: #FFD54F;
-}
-.stat-label {
-  font-size: 16px;
-  font-weight: 700;
-  color: rgba(255,255,255,0.6);
-}
+.screenshots-placeholder-text { color: #9E7080; font-size: 18px; font-weight: 700; }
 
 /* ── CTA ── */
 .cta-section {
   background: linear-gradient(135deg, #8B1A2E, #B03050);
-  padding: 80px 24px;
-  text-align: center;
+  padding: 80px 24px; text-align: center;
 }
-.cta-title {
-  font-size: 44px;
-  font-weight: 900;
-  color: #fff;
-  margin-bottom: 16px;
-}
-.cta-sub {
-  color: #ffccbb;
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 40px;
-}
-.cta-buttons {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
+.cta-title { font-size: 44px; font-weight: 900; color: #fff; margin-bottom: 16px; }
+.cta-sub { color: #ffccbb; font-size: 20px; font-weight: 600; margin-bottom: 40px; }
+.cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
 /* ── Footer ── */
-.footer {
-  background: #0a0306;
-  padding: 40px 24px;
-  text-align: center;
-}
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-.footer-link {
-  color: rgba(255,255,255,0.5);
-  font-size: 14px;
-  font-weight: 600;
-  transition: color 0.15s;
-}
-.footer-link:hover { color: #fff; }
-.footer-social {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-.footer-social a {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.15s;
-}
+.footer { background: #1A0810; padding: 40px 24px; text-align: center; }
+.footer-social { display: flex; justify-content: center; gap: 16px; margin-bottom: 20px; }
+.footer-social a { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; transition: background 0.15s; }
 .footer-social a:hover { background: rgba(255,255,255,0.2); }
 .footer-social img { width: 24px; height: 24px; }
-.footer-copy {
-  color: rgba(255,255,255,0.3);
-  font-size: 13px;
-  font-weight: 600;
-}
+.footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; flex-wrap: wrap; }
+.footer-link { color: rgba(255,255,255,0.5); font-size: 14px; font-weight: 600; }
+.footer-link:hover { color: #fff; }
+.footer-copy { color: rgba(255,255,255,0.3); font-size: 13px; }
 </style>
 </head>
 <body>
+
+<!-- ════════ HEADER ════════ -->
+<header class="header">
+  <div class="header-logo">اللمّة</div>
+  <nav class="header-nav">
+    <a class="header-link" href="#modes">أنماط اللعب</a>
+    <a class="header-link" href="#categories">الفئات</a>
+    <a class="header-link" href="links.html">الروابط</a>
+    <a class="header-dl" href="https://apps.apple.com/app/id6760367652" target="_blank">حمّل الحين</a>
+  </nav>
+</header>
 
 <!-- ════════ HERO ════════ -->
 <section class="hero">
   <div class="hero-brand">اللمّة</div>
   <div class="hero-tagline">جمعتكم أحلى مع اللمّة</div>
   <img class="hero-falcon" src="falcon.png" alt="اللمّة">
-  <div class="hero-desc">
-    لعبة ثقافية جماعية للعائلة والأصدقاء — أسئلة متنوعة، تحديات ممتعة، وذكريات ما تنتسى!
-  </div>
+  <div class="hero-desc">لعبة ثقافية جماعية للعائلة والأصدقاء — أسئلة متنوعة، تحديات ممتعة، وذكريات ما تنتسى!</div>
   <div class="hero-buttons">
     <a class="dl-btn" href="https://apps.apple.com/app/id6760367652" target="_blank">
-      <img src="appstore.png" alt="App Store">
-      <div>App Store<div class="dl-sub">حمّل الحين</div></div>
+      <img src="appstore.png" alt="App Store"><div>App Store<div class="dl-sub">حمّل الحين</div></div>
     </a>
     <a class="dl-btn soon" href="#">
-      <img src="googleplay.png" alt="Google Play">
-      <div>Google Play<div class="dl-sub">قريباً</div></div>
+      <img src="googleplay.png" alt="Google Play"><div>Google Play<div class="dl-sub">قريباً</div></div>
     </a>
   </div>
-  <div class="scroll-hint">اسكرول لتحت ↓</div>
 </section>
 
 <!-- ════════ STATS ════════ -->
-<div class="section">
+<div class="section-white">
   <div class="stats-row">
     <div class="stat"><div class="stat-num">+1700</div><div class="stat-label">سؤال</div></div>
     <div class="stat"><div class="stat-num">20</div><div class="stat-label">فئة</div></div>
@@ -331,7 +233,7 @@ a { text-decoration: none; color: inherit; }
 </div>
 
 <!-- ════════ GAME MODES ════════ -->
-<div class="modes-bg">
+<div class="section-light" id="modes">
   <div class="section">
     <div class="section-title">أنماط اللعب</div>
     <div class="section-sub">اختار التحدي المناسب لك</div>
@@ -356,47 +258,42 @@ a { text-decoration: none; color: inherit; }
 </div>
 
 <!-- ════════ CATEGORIES ════════ -->
-<div class="cats-bg">
+<div class="section-white" id="categories">
   <div class="section">
     <div class="section-title">فئات متنوعة</div>
     <div class="section-sub">+20 فئة تغطي كل المجالات</div>
     <div class="cats-grid">
-      <div class="cat-card">
-        <img src="cat-languages.png" alt="لغات">
-        <div class="cat-card-name"><span class="cat-badge">جديد</span> لغات 🌐</div>
-      </div>
-      <div class="cat-card">
-        <img src="cat-sound.png" alt="خمن الصوت">
-        <div class="cat-card-name"><span class="cat-badge">جديد</span> خمن الصوت 🔊</div>
-      </div>
-      <div class="cat-card">
-        <img src="cat-maps.png" alt="خرائط">
-        <div class="cat-card-name">خرائط 🗺️</div>
-      </div>
-      <div class="cat-card">
-        <img src="cat-flags.jpg" alt="أعلام">
-        <div class="cat-card-name">أعلام 🏳️</div>
-      </div>
-      <div class="cat-card">
-        <img src="cat-famous.jpg" alt="شخصيات معروفة">
-        <div class="cat-card-name">شخصيات معروفة ⭐</div>
-      </div>
-      <div class="cat-card">
-        <img src="cat-puzzles.png" alt="ألغاز">
-        <div class="cat-card-name">ألغاز 🧩</div>
-      </div>
+      <div class="cat-card"><img src="cat-languages.png" alt="لغات"><div class="cat-overlay"><span class="cat-name">🌐 لغات</span></div><div class="cat-new">جديد</div></div>
+      <div class="cat-card"><img src="cat-guess-sound.png" alt="خمن الصوت"><div class="cat-overlay"><span class="cat-name">🔊 خمن الصوت</span></div><div class="cat-new">جديد</div></div>
+      <div class="cat-card"><img src="cat-maps.png" alt="خرائط"><div class="cat-overlay"><span class="cat-name">🗺️ خرائط</span></div></div>
+      <div class="cat-card"><img src="cat-flags.jpg" alt="أعلام"><div class="cat-overlay"><span class="cat-name">🏳️ أعلام</span></div></div>
+      <div class="cat-card"><img src="cat-famous.jpg" alt="شخصيات معروفة"><div class="cat-overlay"><span class="cat-name">⭐ شخصيات معروفة</span></div></div>
+      <div class="cat-card"><img src="cat-logos.jpg" alt="شعارات"><div class="cat-overlay"><span class="cat-name">🏷️ شعارات</span></div></div>
+      <div class="cat-card"><img src="cat-puzzles.png" alt="ألغاز"><div class="cat-overlay"><span class="cat-name">🧩 ألغاز</span></div></div>
+      <div class="cat-card"><img src="cat-movies.jpg" alt="أفلام"><div class="cat-overlay"><span class="cat-name">🎬 أفلام</span></div></div>
+      <div class="cat-card"><img src="cat-sports.jpg" alt="رياضة"><div class="cat-overlay"><span class="cat-name">⚽ رياضة</span></div></div>
+      <div class="cat-card"><img src="cat-animals.jpg" alt="حيوانات"><div class="cat-overlay"><span class="cat-name">🐾 حيوانات</span></div></div>
+      <div class="cat-card"><img src="cat-landmarks.jpg" alt="معالم"><div class="cat-overlay"><span class="cat-name">🏛️ معالم</span></div></div>
+      <div class="cat-card"><img src="cat-drawing.png" alt="رسم"><div class="cat-overlay"><span class="cat-name">🎨 رسم</span></div></div>
+      <div class="cat-card"><img src="cat-charades.png" alt="ولا كلمة"><div class="cat-overlay"><span class="cat-name">🤫 ولا كلمة</span></div></div>
+      <div class="cat-card"><img src="cat-qatari-culture.png" alt="الثقافة القطرية"><div class="cat-overlay"><span class="cat-name">🇶🇦 الثقافة القطرية</span></div></div>
+      <div class="cat-card"><img src="cat-clubs.jpg" alt="شعارات أندية"><div class="cat-overlay"><span class="cat-name">⚽ شعارات أندية</span></div></div>
+      <div class="cat-card"><img src="cat-fashion.jpg" alt="ماركات ملابس"><div class="cat-overlay"><span class="cat-name">👔 ماركات ملابس</span></div></div>
+      <div class="cat-card"><img src="cat-letters.jpg" alt="حروف"><div class="cat-overlay"><span class="cat-name">🔤 حروف</span></div></div>
+      <div class="cat-card"><img src="cat-cities.jpg" alt="مدن وعواصم"><div class="cat-overlay"><span class="cat-name">🏙️ مدن وعواصم</span></div></div>
+      <div class="cat-card"><img src="cat-videogames.jpg" alt="ألعاب فيديو"><div class="cat-overlay"><span class="cat-name">🎮 ألعاب فيديو</span></div></div>
+      <div class="cat-card"><img src="cat-religion.jpg" alt="دين"><div class="cat-overlay"><span class="cat-name">🕌 دين</span></div></div>
     </div>
-    <div style="text-align:center;margin-top:24px;color:rgba(255,255,255,0.4);font-size:16px;font-weight:700;">وأكثر من 14 فئة ثانية...</div>
   </div>
 </div>
 
 <!-- ════════ SCREENSHOTS ════════ -->
-<div class="screenshots-bg">
+<div class="section-light">
   <div class="section">
     <div class="section-title">من داخل اللعبة</div>
     <div class="section-sub">شوف اللعبة بنفسك</div>
     <div class="screenshots-placeholder">
-      <div class="screenshots-placeholder-text">📸 سكرين شوتس من اللعبة<br>— قريباً —</div>
+      <div class="screenshots-placeholder-text">📸 سكرين شوتس من اللعبة — قريباً</div>
     </div>
   </div>
 </div>
@@ -407,12 +304,10 @@ a { text-decoration: none; color: inherit; }
   <div class="cta-sub">حمّل اللمّة الحين ولعب مع عائلتك وأصدقائك!</div>
   <div class="cta-buttons">
     <a class="dl-btn" href="https://apps.apple.com/app/id6760367652" target="_blank">
-      <img src="appstore.png" alt="App Store">
-      <div>App Store<div class="dl-sub">حمّل الحين</div></div>
+      <img src="appstore.png" alt="App Store"><div>App Store<div class="dl-sub">حمّل الحين</div></div>
     </a>
     <a class="dl-btn soon" href="#">
-      <img src="googleplay.png" alt="Google Play">
-      <div>Google Play<div class="dl-sub">قريباً</div></div>
+      <img src="googleplay.png" alt="Google Play"><div>Google Play<div class="dl-sub">قريباً</div></div>
     </a>
   </div>
 </section>
