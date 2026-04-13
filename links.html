@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اللمّة — جمعتكم أحلى مع اللمّة</title>
+<meta name="description" content="جمعتكم أحلى مع اللمّة — حمّل اللعبة الحين!">
+<meta property="og:title" content="اللمّة">
+<meta property="og:description" content="جمعتكم أحلى مع اللمّة — حمّلها الحين!">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://allamma-app.github.io">
+<meta property="og:image" content="https://allamma-app.github.io/falcon.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎲</text></svg>">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Cairo', sans-serif;
+  background: linear-gradient(160deg, #6B0F24 0%, #4A0916 50%, #3D0812 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.container {
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+}
+.logo {
+  font-size: 42px;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  margin-bottom: 4px;
+}
+.subtitle {
+  color: #ffccbb;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.link-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 14px;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-size: 16px;
+  font-weight: 700;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+.link-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+.link-btn:active {
+  transform: scale(0.98);
+}
+.link-btn.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.link-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.link-icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+.link-text {
+  flex: 1;
+  text-align: right;
+}
+.link-sub {
+  font-size: 12px;
+  color: #888;
+  font-weight: 600;
+}
+.divider {
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+  margin: 12px 0;
+}
+.section-title {
+  color: rgba(255,255,255,0.6);
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.footer {
+  margin-top: 16px;
+  color: rgba(255,255,255,0.4);
+  font-size: 13px;
+  font-weight: 600;
+}
+/* App Store badge style */
+.store-badge {
+  background: #000;
+  border-radius: 10px;
+  padding: 4px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="logo">اللمّة</div>
+  <div class="subtitle">جمعتكم أحلى مع اللمّة</div>
+  <img src="falcon.png" alt="اللمّة" style="width:120px;height:auto;margin-bottom:10px;filter:drop-shadow(0 6px 16px rgba(0,0,0,0.5))">
+
+  <div class="section-title">حمّل اللعبة</div>
+  <div class="links">
+    <a class="link-btn" href="https://apps.apple.com/app/id6760367652" target="_blank">
+      <div class="link-icon">
+        <img src="appstore.png" alt="App Store" style="width:44px;height:44px;">
+      </div>
+      <div class="link-text">
+        App Store
+        <div class="link-sub">حمّل على الآيفون</div>
+      </div>
+    </a>
+
+    <a class="link-btn disabled" href="#" target="_blank">
+      <div class="link-icon">
+        <img src="googleplay.png" alt="Google Play">
+      </div>
+      <div class="link-text">
+        Google Play
+        <div class="link-sub">قريباً</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-title">تابعنا</div>
+  <div class="links">
+    <a class="link-btn" href="https://www.instagram.com/allamma.app" target="_blank">
+      <div class="link-icon">
+        <img src="instagram.png" alt="Instagram">
+      </div>
+      <div class="link-text">
+        Instagram
+        <div class="link-sub">@allamma.app</div>
+      </div>
+    </a>
+
+    <a class="link-btn" href="https://www.tiktok.com/@allamma.app" target="_blank">
+      <div class="link-icon">
+        <img src="tiktok.png" alt="TikTok">
+      </div>
+      <div class="link-text">
+        TikTok
+        <div class="link-sub">@allamma.app</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="footer">allamma.app</div>
+</div>
+</body>
+</html>
