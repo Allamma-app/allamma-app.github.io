@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>اللمّة — شروحات</title>
 <meta name="description" content="شروحات لعبة اللمّة — تعلم كيف تلعب">
-<meta property="og:title" content="اللمّة — شروحات"><meta property="og:description" content="شروحات لعبة اللمّة">
+<meta property="og:title" content="اللمّة — شروحات">
 <meta property="og:image" content="https://allamma.app/falcon.png">
 <link rel="icon" href="icon.png">
 <style>
@@ -24,31 +24,53 @@ nav{position:fixed;top:0;left:0;right:0;height:70px;background:linear-gradient(1
 .n-link{color:rgba(255,255,255,0.7);font-size:13px;font-weight:700;padding:8px 16px;border-radius:30px;transition:all 0.25s}
 .n-link:hover{color:#fff;background:rgba(255,255,255,0.15)}
 .n-link.active{color:#fff;background:rgba(255,255,255,0.15)}
-.n-cta{background:#fff;color:var(--maroon);font-size:13px;font-weight:800;padding:10px 22px;border-radius:30px;transition:all 0.25s;box-shadow:0 4px 16px rgba(138,21,56,0.25)}
-.n-cta:hover{transform:scale(1.05);box-shadow:0 6px 24px rgba(0,0,0,0.2)}
-@media(max-width:700px){.n-links{gap:2px;overflow-x:auto;white-space:nowrap;scrollbar-width:none;-webkit-overflow-scrolling:touch}.n-links::-webkit-scrollbar{display:none}.n-link{font-size:10px;padding:5px 8px;white-space:nowrap}.n-cta{display:none}.n-logo{font-size:24px}}
+@media(max-width:700px){.n-links{gap:2px;overflow-x:auto;white-space:nowrap;scrollbar-width:none;-webkit-overflow-scrolling:touch}.n-links::-webkit-scrollbar{display:none}.n-link{font-size:10px;padding:5px 8px;white-space:nowrap}.n-logo{font-size:24px}}
 
 /* ═══════════ PAGE ═══════════ */
-.page{padding:120px 24px 60px;max-width:800px;margin:0 auto}
-.page-header{text-align:center;margin-bottom:48px}
-.page-falcon{width:140px;margin-bottom:20px;filter:drop-shadow(0 16px 32px rgba(138,21,56,0.15));animation:float 4s ease-in-out infinite}
+.page{padding:100px 24px 60px;max-width:900px;margin:0 auto}
+.page-header{text-align:center;margin-bottom:40px}
+.page-falcon{width:120px;margin-bottom:16px;filter:drop-shadow(0 12px 24px rgba(138,21,56,0.15));animation:float 4s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.page-title{font-size:clamp(28px,5vw,36px);font-weight:900;margin-bottom:6px;line-height:1.3}
+.page-title{font-size:clamp(26px,5vw,34px);font-weight:900;margin-bottom:6px}
 .page-title span{background:linear-gradient(135deg,#6B0F24,#4A0916);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.page-sub{color:var(--muted);font-size:clamp(13px,2vw,16px);font-weight:600;line-height:1.7}
+.page-sub{color:var(--muted);font-size:clamp(13px,2vw,15px);font-weight:600;line-height:1.7}
 
-/* Tutorial cards */
-.tut-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-@media(max-width:600px){.tut-grid{grid-template-columns:1fr}}
-.tut-card{background:#fff;border:2px solid rgba(0,0,0,0.08);border-radius:20px;padding:28px 24px;transition:all 0.3s cubic-bezier(.16,1,.3,1);text-align:center}
-.tut-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(138,21,56,0.08);border-color:rgba(138,21,56,0.2)}
-.tut-icon{font-size:40px;margin-bottom:12px}
-.tut-title{font-size:18px;font-weight:900;margin-bottom:6px}
-.tut-desc{font-size:13px;color:var(--muted);font-weight:600;line-height:1.6}
-.tut-badge{display:inline-block;background:linear-gradient(135deg,var(--gold),#E8D5A0);color:var(--dark);font-size:11px;font-weight:800;padding:4px 14px;border-radius:20px;margin-top:12px}
-.tut-badge.soon{background:rgba(0,0,0,0.06);color:var(--muted)}
+/* ═══════════ GRID ═══════════ */
+.tut-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+@media(max-width:600px){.tut-grid{grid-template-columns:repeat(3,1fr);gap:3px}}
+.tut-item{position:relative;aspect-ratio:1;overflow:hidden;cursor:pointer;background:#f5f0f2}
+.tut-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.3s}
+.tut-item:hover img{transform:scale(1.05)}
+.tut-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(26,8,16,0.8) 100%);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:14px 10px;opacity:0;transition:opacity 0.3s}
+.tut-item:hover .tut-overlay{opacity:1}
+.tut-name{color:#fff;font-size:13px;font-weight:800;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,0.5)}
+.tut-count{color:rgba(255,255,255,0.7);font-size:11px;font-weight:600}
+/* Carousel icon badge */
+.tut-badge-icon{position:absolute;top:10px;left:10px;background:rgba(0,0,0,0.5);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:8px;backdrop-filter:blur(4px)}
 
-/* Footer */
+/* ═══════════ LIGHTBOX ═══════════ */
+.lb{position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:200;display:none;flex-direction:column;align-items:center;justify-content:center}
+.lb.open{display:flex}
+.lb-close{position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.1);border:none;color:#fff;font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:background 0.2s}
+.lb-close:hover{background:rgba(255,255,255,0.2)}
+.lb-title{position:absolute;top:20px;left:0;right:0;text-align:center;color:#fff;font-size:16px;font-weight:800;z-index:10}
+.lb-counter{position:absolute;top:48px;left:0;right:0;text-align:center;color:rgba(255,255,255,0.5);font-size:12px;font-weight:600;z-index:10}
+.lb-track-wrap{width:100%;max-width:600px;overflow:hidden;position:relative}
+.lb-track{display:flex;transition:transform 0.4s cubic-bezier(.16,1,.3,1);will-change:transform}
+.lb-slide{flex:0 0 100%;display:flex;align-items:center;justify-content:center;padding:16px}
+.lb-slide img{max-width:100%;max-height:75vh;object-fit:contain;border-radius:12px}
+/* Arrows */
+.lb-arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.1);border:none;color:#fff;font-size:22px;font-weight:900;cursor:pointer;z-index:10;transition:background 0.2s}
+.lb-arrow:hover{background:rgba(255,255,255,0.25)}
+.lb-prev{right:8px}
+.lb-next{left:8px}
+@media(max-width:600px){.lb-prev{right:4px}.lb-next{left:4px}.lb-arrow{width:36px;height:36px;font-size:18px}}
+/* Dots */
+.lb-dots{position:absolute;bottom:20px;left:0;right:0;display:flex;justify-content:center;gap:6px;z-index:10}
+.lb-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.3);transition:all 0.3s;cursor:pointer}
+.lb-dot.active{background:#fff;width:20px;border-radius:4px}
+
+/* ═══════════ FOOTER ═══════════ */
 footer{background:#fff;padding:32px 24px;text-align:center;border-top:1px solid var(--card-border)}
 .f-copy{color:rgba(0,0,0,0.25);font-size:12px}
 </style>
@@ -70,40 +92,127 @@ footer{background:#fff;padding:32px 24px;text-align:center;border-top:1px solid 
   <div class="page-header">
     <img class="page-falcon" src="falcon.png" alt="اللمّة">
     <div class="page-title">شروحات <span>اللمّة</span></div>
-    <div class="page-sub">تعلّم كيف تلعب كل نمط وتستمتع مع عائلتك وأصدقائك</div>
+    <div class="page-sub">اضغط على أي شرح لمشاهدته بالكامل</div>
   </div>
 
-  <div class="tut-grid">
-    <div class="tut-card">
-      <div class="tut-icon">🎮</div>
-      <div class="tut-title">نمط اللمّة</div>
-      <div class="tut-desc">لوحة أسئلة مصوّرة — اختر الفئة والصعوبة وتحدّى الفريق الثاني</div>
-      <div class="tut-badge soon">قريباً</div>
+  <div class="tut-grid" id="tutGrid">
+    <!-- Tutorial 1: نمط اللمّة -->
+    <div class="tut-item" onclick="openLB(0)">
+      <img src="tut-lamma-1.png" alt="شرح نمط لمّة">
+      <div class="tut-badge-icon">1/8</div>
+      <div class="tut-overlay"><div class="tut-name">شرح نمط لمّة</div></div>
     </div>
-    <div class="tut-card">
-      <div class="tut-icon">📝</div>
-      <div class="tut-title">نمط كلاسيكي</div>
-      <div class="tut-desc">أسئلة اختيار من متعدد — اختبر معلوماتك في فئات متنوعة</div>
-      <div class="tut-badge soon">قريباً</div>
+    <!-- Tutorial 2: نمط كلاسيكي -->
+    <div class="tut-item" onclick="openLB(1)">
+      <img src="tut-classic-1.png" alt="شرح نمط كلاسيكي">
+      <div class="tut-badge-icon">1/8</div>
+      <div class="tut-overlay"><div class="tut-name">شرح نمط كلاسيكي</div></div>
     </div>
-    <div class="tut-card">
-      <div class="tut-icon">🔤</div>
-      <div class="tut-title">نمط حروف</div>
-      <div class="tut-desc">اختر حرف وجاوب — كل 3 متتالية = نقطة!</div>
-      <div class="tut-badge soon">قريباً</div>
+    <!-- Tutorial 3: نمط حروف -->
+    <div class="tut-item" onclick="openLB(2)">
+      <img src="tut-letters-1.png" alt="شرح نمط حروف">
+      <div class="tut-badge-icon">1/8</div>
+      <div class="tut-overlay"><div class="tut-name">شرح نمط حروف</div></div>
     </div>
-    <div class="tut-card">
-      <div class="tut-icon">💣</div>
-      <div class="tut-title">وسائل المساعدة</div>
-      <div class="tut-desc">قنبلة، إجابتين، صديق، تجميد، تبديل — اختر 3 من 5</div>
-      <div class="tut-badge soon">قريباً</div>
+    <!-- Tutorial 4: فئة خمن الصوت -->
+    <div class="tut-item" onclick="openLB(3)">
+      <img src="tut-sound-1.png" alt="شرح فئة خمن الصوت">
+      <div class="tut-badge-icon">1/8</div>
+      <div class="tut-overlay"><div class="tut-name">فئة خمن الصوت</div></div>
+    </div>
+    <!-- Tutorial 5: فئة ولا كلمة -->
+    <div class="tut-item" onclick="openLB(4)">
+      <img src="tut-charades-1.png" alt="شرح فئة ولا كلمة">
+      <div class="tut-badge-icon">1/8</div>
+      <div class="tut-overlay"><div class="tut-name">فئة ولا كلمة</div></div>
+    </div>
+    <!-- Tutorial 6: وسائل المساعدة -->
+    <div class="tut-item" onclick="openLB(5)">
+      <img src="tut-powerups-1.png" alt="شرح وسائل المساعدة">
+      <div class="tut-badge-icon">1/8</div>
+      <div class="tut-overlay"><div class="tut-name">وسائل المساعدة</div></div>
     </div>
   </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb">
+  <button class="lb-close" onclick="closeLB()">&times;</button>
+  <div class="lb-title" id="lbTitle"></div>
+  <div class="lb-counter" id="lbCounter"></div>
+  <button class="lb-arrow lb-prev" onclick="lbGo(-1)">›</button>
+  <button class="lb-arrow lb-next" onclick="lbGo(1)">‹</button>
+  <div class="lb-track-wrap">
+    <div class="lb-track" id="lbTrack"></div>
+  </div>
+  <div class="lb-dots" id="lbDots"></div>
 </div>
 
 <footer>
   <div class="f-copy">© 2026 اللمّة — جميع الحقوق محفوظة | allamma.app</div>
 </footer>
 
+<script>
+// Tutorial data — each tutorial has a title and array of image paths
+const tutorials = [
+  { title: 'شرح نمط لمّة', images: ['tut-lamma-1.png','tut-lamma-2.png','tut-lamma-3.png','tut-lamma-4.png','tut-lamma-5.png','tut-lamma-6.png','tut-lamma-7.png','tut-lamma-8.png'] },
+  { title: 'شرح نمط كلاسيكي', images: ['tut-classic-1.png','tut-classic-2.png','tut-classic-3.png','tut-classic-4.png','tut-classic-5.png','tut-classic-6.png','tut-classic-7.png','tut-classic-8.png'] },
+  { title: 'شرح نمط حروف', images: ['tut-letters-1.png','tut-letters-2.png','tut-letters-3.png','tut-letters-4.png','tut-letters-5.png','tut-letters-6.png','tut-letters-7.png','tut-letters-8.png'] },
+  { title: 'فئة خمن الصوت', images: ['tut-sound-1.png','tut-sound-2.png','tut-sound-3.png','tut-sound-4.png','tut-sound-5.png','tut-sound-6.png','tut-sound-7.png','tut-sound-8.png'] },
+  { title: 'فئة ولا كلمة', images: ['tut-charades-1.png','tut-charades-2.png','tut-charades-3.png','tut-charades-4.png','tut-charades-5.png','tut-charades-6.png','tut-charades-7.png','tut-charades-8.png'] },
+  { title: 'وسائل المساعدة', images: ['tut-powerups-1.png','tut-powerups-2.png','tut-powerups-3.png','tut-powerups-4.png','tut-powerups-5.png','tut-powerups-6.png','tut-powerups-7.png','tut-powerups-8.png'] }
+];
+
+let curTut = 0, curSlide = 0;
+const lb = document.getElementById('lb');
+const lbTrack = document.getElementById('lbTrack');
+const lbDots = document.getElementById('lbDots');
+const lbTitle = document.getElementById('lbTitle');
+const lbCounter = document.getElementById('lbCounter');
+
+function openLB(idx) {
+  curTut = idx; curSlide = 0;
+  const tut = tutorials[idx];
+  lbTitle.textContent = tut.title;
+  // Build slides
+  lbTrack.innerHTML = tut.images.map(src => `<div class="lb-slide"><img src="${src}" alt=""></div>`).join('');
+  // Build dots
+  lbDots.innerHTML = tut.images.map((_, i) => `<div class="lb-dot${i===0?' active':''}" onclick="lbTo(${i})"></div>`).join('');
+  updateLB();
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLB() {
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function lbGo(dir) {
+  const total = tutorials[curTut].images.length;
+  curSlide = (curSlide + dir + total) % total;
+  updateLB();
+}
+
+function lbTo(idx) {
+  curSlide = idx;
+  updateLB();
+}
+
+function updateLB() {
+  const total = tutorials[curTut].images.length;
+  lbTrack.style.transform = `translateX(${curSlide * 100}%)`;
+  lbCounter.textContent = `${curSlide + 1} / ${total}`;
+  lbDots.querySelectorAll('.lb-dot').forEach((d, i) => d.className = 'lb-dot' + (i === curSlide ? ' active' : ''));
+}
+
+// Touch swipe for lightbox
+let lbX = 0;
+lbTrack.addEventListener('touchstart', e => { lbX = e.touches[0].clientX }, { passive: true });
+lbTrack.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - lbX; if (Math.abs(dx) > 50) { dx > 0 ? lbGo(1) : lbGo(-1) } }, { passive: true });
+
+// ESC to close
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB() });
+</script>
 </body>
 </html>
