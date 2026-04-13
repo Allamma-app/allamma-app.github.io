@@ -37,19 +37,19 @@ nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,0.15)}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(138,21,56,0.04) 0%,transparent 60%);pointer-events:none}
 /* Decorative floating shapes */
 .hero-shape{position:absolute;border-radius:50%;opacity:0.07;pointer-events:none}
-.hs1{width:300px;height:300px;background:var(--maroon);top:-80px;right:-80px;animation:drift 8s ease-in-out infinite}
+.hs1{width:300px;height:300px;background:linear-gradient(135deg,#6B0F24,#4A0916);top:-80px;right:-80px;animation:drift 8s ease-in-out infinite}
 .hs2{width:200px;height:200px;background:var(--gold);bottom:10%;left:-60px;animation:drift 10s ease-in-out infinite reverse}
-.hs3{width:150px;height:150px;background:var(--maroon);bottom:20%;right:5%;animation:drift 7s ease-in-out infinite 1s}
+.hs3{width:150px;height:150px;background:linear-gradient(135deg,#6B0F24,#4A0916);bottom:20%;right:5%;animation:drift 7s ease-in-out infinite 1s}
 @keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(15px,-20px)}}
 
 .h-badge{background:linear-gradient(135deg,rgba(138,21,56,0.08),rgba(201,162,78,0.08));border:1px solid rgba(201,162,78,0.2);border-radius:50px;padding:8px 24px;font-size:14px;font-weight:700;color:var(--gold);margin-bottom:28px;z-index:2}
 .h-title{font-size:clamp(44px,7vw,72px);font-weight:900;text-align:center;line-height:1.15;z-index:2;margin-bottom:12px}
-.h-accent{background:linear-gradient(135deg,var(--maroon),var(--maroon-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.h-accent{background:linear-gradient(135deg,#6B0F24,#4A0916);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .h-sub{color:var(--muted);font-size:clamp(16px,2.5vw,20px);font-weight:600;text-align:center;max-width:520px;line-height:1.8;z-index:2;margin-bottom:20px}
 .h-falcon{width:clamp(200px,35vw,300px);z-index:2;filter:drop-shadow(0 24px 48px rgba(138,21,56,0.15));margin-bottom:28px;animation:float 4s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(1deg)}}
 .h-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;z-index:2}
-.btn-p{display:flex;align-items:center;gap:10px;background:var(--maroon);color:#fff;padding:14px 28px;border-radius:16px;font-size:16px;font-weight:800;box-shadow:0 8px 28px rgba(138,21,56,0.3);transition:all 0.3s cubic-bezier(.16,1,.3,1)}
+.btn-p{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#6B0F24,#4A0916);color:#fff;padding:14px 28px;border-radius:16px;font-size:16px;font-weight:800;box-shadow:0 8px 28px rgba(138,21,56,0.3);transition:all 0.3s cubic-bezier(.16,1,.3,1)}
 .btn-p:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(138,21,56,0.4)}
 .btn-p img{width:24px;height:24px;object-fit:contain}
 .btn-p.soon{opacity:0.35;pointer-events:none}
@@ -124,7 +124,7 @@ nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,0.15)}
 .ss-txt{color:var(--muted);font-size:17px;font-weight:700}
 
 /* ═══════════ CTA ═══════════ */
-.cta{background:linear-gradient(135deg,var(--maroon),var(--maroon-light));padding:100px 24px;text-align:center;position:relative;overflow:hidden}
+.cta{background:linear-gradient(135deg,#6B0F24,#4A0916);padding:100px 24px;text-align:center;position:relative;overflow:hidden}
 .cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(201,162,78,0.12) 0%,transparent 60%)}
 .cta-t{font-size:clamp(32px,5vw,48px);font-weight:900;color:#fff;margin-bottom:14px;position:relative;z-index:2}
 .cta-s{color:rgba(255,255,255,0.7);font-size:18px;font-weight:600;margin-bottom:36px;position:relative;z-index:2}
