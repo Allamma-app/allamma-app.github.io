@@ -22,14 +22,14 @@ a{text-decoration:none;color:inherit}
 .rv-d1{transition-delay:0.1s}.rv-d2{transition-delay:0.2s}.rv-d3{transition-delay:0.3s}.rv-d4{transition-delay:0.4s}
 
 /* ═══════════ NAV ═══════════ */
-nav{position:fixed;top:0;left:0;right:0;height:70px;background:rgba(250,247,242,0.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--card-border);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,4vw,40px);z-index:100;transition:box-shadow 0.3s}
-nav.scrolled{box-shadow:0 4px 30px rgba(138,21,56,0.08)}
-.n-logo{font-size:30px;font-weight:900;color:var(--maroon)}
+nav{position:fixed;top:0;left:0;right:0;height:70px;background:linear-gradient(135deg,#6B0F24,#4A0916);border-bottom:none;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,4vw,40px);z-index:100;transition:box-shadow 0.3s}
+nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,0.15)}
+.n-logo{font-size:30px;font-weight:900;color:#fff}
 .n-links{display:flex;gap:6px;align-items:center}
-.n-link{color:var(--muted);font-size:13px;font-weight:700;padding:8px 16px;border-radius:30px;transition:all 0.25s}
-.n-link:hover{color:var(--dark);background:rgba(138,21,56,0.06)}
-.n-cta{background:var(--maroon);color:#fff;font-size:13px;font-weight:800;padding:10px 22px;border-radius:30px;transition:all 0.25s;box-shadow:0 4px 16px rgba(138,21,56,0.25)}
-.n-cta:hover{transform:scale(1.05);box-shadow:0 6px 24px rgba(138,21,56,0.35);background:var(--maroon-light)}
+.n-link{color:rgba(255,255,255,0.7);font-size:13px;font-weight:700;padding:8px 16px;border-radius:30px;transition:all 0.25s}
+.n-link:hover{color:#fff;background:rgba(255,255,255,0.15)}
+.n-cta{background:#fff;color:var(--maroon);font-size:13px;font-weight:800;padding:10px 22px;border-radius:30px;transition:all 0.25s;box-shadow:0 4px 16px rgba(138,21,56,0.25)}
+.n-cta:hover{transform:scale(1.05);box-shadow:0 6px 24px rgba(0,0,0,0.2)}
 @media(max-width:700px){.n-link{display:none}.n-cta{font-size:12px;padding:8px 16px}}
 
 /* ═══════════ HERO ═══════════ */
