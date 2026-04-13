@@ -291,7 +291,7 @@ footer{background:#fff;padding:48px 24px;text-align:center;border-top:1px solid 
 <div class="stats-wrap">
   <div class="stats rv">
     <div class="stat"><div class="s-num" data-t="3">0</div><div class="s-label">أنماط لعب</div></div>
-    <div class="stat"><div class="s-num" data-t="35">0</div><div class="s-label">فئة</div></div>
+    <div class="stat"><div class="s-num" data-t="35" data-suffix="+">0</div><div class="s-label">فئة</div></div>
     <div class="stat"><div class="s-num" data-t="4000">0</div><div class="s-label">سؤال+</div></div>
   </div>
 </div>
@@ -498,7 +498,7 @@ const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)},{passive:true});
 
 // Counter animation
-const cio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('[data-t]').forEach(el=>{const t=+el.dataset.t,dur=1800,st=Date.now();const tick=()=>{const p=Math.min((Date.now()-st)/dur,1),ez=1-Math.pow(1-p,4);el.textContent=Math.floor(ez*t);if(p<1)requestAnimationFrame(tick);else el.textContent=t>100?'+'+t:t};tick()});cio.unobserve(e.target)}})},{threshold:0.5});
+const cio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('[data-t]').forEach(el=>{const t=+el.dataset.t,s=el.dataset.suffix||'',dur=1800,st=Date.now();const tick=()=>{const p=Math.min((Date.now()-st)/dur,1),ez=1-Math.pow(1-p,4);el.textContent=Math.floor(ez*t);if(p<1)requestAnimationFrame(tick);else el.textContent=(t>100?'+'+t:t)+s};tick()});cio.unobserve(e.target)}})},{threshold:0.5});
 document.querySelectorAll('.stats').forEach(el=>cio.observe(el));
 
 // Screenshot horizontal scroll
