@@ -498,7 +498,7 @@ const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)},{passive:true});
 
 // Counter animation
-const cio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('[data-t]').forEach(el=>{const t=+el.dataset.t,s=el.dataset.suffix||'',dur=1800,st=Date.now();const tick=()=>{const p=Math.min((Date.now()-st)/dur,1),ez=1-Math.pow(1-p,4);el.textContent=Math.floor(ez*t);if(p<1)requestAnimationFrame(tick);else el.textContent=(t>100?'+'+t:t)+s};tick()});cio.unobserve(e.target)}})},{threshold:0.5});
+const cio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('[data-t]').forEach(el=>{const t=+el.dataset.t,s=el.dataset.suffix||'',dur=1800,st=Date.now();const tick=()=>{const p=Math.min((Date.now()-st)/dur,1),ez=1-Math.pow(1-p,4);el.textContent=Math.floor(ez*t);if(p<1)requestAnimationFrame(tick);else el.textContent=t+s};tick()});cio.unobserve(e.target)}})},{threshold:0.5});
 document.querySelectorAll('.stats').forEach(el=>cio.observe(el));
 
 // Screenshot horizontal scroll
