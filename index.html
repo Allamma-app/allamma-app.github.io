@@ -120,21 +120,26 @@ nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,0.15)}
 
 /* ═══════════ SCREENSHOTS ═══════════ */
 .ss-sec{background:#fff;overflow:hidden}
-.ss-wrap{position:relative;max-width:900px;margin:0 auto}
-.ss-track{display:flex;transition:transform 0.5s cubic-bezier(.16,1,.3,1);will-change:transform}
-.ss-slide{flex:0 0 100%;display:flex;justify-content:center;padding:0 20px}
-/* iPhone mockup */
-.iphone{position:relative;width:280px;background:#0a0a0a;border-radius:44px;padding:14px;box-shadow:0 24px 60px rgba(0,0,0,0.2),0 0 0 2px #333,0 0 0 4px #1a1a1a}
-.iphone::before{content:'';position:absolute;top:10px;left:50%;transform:translateX(-50%);width:90px;height:26px;background:#0a0a0a;border-radius:0 0 16px 16px;z-index:3}
-.iphone img{width:100%;border-radius:30px;display:block;position:relative;z-index:1}
+.ss-wrap{position:relative;max-width:100%;margin:0 auto}
+.ss-track{display:flex;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:20px clamp(24px,8vw,120px);scrollbar-width:none}
+.ss-track::-webkit-scrollbar{display:none}
+.ss-slide{flex:0 0 auto;scroll-snap-align:center}
+/* iPhone frame using real PNG */
+.iphone{position:relative;width:280px;height:572px}
+.iphone-frame{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;filter:drop-shadow(0 20px 50px rgba(0,0,0,0.18))}
+.iphone-screen{position:absolute;top:3.2%;left:5.8%;width:88.4%;height:93.4%;border-radius:28px;overflow:hidden;z-index:1}
+.iphone-screen img{width:100%;height:100%;object-fit:cover}
+@media(max-width:600px){.iphone{width:220px;height:449px}.iphone-screen{border-radius:22px}}
 /* Arrow buttons */
 .ss-arrow{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:#fff;border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:var(--maroon);cursor:pointer;z-index:5;box-shadow:0 4px 16px rgba(0,0,0,0.1);transition:all 0.2s}
 .ss-arrow:hover{background:var(--maroon);color:#fff;box-shadow:0 8px 24px rgba(138,21,56,0.3)}
-.ss-prev{right:0}.ss-next{left:0}
+.ss-prev{right:12px}.ss-next{left:12px}
 /* Dots */
 .ss-dots{display:flex;justify-content:center;gap:8px;margin-top:24px}
 .ss-dot{width:10px;height:10px;border-radius:50%;background:var(--card-border);transition:all 0.3s;cursor:pointer}
 .ss-dot.active{background:var(--maroon);width:28px;border-radius:5px}
+/* Swipe hint */
+.ss-hint{text-align:center;color:var(--muted);font-size:13px;font-weight:600;margin-top:16px;opacity:0.7}
 
 /* ═══════════ CTA ═══════════ */
 .cta{background:linear-gradient(135deg,#6B0F24,#4A0916);padding:100px 24px;text-align:center;position:relative;overflow:hidden}
@@ -296,25 +301,25 @@ footer{background:var(--dark);padding:48px 24px;text-align:center}
   <div class="sec-inner">
     <div class="sec-label rv">من داخل اللعبة</div>
     <div class="sec-title rv">شوفها بنفسك</div>
-    <div class="sec-sub rv">واجهات اللعبة</div>
+    <div class="sec-sub rv">اسحب لمشاهدة المزيد</div>
     <div class="ss-wrap rv">
       <div class="ss-track" id="ssTrack">
-        <div class="ss-slide"><div class="iphone"><img src="ss1.jpg" alt=""></div></div>
-        <div class="ss-slide"><div class="iphone"><img src="ss2.jpg" alt=""></div></div>
-        <div class="ss-slide"><div class="iphone"><img src="ss3.jpg" alt=""></div></div>
-        <div class="ss-slide"><div class="iphone"><img src="ss4.jpg" alt=""></div></div>
-        <div class="ss-slide"><div class="iphone"><img src="ss5.jpg" alt=""></div></div>
-        <div class="ss-slide"><div class="iphone"><img src="ss6.jpg" alt=""></div></div>
-        <div class="ss-slide"><div class="iphone"><img src="ss7.jpg" alt=""></div></div>
-        <div class="ss-slide"><div class="iphone"><img src="ss8.jpg" alt=""></div></div>
-        <div class="ss-slide"><div class="iphone"><img src="ss9.jpg" alt=""></div></div>
-        <div class="ss-slide"><div class="iphone"><img src="ss10.jpg" alt=""></div></div>
-        <div class="ss-slide"><div class="iphone"><img src="ss11.jpg" alt=""></div></div>
-        <div class="ss-slide"><div class="iphone"><img src="ss12.jpg" alt=""></div></div>
+        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss1.jpg" alt=""></div></div></div>
+        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss2.jpg" alt=""></div></div></div>
+        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss3.jpg" alt=""></div></div></div>
+        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss4.jpg" alt=""></div></div></div>
+        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss5.jpg" alt=""></div></div></div>
+        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss6.jpg" alt=""></div></div></div>
+        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss7.jpg" alt=""></div></div></div>
+        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss8.jpg" alt=""></div></div></div>
+        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss9.jpg" alt=""></div></div></div>
+        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss10.jpg" alt=""></div></div></div>
+        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss11.jpg" alt=""></div></div></div>
+        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss12.jpg" alt=""></div></div></div>
       </div>
-      <button class="ss-arrow ss-prev" onclick="ssGo(-1)">›</button>
-      <button class="ss-arrow ss-next" onclick="ssGo(1)">‹</button>
-      <div class="ss-dots" id="ssDots"></div>
+      <button class="ss-arrow ss-prev" onclick="ssScroll(-1)">›</button>
+      <button class="ss-arrow ss-next" onclick="ssScroll(1)">‹</button>
+      <div class="ss-hint">← اسحب لمشاهدة المزيد →</div>
     </div>
   </div>
 </section>
@@ -360,18 +365,9 @@ window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scr
 const cio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('[data-t]').forEach(el=>{const t=+el.dataset.t,dur=1800,st=Date.now();const tick=()=>{const p=Math.min((Date.now()-st)/dur,1),ez=1-Math.pow(1-p,4);el.textContent=Math.floor(ez*t);if(p<1)requestAnimationFrame(tick);else el.textContent=t>100?'+'+t:t};tick()});cio.unobserve(e.target)}})},{threshold:0.5});
 document.querySelectorAll('.stats').forEach(el=>cio.observe(el));
 
-// Screenshot carousel
+// Screenshot horizontal scroll
 const ssTrack=document.getElementById('ssTrack');
-const ssDots=document.getElementById('ssDots');
-const ssTotal=ssTrack.children.length;
-let ssIdx=0;
-// Build dots
-for(let i=0;i<ssTotal;i++){const d=document.createElement('div');d.className='ss-dot'+(i===0?' active':'');d.onclick=()=>{ssIdx=i;ssUpdate()};ssDots.appendChild(d)}
-function ssGo(dir){ssIdx=(ssIdx+dir+ssTotal)%ssTotal;ssUpdate()}
-function ssUpdate(){ssTrack.style.transform=`translateX(${ssIdx*100}%)`;ssDots.querySelectorAll('.ss-dot').forEach((d,i)=>d.className='ss-dot'+(i===ssIdx?' active':''))}
-// Touch swipe
-let ssX=0;ssTrack.addEventListener('touchstart',e=>{ssX=e.touches[0].clientX},{passive:true});
-ssTrack.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-ssX;if(Math.abs(dx)>50){dx>0?ssGo(1):ssGo(-1)}},{passive:true});
+function ssScroll(dir){const w=ssTrack.querySelector('.ss-slide').offsetWidth+28;ssTrack.scrollBy({left:dir*w*-1,behavior:'smooth'})}
 </script>
 </body>
 </html>
