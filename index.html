@@ -156,6 +156,71 @@ footer{background:#fff;padding:48px 24px;text-align:center;border-top:1px solid 
 .f-link:hover{color:var(--maroon)}
 .f-copy{color:rgba(0,0,0,0.25);font-size:12px}
 
+/* ═══════════ MOBILE PORTRAIT ═══════════ */
+@media(max-width:480px){
+  /* Hero */
+  .hero{min-height:auto;padding:90px 16px 50px}
+  .h-falcon{width:180px;margin-bottom:20px}
+  .h-badge{font-size:12px;padding:6px 16px;margin-bottom:18px}
+  .h-sub{font-size:14px;margin-bottom:16px}
+  .h-btns{gap:10px}
+  .btn-p{padding:10px 20px;font-size:14px;border-radius:12px}
+  .btn-p img{width:20px;height:20px}
+  .hero-shape{display:none}
+
+  /* Stats */
+  .stats-wrap{padding:30px 16px}
+  .s-num{font-size:32px}
+  .s-label{font-size:12px}
+
+  /* Sections shared */
+  .sec{padding:40px 16px}
+  .sec-title{font-size:24px;margin-bottom:10px}
+  .sec-sub{font-size:13px;margin-bottom:28px}
+  .sec-label{font-size:11px;letter-spacing:2px;margin-bottom:6px}
+
+  /* Why cards — 2 columns on mobile */
+  .why-grid{grid-template-columns:repeat(2,1fr)!important;gap:10px;max-width:100%!important}
+  .why-card{padding:16px 12px;border-radius:16px}
+  .w-icon{width:70px;height:70px;margin-bottom:8px}
+  .w-title{font-size:13px;margin-bottom:4px}
+  .w-desc{font-size:11px}
+
+  /* Modes — 3 columns on mobile */
+  .modes-grid{grid-template-columns:repeat(3,1fr)!important;gap:10px;max-width:100%!important}
+  .mode-card{padding:16px 10px;border-radius:18px}
+  .mode-card img{width:80px;height:80px;margin-bottom:10px}
+  .m-name{font-size:14px;margin-bottom:4px}
+  .m-desc{font-size:10px}
+
+  /* Categories — 4 columns on mobile */
+  .cats-grid{grid-template-columns:repeat(4,1fr)!important;gap:8px}
+  .cat{border-radius:10px}
+  .cat-n{font-size:9px}
+  .cat-badge{font-size:7px;padding:2px 6px;top:4px;right:4px}
+
+  /* How steps */
+  .how-steps{gap:16px}
+  .how-step{min-width:90px}
+  .how-n{width:40px;height:40px;font-size:18px;margin-bottom:8px}
+  .how-t{font-size:14px}
+  .how-d{font-size:11px}
+
+  /* Screenshots */
+  .ss-slide img{width:280px;height:140px}
+  .ss-arrow{display:none}
+  .ss-wrap{padding:0 8px}
+
+  /* CTA */
+  .cta{padding:50px 16px}
+  .cta-s{font-size:14px}
+  .btn-w{padding:12px 22px;font-size:14px;border-radius:14px}
+
+  /* Footer */
+  footer{padding:30px 16px}
+  .f-link{font-size:12px}
+}
+
 @media(prefers-reduced-motion:reduce){.rv{transition:none}.rv{opacity:1;transform:none}*{animation:none!important}}
 </style>
 </head>
