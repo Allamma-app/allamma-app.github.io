@@ -114,29 +114,28 @@ footer{background:#fff;padding:32px 24px;text-align:center;border-top:1px solid 
 <!-- CONTENT -->
 <div class="page">
   <div class="page-header">
-    <img class="page-falcon" src="falcon.png" alt="اللمّة">
     <div class="page-title">شروحات <span>اللمّة</span></div>
     <div class="page-sub">اضغط على أي شرح لمشاهدته بالكامل</div>
   </div>
 
   <div class="tut-grid" id="tutGrid">
-    <!-- Tutorial 1: نمط اللمّة -->
+    <!-- Tutorial 1: نمط حروف -->
     <div class="tut-item" onclick="openLB(0)">
+      <img src="tut-letters-1.png" alt="شرح نمط حروف">
+      <div class="tut-badge-icon">1/7</div>
+      <div class="tut-overlay"><div class="tut-name">شرح نمط حروف</div></div>
+    </div>
+    <!-- Tutorial 2: نمط لمّة -->
+    <div class="tut-item" onclick="openLB(1)">
       <img src="tut-lamma-1.png" alt="شرح نمط لمّة">
       <div class="tut-badge-icon">1/8</div>
       <div class="tut-overlay"><div class="tut-name">شرح نمط لمّة</div></div>
     </div>
-    <!-- Tutorial 2: نمط كلاسيكي -->
-    <div class="tut-item" onclick="openLB(1)">
+    <!-- Tutorial 3: نمط كلاسيكي -->
+    <div class="tut-item" onclick="openLB(2)">
       <img src="tut-classic-1.png" alt="شرح نمط كلاسيكي">
       <div class="tut-badge-icon">1/7</div>
       <div class="tut-overlay"><div class="tut-name">شرح نمط كلاسيكي</div></div>
-    </div>
-    <!-- Tutorial 3: نمط حروف -->
-    <div class="tut-item" onclick="openLB(2)">
-      <img src="tut-letters-1.png" alt="شرح نمط حروف">
-      <div class="tut-badge-icon">1/7</div>
-      <div class="tut-overlay"><div class="tut-name">شرح نمط حروف</div></div>
     </div>
     <!-- Tutorial 4: فئة خمن الصوت -->
     <div class="tut-item" onclick="openLB(3)">
@@ -182,9 +181,9 @@ footer{background:#fff;padding:32px 24px;text-align:center;border-top:1px solid 
 <script>
 // Tutorial data — each tutorial has a title and array of image paths
 const tutorials = [
+  { title: 'شرح نمط حروف', images: ['tut-letters-1.png','tut-letters-2.png','tut-letters-3.png','tut-letters-4.png','tut-letters-5.png','tut-letters-6.png','tut-letters-7.png'] },
   { title: 'شرح نمط لمّة', images: ['tut-lamma-1.png','tut-lamma-2.png','tut-lamma-3.png','tut-lamma-4.png','tut-lamma-5.png','tut-lamma-6.png','tut-lamma-7.png','tut-lamma-8.png'] },
   { title: 'شرح نمط كلاسيكي', images: ['tut-classic-1.png','tut-classic-2.png','tut-classic-3.png','tut-classic-4.png','tut-classic-5.png','tut-classic-6.png','tut-classic-7.png'] },
-  { title: 'شرح نمط حروف', images: ['tut-letters-1.png','tut-letters-2.png','tut-letters-3.png','tut-letters-4.png','tut-letters-5.png','tut-letters-6.png','tut-letters-7.png'] },
   { title: 'فئة خمن الصوت', images: ['tut-sound-1.png','tut-sound-2.png','tut-sound-3.png'] },
   { title: 'فئة ولا كلمة', images: ['tut-charades-1.png','tut-charades-2.png','tut-charades-3.png','tut-charades-4.png','tut-charades-5.png'] },
   { title: 'فئة الرسم', images: ['tut-drawing-1.png','tut-drawing-2.png','tut-drawing-3.png','tut-drawing-4.png','tut-drawing-5.png'] }
