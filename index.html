@@ -120,16 +120,17 @@ nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,0.15)}
 
 /* ═══════════ SCREENSHOTS ═══════════ */
 .ss-sec{background:#fff;overflow:hidden}
-.ss-wrap{position:relative;max-width:100%;margin:0 auto}
-.ss-track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:20px clamp(24px,8vw,120px);scrollbar-width:none}
+.ss-wrap{position:relative;max-width:1100px;margin:0 auto;padding:0 60px}
+.ss-track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:20px 10px;scrollbar-width:none;align-items:center}
 .ss-track::-webkit-scrollbar{display:none}
 .ss-slide{flex:0 0 auto;scroll-snap-align:center}
-.ss-slide img{width:clamp(320px,50vw,480px);border-radius:16px;filter:drop-shadow(0 16px 40px rgba(0,0,0,0.12));transition:transform 0.3s}
+.ss-slide img{width:clamp(320px,50vw,480px);height:clamp(160px,25vw,240px);object-fit:contain;filter:drop-shadow(0 16px 40px rgba(0,0,0,0.12));transition:transform 0.3s}
 .ss-slide img:hover{transform:scale(1.03)}
-/* Arrow buttons */
+/* Arrow buttons — outside the scroll area */
 .ss-arrow{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:#fff;border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:var(--maroon);cursor:pointer;z-index:5;box-shadow:0 4px 16px rgba(0,0,0,0.1);transition:all 0.2s}
 .ss-arrow:hover{background:var(--maroon);color:#fff;box-shadow:0 8px 24px rgba(138,21,56,0.3)}
-.ss-prev{right:12px}.ss-next{left:12px}
+.ss-prev{right:0}.ss-next{left:0}
+@media(max-width:600px){.ss-wrap{padding:0 16px}.ss-prev{right:-4px}.ss-next{left:-4px}.ss-arrow{width:36px;height:36px;font-size:18px}}
 /* Swipe hint */
 .ss-hint{text-align:center;color:var(--muted);font-size:13px;font-weight:600;margin-top:16px;opacity:0.7}
 
