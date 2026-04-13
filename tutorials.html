@@ -66,7 +66,29 @@ nav{position:fixed;top:0;left:0;right:0;height:70px;background:linear-gradient(1
 .lb-arrow:hover{background:rgba(138,21,56,0.1);color:var(--maroon)}
 .lb-prev{right:8px}
 .lb-next{left:8px}
-@media(max-width:600px){.lb-modal{width:95%;max-height:80vh;border-radius:18px}.lb-arrow{width:32px;height:32px;font-size:16px}}
+@media(max-width:600px){
+  .lb-modal{width:95%;max-height:80vh;border-radius:18px}
+  .lb-arrow{width:32px;height:32px;font-size:16px}
+  .lb-header{padding:12px 14px}
+  .lb-title{font-size:14px}
+}
+
+/* ═══════════ MOBILE ═══════════ */
+@media(max-width:480px){
+  .page{padding:85px 12px 40px}
+  .page-header{margin-bottom:24px}
+  .page-falcon{width:90px;margin-bottom:12px}
+  .page-title{font-size:24px}
+  .page-sub{font-size:12px}
+  .tut-grid{gap:2px}
+  .tut-badge-icon{font-size:8px;padding:2px 6px;top:6px;left:6px}
+  .tut-name{font-size:11px}
+  .lb-slide img{max-height:50vh}
+  .lb-dots{padding:10px}
+  .lb-dot{width:6px;height:6px}
+  .lb-dot.active{width:16px}
+  footer{padding:20px 12px}
+}
 /* Dots */
 .lb-dots{display:flex;justify-content:center;gap:6px;padding:14px;border-top:1px solid rgba(0,0,0,0.06);direction:ltr}
 .lb-dot{width:8px;height:8px;border-radius:50%;background:rgba(138,21,56,0.15);transition:all 0.3s;cursor:pointer}
