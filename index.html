@@ -133,7 +133,7 @@ nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,0.15)}
 /* ═══════════ SCREENSHOTS ═══════════ */
 .ss-sec{background:#fff;overflow:hidden}
 .ss-wrap{position:relative;max-width:1100px;margin:0 auto;padding:0 60px}
-.ss-track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:20px 10px;scrollbar-width:none;align-items:center}
+.ss-track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:20px 10px;scrollbar-width:none;align-items:center;direction:ltr}
 .ss-track::-webkit-scrollbar{display:none}
 .ss-slide{flex:0 0 auto;scroll-snap-align:center}
 .ss-slide img{width:clamp(320px,50vw,480px);height:clamp(160px,25vw,240px);object-fit:contain;filter:drop-shadow(0 16px 40px rgba(0,0,0,0.12));transition:transform 0.3s}
@@ -401,8 +401,8 @@ footer{background:#fff;padding:48px 24px;text-align:center;border-top:1px solid 
         <div class="ss-slide"><img src="ss8.png" alt="نمط رسم"></div>
         <div class="ss-slide"><img src="ss9.png" alt="نتيجة اللعبة"></div>
       </div>
-      <button class="ss-arrow ss-prev" onclick="ssScroll(-1)">›</button>
-      <button class="ss-arrow ss-next" onclick="ssScroll(1)">‹</button>
+      <button class="ss-arrow ss-next" onclick="ssScroll(1)">›</button>
+      <button class="ss-arrow ss-prev" onclick="ssScroll(-1)">‹</button>
       <div class="ss-hint">← اسحب لمشاهدة المزيد →</div>
     </div>
   </div>
@@ -451,7 +451,7 @@ document.querySelectorAll('.stats').forEach(el=>cio.observe(el));
 
 // Screenshot horizontal scroll
 const ssTrack=document.getElementById('ssTrack');
-function ssScroll(dir){const w=ssTrack.querySelector('.ss-slide').offsetWidth+28;ssTrack.scrollBy({left:dir*w*-1,behavior:'smooth'})}
+function ssScroll(dir){const w=ssTrack.querySelector('.ss-slide').offsetWidth+28;ssTrack.scrollBy({left:dir*w,behavior:'smooth'})}
 </script>
 </body>
 </html>
