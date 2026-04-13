@@ -7,330 +7,305 @@
 <meta name="description" content="جمعتكم أحلى مع اللمّة — لعبة ثقافية جماعية للعائلة والأصدقاء">
 <meta property="og:title" content="اللمّة">
 <meta property="og:description" content="جمعتكم أحلى مع اللمّة — حمّلها الحين!">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://allamma.app">
 <meta property="og:image" content="https://allamma.app/falcon.png">
-<link rel="icon" href="icon.png" type="image/png">
+<link rel="icon" href="icon.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Cairo', sans-serif; background: #fff; color: #1A0810; overflow-x: hidden; }
-a { text-decoration: none; color: inherit; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Cairo',sans-serif;background:#0C0510;color:#F5EDE0;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
 
-/* ── Header ── */
-.header {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: 100px;
-  background: linear-gradient(160deg, #6B0F24 0%, #4A0916 55%, #3D0812 100%);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 24px;
-  z-index: 100;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
-}
-.header-logo {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 40px;
-  font-weight: 900;
-  color: #fff;
-}
-.header-nav {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-.header-link {
-  color: rgba(255,255,255,0.8);
-  font-size: 14px;
-  font-weight: 700;
-  padding: 8px 16px;
-  border-radius: 20px;
-  transition: background 0.15s;
-}
-.header-link:hover { background: rgba(255,255,255,0.15); color: #fff; }
-.header-dl {
-  background: #fff;
-  color: #8B1A2E;
-  font-size: 14px;
-  font-weight: 800;
-  padding: 8px 20px;
-  border-radius: 20px;
-  transition: transform 0.15s;
-}
-.header-dl:hover { transform: scale(1.05); }
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;height:72px;background:rgba(12,5,16,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(138,21,56,0.3);display:flex;align-items:center;justify-content:space-between;padding:0 32px;z-index:100}
+.nav-logo{font-size:32px;font-weight:900;color:#F5EDE0;text-shadow:0 0 20px rgba(138,21,56,0.5)}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-link{color:rgba(245,237,224,0.6);font-size:14px;font-weight:700;padding:8px 18px;border-radius:30px;transition:all 0.2s}
+.nav-link:hover{color:#F5EDE0;background:rgba(138,21,56,0.3)}
+.nav-cta{background:linear-gradient(135deg,#8A1538,#B03050);color:#fff;font-size:14px;font-weight:800;padding:10px 24px;border-radius:30px;transition:transform 0.2s,box-shadow 0.2s}
+.nav-cta:hover{transform:scale(1.05);box-shadow:0 4px 20px rgba(138,21,56,0.5)}
+@media(max-width:700px){.nav-link{display:none}}
 
-/* ── Hero ── */
-.hero {
-  min-height: 100vh;
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 140px 24px 60px;
-  position: relative;
-}
-.hero-tagline { color: #8B1A2E; font-size: 28px; font-weight: 800; z-index: 2; margin-bottom: 24px; text-align: center; }
-.hero-falcon { width: 280px; height: auto; z-index: 2; filter: drop-shadow(0 16px 40px rgba(0,0,0,0.15)); margin-bottom: 24px; }
-.hero-desc { color: #9E7080; font-size: 20px; font-weight: 600; text-align: center; max-width: 600px; line-height: 1.8; z-index: 2; margin-bottom: 36px; }
-.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; z-index: 2; }
-.dl-btn {
-  display: flex; align-items: center; gap: 12px; background: #8B1A2E; color: #fff;
-  padding: 14px 28px; border-radius: 16px; font-size: 18px; font-weight: 800;
-  box-shadow: 0 6px 24px rgba(139,26,46,0.3); transition: transform 0.15s;
-}
-.dl-btn:hover { transform: translateY(-3px); }
-.dl-btn img { width: 32px; height: 32px; object-fit: contain; }
-.dl-btn.soon { opacity: 0.5; }
-.dl-sub { font-size: 12px; color: rgba(255,255,255,0.7); font-weight: 600; }
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:120px 24px 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(138,21,56,0.25) 0%,transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(138,21,56,0.1) 0%,transparent 50%)}
+.hero-glow{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(138,21,56,0.3) 0%,transparent 70%);border-radius:50%;top:10%;left:50%;transform:translateX(-50%);filter:blur(80px);animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:0.6;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.1)}}
+.hero-tag{background:rgba(138,21,56,0.2);border:1px solid rgba(138,21,56,0.4);border-radius:50px;padding:8px 24px;font-size:14px;font-weight:700;color:#D4A06A;margin-bottom:24px;z-index:2}
+.hero-title{font-size:clamp(48px,8vw,80px);font-weight:900;text-align:center;line-height:1.1;z-index:2;margin-bottom:8px;text-shadow:0 4px 30px rgba(0,0,0,0.5)}
+.hero-accent{color:#D4A06A}
+.hero-sub{color:rgba(245,237,224,0.7);font-size:clamp(18px,3vw,24px);font-weight:600;text-align:center;max-width:550px;line-height:1.7;z-index:2;margin-bottom:16px}
+.hero-falcon{width:clamp(220px,40vw,340px);z-index:2;filter:drop-shadow(0 20px 60px rgba(138,21,56,0.4));margin-bottom:24px;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;z-index:2}
+.btn-dl{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#8A1538,#B03050);color:#fff;padding:16px 32px;border-radius:18px;font-size:18px;font-weight:800;box-shadow:0 8px 30px rgba(138,21,56,0.4);transition:transform 0.2s,box-shadow 0.2s}
+.btn-dl:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(138,21,56,0.5)}
+.btn-dl img{width:28px;height:28px;object-fit:contain}
+.btn-dl.soon{opacity:0.4;pointer-events:none}
+.btn-sub{font-size:11px;color:rgba(255,255,255,0.6);font-weight:600}
 
-/* ── Section ── */
-.section { padding: 70px 24px; max-width: 1100px; margin: 0 auto; }
-.section-white { background: #fff; }
-.section-light { background: #fff; }
-.section-title { font-size: 36px; font-weight: 900; color: #8B1A2E; text-align: center; margin-bottom: 12px; }
-.section-sub { color: #9E7080; font-size: 16px; font-weight: 600; text-align: center; margin-bottom: 40px; }
+/* ── SECTION ── */
+section{padding:100px 24px}
+.sec-inner{max-width:1000px;margin:0 auto}
+.sec-label{text-align:center;font-size:14px;font-weight:800;color:#D4A06A;letter-spacing:2px;margin-bottom:8px}
+.sec-title{text-align:center;font-size:clamp(32px,5vw,44px);font-weight:900;margin-bottom:16px}
+.sec-sub{text-align:center;color:rgba(245,237,224,0.5);font-size:16px;font-weight:600;margin-bottom:50px;max-width:500px;margin-left:auto;margin-right:auto}
 
-/* ── Stats ── */
-.stats-row { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; padding: 40px 0; }
-.stat { text-align: center; }
-.stat-num { font-size: 48px; font-weight: 900; color: #8B1A2E; }
-.stat-label { font-size: 16px; font-weight: 700; color: #9E7080; }
+/* ── STATS ── */
+.stats{display:flex;justify-content:center;gap:60px;flex-wrap:wrap;padding:60px 24px}
+.stat{text-align:center}
+.stat-num{font-size:52px;font-weight:900;color:#D4A06A;text-shadow:0 0 20px rgba(212,160,106,0.3)}
+.stat-label{font-size:15px;font-weight:700;color:rgba(245,237,224,0.5)}
 
-/* ── Modes ── */
-.modes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
-@media (max-width: 700px) { .modes-grid { grid-template-columns: 1fr; max-width: 360px; } }
-.mode-card {
-  background: #fff; border: 1px solid #E0E0E0; border-radius: 24px; padding: 30px 20px;
-  text-align: center; transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-}
-.mode-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
-.mode-card img { width: 120px; height: 120px; object-fit: contain; margin-bottom: 16px; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15)); }
-.mode-name { font-size: 22px; font-weight: 900; color: #1A0810; margin-bottom: 8px; }
-.mode-desc { font-size: 14px; color: #9E7080; font-weight: 600; line-height: 1.6; }
+/* ── WHY ── */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:800px){.why-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.why-grid{grid-template-columns:1fr}}
+.why-card{background:rgba(138,21,56,0.08);border:1px solid rgba(138,21,56,0.15);border-radius:24px;padding:32px 20px;text-align:center;transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s}
+.why-card:hover{transform:translateY(-8px);border-color:rgba(138,21,56,0.4);box-shadow:0 12px 40px rgba(138,21,56,0.15)}
+.why-icon{font-size:44px;margin-bottom:16px}
+.why-title{font-size:18px;font-weight:900;margin-bottom:8px}
+.why-desc{font-size:13px;color:rgba(245,237,224,0.5);font-weight:600;line-height:1.6}
 
-/* ── Categories (game style) ── */
-.cats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-@media (max-width: 900px) { .cats-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 600px) { .cats-grid { grid-template-columns: repeat(2, 1fr); } }
-.cat-card {
-  position: relative;
-  border-radius: 18px;
-  overflow: hidden;
-  aspect-ratio: 3/2;
-  transition: transform 0.2s;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-}
-.cat-card:hover { transform: scale(1.04); }
-.cat-card img { width: 100%; height: 100%; object-fit: cover; }
-.cat-overlay {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  background: rgba(0,0,0,0.55);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-}
-.cat-name {
-  color: #fff;
-  font-size: 15px;
-  font-weight: 800;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-}
-.cat-new {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: #2E7D32;
-  color: #fff;
-  font-size: 11px;
-  font-weight: 800;
-  padding: 3px 10px;
-  border-radius: 20px;
-}
+/* ── MODES ── */
+.modes-bg{background:linear-gradient(180deg,#0C0510,#140a18,#0C0510)}
+.modes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:900px;margin:0 auto}
+@media(max-width:700px){.modes-grid{grid-template-columns:1fr;max-width:340px}}
+.mode-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:28px;padding:36px 24px;text-align:center;backdrop-filter:blur(10px);transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s}
+.mode-card:hover{transform:translateY(-8px);border-color:rgba(212,160,106,0.3);box-shadow:0 16px 50px rgba(138,21,56,0.2)}
+.mode-card img{width:130px;height:130px;object-fit:contain;margin-bottom:20px;filter:drop-shadow(0 10px 20px rgba(0,0,0,0.3))}
+.mode-name{font-size:22px;font-weight:900;margin-bottom:8px}
+.mode-desc{font-size:14px;color:rgba(245,237,224,0.5);font-weight:600;line-height:1.6}
 
-/* ── Screenshots ── */
-.screenshots-placeholder {
-  background: #faf5f7; border: 2px dashed #F2D5DC; border-radius: 24px;
-  padding: 60px 40px; text-align: center; max-width: 800px; margin: 0 auto;
-}
-.screenshots-placeholder-text { color: #9E7080; font-size: 18px; font-weight: 700; }
+/* ── CATEGORIES ── */
+.cats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+@media(max-width:900px){.cats-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:600px){.cats-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:400px){.cats-grid{grid-template-columns:repeat(2,1fr)}}
+.cat-card{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:1;transition:transform 0.3s;cursor:default}
+.cat-card:hover{transform:scale(1.06)}
+.cat-card img{width:100%;height:100%;object-fit:cover}
+.cat-over{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(12,5,16,0.9) 100%);display:flex;align-items:flex-end;justify-content:center;padding:12px}
+.cat-name{color:#F5EDE0;font-size:13px;font-weight:800;text-shadow:0 2px 6px rgba(0,0,0,0.8)}
+.cat-new{position:absolute;top:8px;right:8px;background:#D4A06A;color:#0C0510;font-size:10px;font-weight:900;padding:3px 10px;border-radius:20px}
+
+/* ── HOW ── */
+.how-bg{background:linear-gradient(180deg,#0C0510,#110814)}
+.how-steps{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;max-width:900px;margin:0 auto}
+.how-step{text-align:center;flex:1;min-width:200px;max-width:250px}
+.how-num{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#8A1538,#D4A06A);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:900;margin:0 auto 16px;box-shadow:0 6px 20px rgba(138,21,56,0.4)}
+.how-title{font-size:18px;font-weight:900;margin-bottom:8px}
+.how-desc{font-size:14px;color:rgba(245,237,224,0.5);font-weight:600;line-height:1.6}
+
+/* ── SCREENSHOTS ── */
+.ss-placeholder{background:rgba(255,255,255,0.03);border:2px dashed rgba(255,255,255,0.1);border-radius:28px;padding:60px 40px;text-align:center;max-width:800px;margin:0 auto}
+.ss-text{color:rgba(245,237,224,0.3);font-size:18px;font-weight:700}
 
 /* ── CTA ── */
-.cta-section {
-  background: linear-gradient(135deg, #8B1A2E, #B03050);
-  padding: 80px 24px; text-align: center;
-}
-.cta-title { font-size: 44px; font-weight: 900; color: #fff; margin-bottom: 16px; }
-.cta-sub { color: #ffccbb; font-size: 20px; font-weight: 600; margin-bottom: 40px; }
-.cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.cta-section{background:linear-gradient(135deg,#8A1538 0%,#B03050 50%,#8A1538 100%);padding:100px 24px;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(212,160,106,0.1) 0%,transparent 60%)}
+.cta-title{font-size:clamp(36px,6vw,52px);font-weight:900;margin-bottom:16px;z-index:2;position:relative}
+.cta-sub{color:rgba(255,255,255,0.7);font-size:20px;font-weight:600;margin-bottom:40px;z-index:2;position:relative}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;z-index:2;position:relative}
+.btn-cta{display:flex;align-items:center;gap:12px;background:#fff;color:#1a1a1a;padding:18px 36px;border-radius:18px;font-size:18px;font-weight:800;box-shadow:0 8px 30px rgba(0,0,0,0.3);transition:transform 0.2s}
+.btn-cta:hover{transform:translateY(-3px)}
+.btn-cta img{width:28px;height:28px}
+.btn-cta.soon{opacity:0.5}
 
-/* ── Footer ── */
-.footer { background: #1A0810; padding: 40px 24px; text-align: center; }
-.footer-social { display: flex; justify-content: center; gap: 16px; margin-bottom: 20px; }
-.footer-social a { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; transition: background 0.15s; }
-.footer-social a:hover { background: rgba(255,255,255,0.2); }
-.footer-social img { width: 24px; height: 24px; }
-.footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; flex-wrap: wrap; }
-.footer-link { color: rgba(255,255,255,0.5); font-size: 14px; font-weight: 600; }
-.footer-link:hover { color: #fff; }
-.footer-copy { color: rgba(255,255,255,0.3); font-size: 13px; }
+/* ── FOOTER ── */
+footer{background:#060208;padding:50px 24px;text-align:center}
+.f-social{display:flex;justify-content:center;gap:16px;margin-bottom:24px}
+.f-social a{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.f-social a:hover{background:rgba(138,21,56,0.3);border-color:rgba(138,21,56,0.5)}
+.f-social img{width:24px;height:24px}
+.f-links{display:flex;justify-content:center;gap:24px;margin-bottom:20px;flex-wrap:wrap}
+.f-link{color:rgba(245,237,224,0.4);font-size:14px;font-weight:600;transition:color 0.2s}
+.f-link:hover{color:#D4A06A}
+.f-copy{color:rgba(245,237,224,0.2);font-size:12px}
 </style>
 </head>
 <body>
 
-<!-- ════════ HEADER ════════ -->
-<header class="header">
-  <div class="header-logo">اللمّة</div>
-  <nav class="header-nav">
-    <a class="header-link" href="#modes">أنماط اللعب</a>
-    <a class="header-link" href="#categories">الفئات</a>
-    <a class="header-link" href="links.html">الروابط</a>
-    <a class="header-dl" href="https://apps.apple.com/app/id6760367652" target="_blank">حمّل الحين</a>
-  </nav>
-</header>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">اللمّة</div>
+  <div class="nav-links">
+    <a class="nav-link" href="#why">ليش اللمّة</a>
+    <a class="nav-link" href="#modes">أنماط اللعب</a>
+    <a class="nav-link" href="#categories">الفئات</a>
+    <a class="nav-link" href="links.html">الروابط</a>
+    <a class="nav-cta" href="https://apps.apple.com/app/id6760367652" target="_blank">حمّل الحين</a>
+  </div>
+</nav>
 
-<!-- ════════ HERO ════════ -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-tagline">جمعتكم أحلى مع اللمّة</div>
+  <div class="hero-glow"></div>
+  <div class="hero-tag">🎲 لعبة جلسات وتحديات</div>
+  <h1 class="hero-title">جمعتكم أحلى<br>مع <span class="hero-accent">اللمّة</span></h1>
+  <p class="hero-sub">أسئلة متنوعة، تحديات ممتعة، وذكريات ما تنتسى — لعبة ثقافية جماعية للعائلة والأصدقاء</p>
   <img class="hero-falcon" src="falcon.png" alt="اللمّة">
-  <div class="hero-desc">لعبة ثقافية جماعية للعائلة والأصدقاء — أسئلة متنوعة، تحديات ممتعة، وذكريات ما تنتسى!</div>
-  <div class="hero-buttons">
-    <a class="dl-btn" href="https://apps.apple.com/app/id6760367652" target="_blank">
-      <img src="appstore.png" alt="App Store"><div>App Store<div class="dl-sub">حمّل الحين</div></div>
+  <div class="hero-btns">
+    <a class="btn-dl" href="https://apps.apple.com/app/id6760367652" target="_blank">
+      <img src="appstore.png" alt=""><div>App Store<div class="btn-sub">حمّل الحين</div></div>
     </a>
-    <a class="dl-btn soon" href="#">
-      <img src="googleplay.png" alt="Google Play"><div>Google Play<div class="dl-sub">قريباً</div></div>
+    <a class="btn-dl soon" href="#">
+      <img src="googleplay.png" alt=""><div>Google Play<div class="btn-sub">قريباً</div></div>
     </a>
   </div>
 </section>
 
-<!-- ════════ STATS ════════ -->
-<div class="section-white">
-  <div class="stats-row">
-    <div class="stat"><div class="stat-num">+1700</div><div class="stat-label">سؤال</div></div>
-    <div class="stat"><div class="stat-num">20</div><div class="stat-label">فئة</div></div>
-    <div class="stat"><div class="stat-num">3</div><div class="stat-label">أنماط لعب</div></div>
-  </div>
+<!-- STATS -->
+<div class="stats reveal">
+  <div class="stat"><div class="stat-num" data-target="1700">0</div><div class="stat-label">سؤال+</div></div>
+  <div class="stat"><div class="stat-num" data-target="20">0</div><div class="stat-label">فئة</div></div>
+  <div class="stat"><div class="stat-num" data-target="3">0</div><div class="stat-label">أنماط لعب</div></div>
 </div>
 
-<!-- ════════ GAME MODES ════════ -->
-<div class="section-light" id="modes">
-  <div class="section">
-    <div class="section-title">أنماط اللعب</div>
-    <div class="section-sub">اختار التحدي المناسب لك</div>
+<!-- WHY -->
+<section id="why">
+  <div class="sec-inner">
+    <div class="sec-label reveal">لماذا اللمّة؟</div>
+    <div class="sec-title reveal">مب مجرّد لعبة</div>
+    <div class="sec-sub reveal">تجربة جماعية تجمع بين التحدي والمتعة والمنافسة</div>
+    <div class="why-grid">
+      <div class="why-card reveal"><div class="why-icon">🎯</div><div class="why-title">تحديات متنوعة</div><div class="why-desc">صور، أصوات، خرائط، رسم، ألغاز وأكثر</div></div>
+      <div class="why-card reveal"><div class="why-icon">👨‍👩‍👧‍👦</div><div class="why-title">لكل العائلة</div><div class="why-desc">مناسبة لكل الأعمار — جلسة عائلية ممتعة</div></div>
+      <div class="why-card reveal"><div class="why-icon">🏆</div><div class="why-title">منافسة حقيقية</div><div class="why-desc">لوحة نقاط ونرد — المنافسة تحمّس!</div></div>
+      <div class="why-card reveal"><div class="why-icon">🌍</div><div class="why-title">محتوى عربي</div><div class="why-desc">أسئلة بالعربي وفئات تخص ثقافتنا</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MODES -->
+<section class="modes-bg" id="modes">
+  <div class="sec-inner">
+    <div class="sec-label reveal">أنماط اللعب</div>
+    <div class="sec-title reveal">اختار تحدّيك</div>
+    <div class="sec-sub reveal">ثلاث طرق لعب — كل وحدة لها طعم</div>
     <div class="modes-grid">
-      <div class="mode-card">
-        <img src="mode-image.png" alt="لمّة">
-        <div class="mode-name">لمّة</div>
-        <div class="mode-desc">سؤال وصورة، رسم، كلمات — تحديات متنوعة في فئات مختلفة!</div>
-      </div>
-      <div class="mode-card">
-        <img src="mode-classic.png" alt="كلاسيكي">
-        <div class="mode-name">كلاسيكي</div>
-        <div class="mode-desc">أسئلة اختيار من متعدد — اختبر معلوماتك وتحدّى أصدقائك!</div>
-      </div>
-      <div class="mode-card">
-        <img src="mode-letters.png" alt="حروف">
-        <div class="mode-name">حروف مع اللمّة</div>
-        <div class="mode-desc">اختر حرف وجاوب! كل 3 حروف متتالية = نقطة</div>
-      </div>
+      <div class="mode-card reveal"><img src="mode-image.png" alt="لمّة"><div class="mode-name">لمّة</div><div class="mode-desc">سؤال وصورة، رسم، كلمات — تحديات متنوعة!</div></div>
+      <div class="mode-card reveal"><img src="mode-classic.png" alt="كلاسيكي"><div class="mode-name">كلاسيكي</div><div class="mode-desc">اختيار من متعدد — اختبر معلوماتك!</div></div>
+      <div class="mode-card reveal"><img src="mode-letters.png" alt="حروف"><div class="mode-name">حروف مع اللمّة</div><div class="mode-desc">اختر حرف وجاوب — كل 3 متتالية = نقطة!</div></div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ════════ CATEGORIES ════════ -->
-<div class="section-white" id="categories">
-  <div class="section">
-    <div class="section-title">فئات متنوعة</div>
-    <div class="section-sub">+20 فئة تغطي كل المجالات</div>
+<!-- CATEGORIES -->
+<section id="categories">
+  <div class="sec-inner">
+    <div class="sec-label reveal">الفئات</div>
+    <div class="sec-title reveal">+20 فئة تغطي كل شي</div>
+    <div class="sec-sub reveal">من الرياضة للتاريخ، ومن الأصوات للخرائط</div>
     <div class="cats-grid">
-      <div class="cat-card"><img src="cat-languages.png" alt="لغات"><div class="cat-overlay"><span class="cat-name">🌐 لغات</span></div><div class="cat-new">جديد</div></div>
-      <div class="cat-card"><img src="cat-guess-sound.png" alt="خمن الصوت"><div class="cat-overlay"><span class="cat-name">🔊 خمن الصوت</span></div><div class="cat-new">جديد</div></div>
-      <div class="cat-card"><img src="cat-maps.png" alt="خرائط"><div class="cat-overlay"><span class="cat-name">🗺️ خرائط</span></div></div>
-      <div class="cat-card"><img src="cat-flags.jpg" alt="أعلام"><div class="cat-overlay"><span class="cat-name">🏳️ أعلام</span></div></div>
-      <div class="cat-card"><img src="cat-famous.jpg" alt="شخصيات معروفة"><div class="cat-overlay"><span class="cat-name">⭐ شخصيات معروفة</span></div></div>
-      <div class="cat-card"><img src="cat-logos.jpg" alt="شعارات"><div class="cat-overlay"><span class="cat-name">🏷️ شعارات</span></div></div>
-      <div class="cat-card"><img src="cat-puzzles.png" alt="ألغاز"><div class="cat-overlay"><span class="cat-name">🧩 ألغاز</span></div></div>
-      <div class="cat-card"><img src="cat-movies.jpg" alt="أفلام"><div class="cat-overlay"><span class="cat-name">🎬 أفلام</span></div></div>
-      <div class="cat-card"><img src="cat-sports.jpg" alt="رياضة"><div class="cat-overlay"><span class="cat-name">⚽ رياضة</span></div></div>
-      <div class="cat-card"><img src="cat-animals.jpg" alt="حيوانات"><div class="cat-overlay"><span class="cat-name">🐾 حيوانات</span></div></div>
-      <div class="cat-card"><img src="cat-landmarks.jpg" alt="معالم"><div class="cat-overlay"><span class="cat-name">🏛️ معالم</span></div></div>
-      <div class="cat-card"><img src="cat-drawing.png" alt="رسم"><div class="cat-overlay"><span class="cat-name">🎨 رسم</span></div></div>
-      <div class="cat-card"><img src="cat-charades.png" alt="ولا كلمة"><div class="cat-overlay"><span class="cat-name">🤫 ولا كلمة</span></div></div>
-      <div class="cat-card"><img src="cat-qatari-culture.png" alt="الثقافة القطرية"><div class="cat-overlay"><span class="cat-name">🇶🇦 الثقافة القطرية</span></div></div>
-      <div class="cat-card"><img src="cat-clubs.jpg" alt="شعارات أندية"><div class="cat-overlay"><span class="cat-name">⚽ شعارات أندية</span></div></div>
-      <div class="cat-card"><img src="cat-fashion.jpg" alt="ماركات ملابس"><div class="cat-overlay"><span class="cat-name">👔 ماركات ملابس</span></div></div>
-      <div class="cat-card"><img src="cat-letters.jpg" alt="حروف"><div class="cat-overlay"><span class="cat-name">🔤 حروف</span></div></div>
-      <div class="cat-card"><img src="cat-cities.jpg" alt="مدن وعواصم"><div class="cat-overlay"><span class="cat-name">🏙️ مدن وعواصم</span></div></div>
-      <div class="cat-card"><img src="cat-videogames.jpg" alt="ألعاب فيديو"><div class="cat-overlay"><span class="cat-name">🎮 ألعاب فيديو</span></div></div>
-      <div class="cat-card"><img src="cat-religion.jpg" alt="دين"><div class="cat-overlay"><span class="cat-name">🕌 دين</span></div></div>
-      <div class="cat-card"><img src="cat-letters-religion.jpg" alt="حروف دين"><div class="cat-overlay"><span class="cat-name">🕌 حروف دين</span></div></div>
-      <div class="cat-card"><img src="cat-technology.jpg" alt="تقنية"><div class="cat-overlay"><span class="cat-name">💻 تقنية</span></div></div>
-      <div class="cat-card"><img src="cat-history.jpg" alt="تاريخ"><div class="cat-overlay"><span class="cat-name">📜 تاريخ</span></div></div>
-      <div class="cat-card"><img src="cat-geography.jpg" alt="جغرافيا"><div class="cat-overlay"><span class="cat-name">🌍 جغرافيا</span></div></div>
-      <div class="cat-card"><img src="cat-culture.jpg" alt="ثقافة عامة"><div class="cat-overlay"><span class="cat-name">📚 ثقافة عامة</span></div></div>
-      <div class="cat-card"><img src="cat-entertainment.jpg" alt="ترفيه"><div class="cat-overlay"><span class="cat-name">🎬 ترفيه</span></div></div>
-      <div class="cat-card"><img src="cat-food.jpg" alt="طعام ومطبخ"><div class="cat-overlay"><span class="cat-name">🍽️ طعام ومطبخ</span></div></div>
-      <div class="cat-card"><img src="cat-economy.jpg" alt="اقتصاد"><div class="cat-overlay"><span class="cat-name">💰 اقتصاد</span></div></div>
-      <div class="cat-card"><img src="cat-math.jpg" alt="رياضيات"><div class="cat-overlay"><span class="cat-name">🔢 رياضيات</span></div></div>
-      <div class="cat-card"><img src="cat-medicine.jpg" alt="طب"><div class="cat-overlay"><span class="cat-name">🏥 طب</span></div></div>
-      <div class="cat-card"><img src="cat-cars.jpg" alt="سيارات"><div class="cat-overlay"><span class="cat-name">🚗 سيارات</span></div></div>
-      <div class="cat-card"><img src="cat-space.jpg" alt="فضاء وكون"><div class="cat-overlay"><span class="cat-name">🚀 فضاء وكون</span></div></div>
+      <div class="cat-card reveal"><img src="cat-languages.png" alt=""><div class="cat-over"><span class="cat-name">لغات</span></div><div class="cat-new">جديد</div></div>
+      <div class="cat-card reveal"><img src="cat-guess-sound.png" alt=""><div class="cat-over"><span class="cat-name">خمن الصوت</span></div><div class="cat-new">جديد</div></div>
+      <div class="cat-card reveal"><img src="cat-maps.png" alt=""><div class="cat-over"><span class="cat-name">خرائط</span></div></div>
+      <div class="cat-card reveal"><img src="cat-flags.jpg" alt=""><div class="cat-over"><span class="cat-name">أعلام</span></div></div>
+      <div class="cat-card reveal"><img src="cat-famous.jpg" alt=""><div class="cat-over"><span class="cat-name">شخصيات</span></div></div>
+      <div class="cat-card reveal"><img src="cat-logos.jpg" alt=""><div class="cat-over"><span class="cat-name">شعارات</span></div></div>
+      <div class="cat-card reveal"><img src="cat-puzzles.png" alt=""><div class="cat-over"><span class="cat-name">ألغاز</span></div></div>
+      <div class="cat-card reveal"><img src="cat-movies.jpg" alt=""><div class="cat-over"><span class="cat-name">أفلام</span></div></div>
+      <div class="cat-card reveal"><img src="cat-sports.jpg" alt=""><div class="cat-over"><span class="cat-name">رياضة</span></div></div>
+      <div class="cat-card reveal"><img src="cat-animals.jpg" alt=""><div class="cat-over"><span class="cat-name">حيوانات</span></div></div>
+      <div class="cat-card reveal"><img src="cat-landmarks.jpg" alt=""><div class="cat-over"><span class="cat-name">معالم</span></div></div>
+      <div class="cat-card reveal"><img src="cat-drawing.png" alt=""><div class="cat-over"><span class="cat-name">رسم</span></div></div>
+      <div class="cat-card reveal"><img src="cat-charades.png" alt=""><div class="cat-over"><span class="cat-name">ولا كلمة</span></div></div>
+      <div class="cat-card reveal"><img src="cat-qatari-culture.png" alt=""><div class="cat-over"><span class="cat-name">الثقافة القطرية</span></div></div>
+      <div class="cat-card reveal"><img src="cat-clubs.jpg" alt=""><div class="cat-over"><span class="cat-name">أندية</span></div></div>
+      <div class="cat-card reveal"><img src="cat-fashion.jpg" alt=""><div class="cat-over"><span class="cat-name">ماركات</span></div></div>
+      <div class="cat-card reveal"><img src="cat-letters.jpg" alt=""><div class="cat-over"><span class="cat-name">حروف</span></div></div>
+      <div class="cat-card reveal"><img src="cat-cities.jpg" alt=""><div class="cat-over"><span class="cat-name">مدن</span></div></div>
+      <div class="cat-card reveal"><img src="cat-videogames.jpg" alt=""><div class="cat-over"><span class="cat-name">ألعاب فيديو</span></div></div>
+      <div class="cat-card reveal"><img src="cat-religion.jpg" alt=""><div class="cat-over"><span class="cat-name">دين</span></div></div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ════════ SCREENSHOTS ════════ -->
-<div class="section-light">
-  <div class="section">
-    <div class="section-title">من داخل اللعبة</div>
-    <div class="section-sub">شوف اللعبة بنفسك</div>
-    <div class="screenshots-placeholder">
-      <div class="screenshots-placeholder-text">📸 سكرين شوتس من اللعبة — قريباً</div>
+<!-- HOW TO PLAY -->
+<section class="how-bg">
+  <div class="sec-inner">
+    <div class="sec-label reveal">كيف تلعب؟</div>
+    <div class="sec-title reveal">ثلاث خطوات بس</div>
+    <div class="sec-sub reveal">سهلة وسريعة</div>
+    <div class="how-steps">
+      <div class="how-step reveal"><div class="how-num">1</div><div class="how-title">حمّل اللعبة</div><div class="how-desc">نزّلها من App Store أو Google Play</div></div>
+      <div class="how-step reveal"><div class="how-num">2</div><div class="how-title">اختر النمط</div><div class="how-desc">لمّة، كلاسيكي، أو حروف</div></div>
+      <div class="how-step reveal"><div class="how-num">3</div><div class="how-title">تحدّى وانافس</div><div class="how-desc">العب مع عائلتك وأصدقائك!</div></div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ════════ CTA ════════ -->
+<!-- SCREENSHOTS -->
+<section>
+  <div class="sec-inner">
+    <div class="sec-label reveal">من داخل اللعبة</div>
+    <div class="sec-title reveal">شوفها بنفسك</div>
+    <div class="sec-sub reveal">واجهات اللعبة</div>
+    <div class="ss-placeholder reveal">
+      <div class="ss-text">📸 سكرين شوتس — قريباً</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
 <section class="cta-section">
-  <div class="cta-title">جاهز تلعب؟</div>
-  <div class="cta-sub">حمّل اللمّة الحين ولعب مع عائلتك وأصدقائك!</div>
-  <div class="cta-buttons">
-    <a class="dl-btn" href="https://apps.apple.com/app/id6760367652" target="_blank">
-      <img src="appstore.png" alt="App Store"><div>App Store<div class="dl-sub">حمّل الحين</div></div>
+  <h2 class="cta-title reveal">جاهز للتحدي؟</h2>
+  <p class="cta-sub reveal">حمّل اللمّة الحين وخلّ الجلسة تبدأ!</p>
+  <div class="cta-btns reveal">
+    <a class="btn-cta" href="https://apps.apple.com/app/id6760367652" target="_blank">
+      <img src="appstore.png" alt=""><div>App Store<div class="btn-sub" style="color:#888">حمّل الحين</div></div>
     </a>
-    <a class="dl-btn soon" href="#">
-      <img src="googleplay.png" alt="Google Play"><div>Google Play<div class="dl-sub">قريباً</div></div>
+    <a class="btn-cta soon" href="#">
+      <img src="googleplay.png" alt=""><div>Google Play<div class="btn-sub" style="color:#888">قريباً</div></div>
     </a>
   </div>
 </section>
 
-<!-- ════════ FOOTER ════════ -->
-<footer class="footer">
-  <div class="footer-social">
+<!-- FOOTER -->
+<footer>
+  <div class="f-social">
     <a href="https://www.instagram.com/allamma.app" target="_blank"><img src="instagram.png" alt="Instagram"></a>
     <a href="https://www.tiktok.com/@allamma.app" target="_blank"><img src="tiktok.png" alt="TikTok"></a>
   </div>
-  <div class="footer-links">
-    <a class="footer-link" href="links.html">روابط التحميل</a>
-    <a class="footer-link" href="privacy.html">سياسة الخصوصية</a>
-    <a class="footer-link" href="terms.html">الشروط والأحكام</a>
+  <div class="f-links">
+    <a class="f-link" href="links.html">روابط التحميل</a>
+    <a class="f-link" href="privacy.html">سياسة الخصوصية</a>
+    <a class="f-link" href="terms.html">الشروط والأحكام</a>
   </div>
-  <div class="footer-copy">© 2026 اللمّة — جميع الحقوق محفوظة | allamma.app</div>
+  <div class="f-copy">© 2026 اللمّة — جميع الحقوق محفوظة | allamma.app</div>
 </footer>
 
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Counter animation
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('[data-target]').forEach(el => {
+        const target = +el.dataset.target;
+        const duration = 1500;
+        const start = Date.now();
+        const tick = () => {
+          const progress = Math.min((Date.now() - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(eased * target).toLocaleString();
+          if (progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target > 100 ? '+' + target.toLocaleString() : target;
+        };
+        tick();
+      });
+      counterObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stats').forEach(el => counterObs.observe(el));
+</script>
 </body>
 </html>
