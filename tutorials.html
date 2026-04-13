@@ -51,8 +51,8 @@ nav{position:fixed;top:0;left:0;right:0;height:70px;background:linear-gradient(1
 /* ═══════════ LIGHTBOX ═══════════ */
 .lb{position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:200;display:none;flex-direction:column;align-items:center;justify-content:center}
 .lb.open{display:flex}
-.lb-close{position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.1);border:none;color:#fff;font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:background 0.2s}
-.lb-close:hover{background:rgba(255,255,255,0.2)}
+.lb-close{position:absolute;top:16px;right:16px;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.15);border:none;color:#fff;font-size:28px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:999;transition:background 0.2s;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.lb-close:hover,.lb-close:active{background:rgba(255,255,255,0.35)}
 .lb-title{position:absolute;top:20px;left:0;right:0;text-align:center;color:#fff;font-size:16px;font-weight:800;z-index:10}
 .lb-counter{position:absolute;top:48px;left:0;right:0;text-align:center;color:rgba(255,255,255,0.5);font-size:12px;font-weight:600;z-index:10}
 .lb-track-wrap{width:100%;max-width:600px;overflow:hidden;position:relative}
@@ -137,7 +137,7 @@ footer{background:#fff;padding:32px 24px;text-align:center;border-top:1px solid 
 
 <!-- LIGHTBOX -->
 <div class="lb" id="lb">
-  <button class="lb-close" onclick="closeLB()">&times;</button>
+  <button class="lb-close" id="lbClose">✕</button>
   <div class="lb-title" id="lbTitle"></div>
   <div class="lb-counter" id="lbCounter"></div>
   <button class="lb-arrow lb-prev" onclick="lbGo(-1)">›</button>
@@ -211,6 +211,11 @@ let lbX = 0;
 lbTrack.addEventListener('touchstart', e => { lbX = e.touches[0].clientX }, { passive: true });
 lbTrack.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - lbX; if (Math.abs(dx) > 50) { dx > 0 ? lbGo(1) : lbGo(-1) } }, { passive: true });
 
+// Close button
+document.getElementById('lbClose').addEventListener('click', closeLB);
+document.getElementById('lbClose').addEventListener('touchend', function(e) { e.preventDefault(); closeLB(); });
+// Click outside to close
+lb.addEventListener('click', function(e) { if (e.target === lb) closeLB() });
 // ESC to close
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB() });
 </script>
