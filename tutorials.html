@@ -206,7 +206,7 @@ function lbTo(idx) {
 
 function updateLB() {
   const total = tutorials[curTut].images.length;
-  lbTrack.style.transform = `translateX(${curSlide * 100}%)`;
+  lbTrack.style.transform = `translateX(${curSlide * -100}%)`;
   lbCounter.textContent = `${curSlide + 1} / ${total}`;
   lbDots.querySelectorAll('.lb-dot').forEach((d, i) => d.className = 'lb-dot' + (i === curSlide ? ' active' : ''));
 }
