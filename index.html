@@ -21,8 +21,8 @@ a { text-decoration: none; color: inherit; }
 .header {
   position: fixed;
   top: 0; left: 0; right: 0;
-  height: 60px;
-  background: #6B0F24;
+  height: 80px;
+  background: linear-gradient(160deg, #6B0F24 0%, #4A0916 55%, #3D0812 100%);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -31,7 +31,7 @@ a { text-decoration: none; color: inherit; }
   box-shadow: 0 2px 12px rgba(0,0,0,0.2);
 }
 .header-logo {
-  font-size: 28px;
+  font-size: 34px;
   font-weight: 900;
   color: #fff;
 }
@@ -63,35 +63,27 @@ a { text-decoration: none; color: inherit; }
 /* ── Hero ── */
 .hero {
   min-height: 100vh;
-  background: linear-gradient(160deg, #6B0F24 0%, #4A0916 55%, #3D0812 100%);
+  background: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 100px 24px 60px;
+  padding: 120px 24px 60px;
   position: relative;
 }
-.hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(255,215,100,0.08) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(255,215,100,0.08) 0%, transparent 40%);
-}
-.hero-brand { font-size: 80px; font-weight: 900; color: #fff; text-shadow: 0 6px 30px rgba(0,0,0,0.5); z-index: 2; margin-bottom: 8px; }
-.hero-tagline { color: #ffccbb; font-size: 24px; font-weight: 700; z-index: 2; margin-bottom: 24px; text-align: center; }
-.hero-falcon { width: 300px; height: auto; z-index: 2; filter: drop-shadow(0 20px 50px rgba(0,0,0,0.6)); margin-bottom: 24px; }
-.hero-desc { color: rgba(255,255,255,0.85); font-size: 20px; font-weight: 600; text-align: center; max-width: 600px; line-height: 1.8; z-index: 2; margin-bottom: 36px; }
+.hero-tagline { color: #8B1A2E; font-size: 28px; font-weight: 800; z-index: 2; margin-bottom: 24px; text-align: center; }
+.hero-falcon { width: 280px; height: auto; z-index: 2; filter: drop-shadow(0 16px 40px rgba(0,0,0,0.15)); margin-bottom: 24px; }
+.hero-desc { color: #9E7080; font-size: 20px; font-weight: 600; text-align: center; max-width: 600px; line-height: 1.8; z-index: 2; margin-bottom: 36px; }
 .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; z-index: 2; }
 .dl-btn {
-  display: flex; align-items: center; gap: 12px; background: #fff; color: #1a1a1a;
+  display: flex; align-items: center; gap: 12px; background: #8B1A2E; color: #fff;
   padding: 14px 28px; border-radius: 16px; font-size: 18px; font-weight: 800;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.3); transition: transform 0.15s;
+  box-shadow: 0 6px 24px rgba(139,26,46,0.3); transition: transform 0.15s;
 }
 .dl-btn:hover { transform: translateY(-3px); }
 .dl-btn img { width: 32px; height: 32px; object-fit: contain; }
 .dl-btn.soon { opacity: 0.5; }
-.dl-sub { font-size: 12px; color: #888; font-weight: 600; }
+.dl-sub { font-size: 12px; color: rgba(255,255,255,0.7); font-weight: 600; }
 
 /* ── Section ── */
 .section { padding: 70px 24px; max-width: 1100px; margin: 0 auto; }
@@ -209,7 +201,6 @@ a { text-decoration: none; color: inherit; }
 
 <!-- ════════ HERO ════════ -->
 <section class="hero">
-  <div class="hero-brand">اللمّة</div>
   <div class="hero-tagline">جمعتكم أحلى مع اللمّة</div>
   <img class="hero-falcon" src="falcon.png" alt="اللمّة">
   <div class="hero-desc">لعبة ثقافية جماعية للعائلة والأصدقاء — أسئلة متنوعة، تحديات ممتعة، وذكريات ما تنتسى!</div>
