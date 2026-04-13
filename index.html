@@ -121,23 +121,15 @@ nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,0.15)}
 /* ═══════════ SCREENSHOTS ═══════════ */
 .ss-sec{background:#fff;overflow:hidden}
 .ss-wrap{position:relative;max-width:100%;margin:0 auto}
-.ss-track{display:flex;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:20px clamp(24px,8vw,120px);scrollbar-width:none}
+.ss-track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:20px clamp(24px,8vw,120px);scrollbar-width:none}
 .ss-track::-webkit-scrollbar{display:none}
 .ss-slide{flex:0 0 auto;scroll-snap-align:center}
-/* iPhone frame using real PNG */
-.iphone{position:relative;width:280px;height:572px}
-.iphone-frame{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;filter:drop-shadow(0 20px 50px rgba(0,0,0,0.18))}
-.iphone-screen{position:absolute;top:3.2%;left:5.8%;width:88.4%;height:93.4%;border-radius:28px;overflow:hidden;z-index:1}
-.iphone-screen img{width:100%;height:100%;object-fit:cover}
-@media(max-width:600px){.iphone{width:220px;height:449px}.iphone-screen{border-radius:22px}}
+.ss-slide img{width:clamp(320px,50vw,480px);border-radius:16px;filter:drop-shadow(0 16px 40px rgba(0,0,0,0.12));transition:transform 0.3s}
+.ss-slide img:hover{transform:scale(1.03)}
 /* Arrow buttons */
 .ss-arrow{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:#fff;border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:var(--maroon);cursor:pointer;z-index:5;box-shadow:0 4px 16px rgba(0,0,0,0.1);transition:all 0.2s}
 .ss-arrow:hover{background:var(--maroon);color:#fff;box-shadow:0 8px 24px rgba(138,21,56,0.3)}
 .ss-prev{right:12px}.ss-next{left:12px}
-/* Dots */
-.ss-dots{display:flex;justify-content:center;gap:8px;margin-top:24px}
-.ss-dot{width:10px;height:10px;border-radius:50%;background:var(--card-border);transition:all 0.3s;cursor:pointer}
-.ss-dot.active{background:var(--maroon);width:28px;border-radius:5px}
 /* Swipe hint */
 .ss-hint{text-align:center;color:var(--muted);font-size:13px;font-weight:600;margin-top:16px;opacity:0.7}
 
@@ -304,18 +296,15 @@ footer{background:var(--dark);padding:48px 24px;text-align:center}
     <div class="sec-sub rv">اسحب لمشاهدة المزيد</div>
     <div class="ss-wrap rv">
       <div class="ss-track" id="ssTrack">
-        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss1.jpg" alt=""></div></div></div>
-        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss2.jpg" alt=""></div></div></div>
-        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss3.jpg" alt=""></div></div></div>
-        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss4.jpg" alt=""></div></div></div>
-        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss5.jpg" alt=""></div></div></div>
-        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss6.jpg" alt=""></div></div></div>
-        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss7.jpg" alt=""></div></div></div>
-        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss8.jpg" alt=""></div></div></div>
-        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss9.jpg" alt=""></div></div></div>
-        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss10.jpg" alt=""></div></div></div>
-        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss11.jpg" alt=""></div></div></div>
-        <div class="ss-slide"><div class="iphone"><img class="iphone-frame" src="iphone-frame.png" alt=""><div class="iphone-screen"><img src="ss12.jpg" alt=""></div></div></div>
+        <div class="ss-slide"><img src="ss1.png" alt="عن اللعبة"></div>
+        <div class="ss-slide"><img src="ss2.png" alt="أنماط اللعب"></div>
+        <div class="ss-slide"><img src="ss3.png" alt="فئات جديدة"></div>
+        <div class="ss-slide"><img src="ss4.png" alt="لوحة الأسئلة"></div>
+        <div class="ss-slide"><img src="ss5.png" alt="نمط حروف"></div>
+        <div class="ss-slide"><img src="ss6.png" alt="قوانين اللعبة"></div>
+        <div class="ss-slide"><img src="ss7.png" alt="نمط حروف"></div>
+        <div class="ss-slide"><img src="ss8.png" alt="نمط رسم"></div>
+        <div class="ss-slide"><img src="ss9.png" alt="نتيجة اللعبة"></div>
       </div>
       <button class="ss-arrow ss-prev" onclick="ssScroll(-1)">›</button>
       <button class="ss-arrow ss-next" onclick="ssScroll(1)">‹</button>
