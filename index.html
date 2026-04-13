@@ -21,7 +21,7 @@ a { text-decoration: none; color: inherit; }
 .header {
   position: fixed;
   top: 0; left: 0; right: 0;
-  height: 80px;
+  height: 100px;
   background: linear-gradient(160deg, #6B0F24 0%, #4A0916 55%, #3D0812 100%);
   display: flex;
   align-items: center;
@@ -31,7 +31,10 @@ a { text-decoration: none; color: inherit; }
   box-shadow: 0 2px 12px rgba(0,0,0,0.2);
 }
 .header-logo {
-  font-size: 34px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 40px;
   font-weight: 900;
   color: #fff;
 }
@@ -68,7 +71,7 @@ a { text-decoration: none; color: inherit; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 120px 24px 60px;
+  padding: 140px 24px 60px;
   position: relative;
 }
 .hero-tagline { color: #8B1A2E; font-size: 28px; font-weight: 800; z-index: 2; margin-bottom: 24px; text-align: center; }
