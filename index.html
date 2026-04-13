@@ -119,9 +119,14 @@ nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,0.15)}
 .how-d{font-size:13px;color:var(--muted);font-weight:600;line-height:1.6}
 
 /* ═══════════ SCREENSHOTS ═══════════ */
-.ss-sec{background:#fff}
-.ss-box{background:var(--cream);border:2px dashed var(--card-border);border-radius:28px;padding:56px 40px;text-align:center;max-width:700px;margin:0 auto}
-.ss-txt{color:var(--muted);font-size:17px;font-weight:700}
+.ss-sec{background:#fff;overflow:hidden}
+.ss-carousel{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:0 clamp(24px,8vw,120px) 20px;scrollbar-width:none}
+.ss-carousel::-webkit-scrollbar{display:none}
+.ss-phone{flex:0 0 auto;scroll-snap-align:center;width:220px}
+.ss-frame{background:#1a1a1a;border-radius:32px;padding:10px;box-shadow:0 16px 48px rgba(0,0,0,0.15);transition:transform 0.3s}
+.ss-phone:hover .ss-frame{transform:scale(1.04)}
+.ss-frame img{width:100%;border-radius:22px;display:block}
+.ss-hint{text-align:center;margin-top:20px;color:var(--muted);font-size:14px;font-weight:600}
 
 /* ═══════════ CTA ═══════════ */
 .cta{background:linear-gradient(135deg,#6B0F24,#4A0916);padding:100px 24px;text-align:center;position:relative;overflow:hidden}
@@ -284,7 +289,21 @@ footer{background:var(--dark);padding:48px 24px;text-align:center}
     <div class="sec-label rv">من داخل اللعبة</div>
     <div class="sec-title rv">شوفها بنفسك</div>
     <div class="sec-sub rv">واجهات اللعبة</div>
-    <div class="ss-box rv"><div class="ss-txt">📸 سكرين شوتس — قريباً</div></div>
+    <div class="ss-carousel">
+      <div class="ss-phone rv"><div class="ss-frame"><img src="ss1.jpg" alt=""></div></div>
+      <div class="ss-phone rv rv-d1"><div class="ss-frame"><img src="ss2.jpg" alt=""></div></div>
+      <div class="ss-phone rv rv-d2"><div class="ss-frame"><img src="ss3.jpg" alt=""></div></div>
+      <div class="ss-phone rv rv-d3"><div class="ss-frame"><img src="ss4.jpg" alt=""></div></div>
+      <div class="ss-phone rv rv-d4"><div class="ss-frame"><img src="ss5.jpg" alt=""></div></div>
+      <div class="ss-phone rv"><div class="ss-frame"><img src="ss6.jpg" alt=""></div></div>
+      <div class="ss-phone rv"><div class="ss-frame"><img src="ss7.jpg" alt=""></div></div>
+      <div class="ss-phone rv"><div class="ss-frame"><img src="ss8.jpg" alt=""></div></div>
+      <div class="ss-phone rv"><div class="ss-frame"><img src="ss9.jpg" alt=""></div></div>
+      <div class="ss-phone rv"><div class="ss-frame"><img src="ss10.jpg" alt=""></div></div>
+      <div class="ss-phone rv"><div class="ss-frame"><img src="ss11.jpg" alt=""></div></div>
+      <div class="ss-phone rv"><div class="ss-frame"><img src="ss12.jpg" alt=""></div></div>
+    </div>
+    <div class="ss-hint">← اسحب لمشاهدة المزيد →</div>
   </div>
 </section>
 
