@@ -177,6 +177,7 @@ nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,0.15)}
 .rate-img{width:clamp(180px,30vw,240px);margin-bottom:24px;filter:drop-shadow(0 16px 40px rgba(0,0,0,0.1))}
 .rate-title{font-size:clamp(24px,4vw,34px);font-weight:900;margin-bottom:10px;color:var(--dark)}
 .rate-sub{color:var(--muted);font-size:clamp(13px,2vw,16px);font-weight:600;margin-bottom:28px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.7}
+.rate-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .rate-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#6B0F24,#4A0916);color:#fff;padding:14px 32px;border-radius:16px;font-size:16px;font-weight:800;box-shadow:0 8px 28px rgba(138,21,56,0.3);transition:all 0.3s}
 .rate-btn:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(138,21,56,0.4)}
 .rate-btn img{width:22px;height:22px}
@@ -301,7 +302,7 @@ footer{background:#fff;padding:48px 24px;text-align:center;border-top:1px solid 
 <div class="stats-wrap">
   <div class="stats rv">
     <div class="stat"><div class="s-num" data-t="3">0</div><div class="s-label">أنماط لعب</div></div>
-    <div class="stat"><div class="s-num" data-t="38" data-suffix="+">0</div><div class="s-label">فئة</div></div>
+    <div class="stat"><div class="s-num" data-t="39" data-suffix="+">0</div><div class="s-label">فئة</div></div>
     <div class="stat"><div class="s-num" data-t="5000" data-suffix="+">0</div><div class="s-label">سؤال</div></div>
   </div>
 </div>
@@ -340,9 +341,10 @@ footer{background:#fff;padding:48px 24px;text-align:center;border-top:1px solid 
 <section class="sec cats-sec" id="cats">
   <div class="sec-inner">
     <div class="sec-label rv">الفئات</div>
-    <div class="sec-title rv">+38 فئة تغطي كل شي</div>
+    <div class="sec-title rv">+39 فئة تغطي كل شي</div>
     <div class="sec-sub rv">فئات متجددة — من الرياضة للتاريخ، ومن الأصوات للخرائط</div>
     <div class="cats-grid">
+      <div class="cat rv"><img src="cat-formula.jpg" alt=""><div class="cat-ov"><span class="cat-n">فورمولا 1</span></div><div class="cat-badge">جديد</div></div>
       <div class="cat rv"><img src="cat-jamiya.jpg" alt=""><div class="cat-ov"><span class="cat-n">جمعية</span></div><div class="cat-badge">جديد</div></div>
       <div class="cat rv"><img src="cat-banat.jpg" alt=""><div class="cat-ov"><span class="cat-n">بنات وبس</span></div><div class="cat-badge">جديد</div></div>
       <div class="cat rv"><img src="cat-khaleeji.jpg" alt=""><div class="cat-ov"><span class="cat-n">فن خليجي</span></div><div class="cat-badge">جديد</div></div>
@@ -492,9 +494,14 @@ footer{background:#fff;padding:48px 24px;text-align:center;border-top:1px solid 
   <img class="rate-img rv" src="falcon-rate.png" alt="قيّم اللمّة">
   <div class="rate-title rv">عجبتك اللمّة؟ قيّمنا!</div>
   <div class="rate-sub rv">تقييمك يساعدنا نوصل لناس أكثر ونطوّر اللعبة — كل نجمة تفرق!</div>
-  <a class="rate-btn rv" href="https://apps.apple.com/app/id6760367652?action=write-review" target="_blank">
-    <img src="appstore.png" alt="">قيّم على App Store
-  </a>
+  <div class="rate-btns rv">
+    <a class="rate-btn" href="https://apps.apple.com/app/id6760367652?action=write-review" target="_blank">
+      <img src="appstore.png" alt="">قيّم على App Store
+    </a>
+    <a class="rate-btn" href="https://play.google.com/store/apps/details?id=com.allamma.app" target="_blank">
+      <img src="googleplay.png" alt="">قيّم على Google Play
+    </a>
+  </div>
 </section>
 
 <!-- FOOTER -->
