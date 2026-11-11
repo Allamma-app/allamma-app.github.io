@@ -63,8 +63,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .hero{position:relative;overflow:hidden;padding:clamp(28px,6vw,72px) 0 clamp(36px,6vw,80px);isolation:isolate}
 .hero-bg{position:absolute;inset:0;z-index:-1;pointer-events:none}
 .hero-bg span{position:absolute;border-radius:50%;filter:blur(2px)}
-.hero-bg .b1{width:62vmax;height:62vmax;right:-22vmax;top:-30vmax;background:radial-gradient(circle,var(--tint-m) 0 55%,rgba(243,225,229,0) 70%)}
-.hero-bg .b2{width:54vmax;height:54vmax;left:-24vmax;bottom:-30vmax;background:radial-gradient(circle,var(--tint-n) 0 55%,rgba(225,233,243,0) 70%)}
+.hero-bg .b1{width:min(1100px,150vw);height:min(1100px,150vw);right:max(-400px,-55vw);top:max(-520px,-70vw);background:radial-gradient(circle,var(--tint-m) 0 55%,rgba(243,225,229,0) 70%)}
+.hero-bg .b2{width:min(960px,130vw);height:min(960px,130vw);left:max(-440px,-60vw);bottom:max(-500px,-65vw);background:radial-gradient(circle,var(--tint-n) 0 55%,rgba(225,233,243,0) 70%)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(24px,4vw,56px);align-items:center}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);box-shadow:0 4px 14px rgba(58,16,24,.06);border-radius:999px;padding:5px 6px 5px 14px;font-size:13px;font-weight:700;color:var(--muted)}
 .eyebrow b{background:var(--maroon);color:#fff;border-radius:999px;padding:2px 10px;font-weight:800;font-size:12px}
