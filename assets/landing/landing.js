@@ -194,7 +194,7 @@
       T(function () { cell.classList.add('hot'); }, 600 * k);
       T(function () { cell.classList.remove('hot'); cell.classList.add('press'); }, 1500 * k);
       T(function () {
-        scr.style.setProperty('--ringoff', '0'); void scr.offsetWidth; scr.style.setProperty('--ringoff', '60');
+        scr.style.setProperty('--ringoff', '0'); void scr.offsetWidth; scr.style.setProperty('--ringoff', '29');
         cls(true, 's-q');
       }, 1800 * k);
       [1, 2, 3].forEach(function (s) { T(function () { q.n.textContent = String(30 - s); }, 1800 * k + s * 1000 * k); });
@@ -237,6 +237,7 @@
   /* ── story boxes: play when on screen, reset when fully off screen ── */
   var plays = $$('[data-play]');
   if (hasIO && !reduce) {
+    $$('.win [data-to]').forEach(function (n) { n.textContent = '0'; });
     var pio = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
         var b = e.target;
