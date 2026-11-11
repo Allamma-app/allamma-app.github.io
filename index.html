@@ -7,543 +7,404 @@
 <meta name="description" content="جمعتكم أحلى مع اللمّة — لعبة ثقافية جماعية للعائلة والأصدقاء">
 <meta property="og:title" content="اللمّة"><meta property="og:description" content="جمعتكم أحلى مع اللمّة — حمّلها الحين!">
 <meta property="og:image" content="https://allamma.app/falcon.png">
-<link rel="icon" href="icon.png">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
-:root{--maroon:#8A1538;--maroon-light:#B03050;--gold:#C9A24E;--gold-light:#E8D5A0;--cream:#fff;--dark:#1A0810;--muted:#9E7080;--card-border:rgba(138,21,56,0.12)}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Cairo',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
-a{text-decoration:none;color:inherit}
-
-/* Reveal animations */
-.rv{opacity:0;transform:translateY(50px);transition:opacity 0.9s cubic-bezier(.16,1,.3,1),transform 0.9s cubic-bezier(.16,1,.3,1)}
-.rv.vis{opacity:1;transform:translateY(0)}
-.rv-d1{transition-delay:0.1s}.rv-d2{transition-delay:0.2s}.rv-d3{transition-delay:0.3s}.rv-d4{transition-delay:0.4s}
-
-/* ═══════════ NAV ═══════════ */
-nav{position:fixed;top:0;left:0;right:0;height:70px;background:linear-gradient(135deg,#6B0F24,#4A0916);border-bottom:none;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,4vw,40px);z-index:100;transition:box-shadow 0.3s}
-nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,0.15)}
-.n-logo{font-size:30px;font-weight:900;color:#fff}
-.n-links{display:flex;gap:6px;align-items:center}
-.n-link{color:rgba(255,255,255,0.7);font-size:13px;font-weight:700;padding:8px 16px;border-radius:30px;transition:all 0.25s}
-.n-link:hover{color:#fff;background:rgba(255,255,255,0.15)}
-.n-cta{background:#fff;color:var(--maroon);font-size:13px;font-weight:800;padding:10px 22px;border-radius:30px;transition:all 0.25s;box-shadow:0 4px 16px rgba(138,21,56,0.25)}
-.n-cta:hover{transform:scale(1.05);box-shadow:0 6px 24px rgba(0,0,0,0.2)}
-@media(max-width:700px){.n-links{gap:2px;overflow-x:auto;white-space:nowrap;scrollbar-width:none;-webkit-overflow-scrolling:touch}.n-links::-webkit-scrollbar{display:none}.n-link{font-size:10px;padding:5px 8px;white-space:nowrap}.n-cta{display:none}.n-logo{font-size:24px}}
-
-/* ═══════════ HERO ═══════════ */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:120px 24px 80px;position:relative;background:#fff;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(138,21,56,0.04) 0%,transparent 60%);pointer-events:none}
-/* Decorative floating shapes */
-.hero-shape{position:absolute;border-radius:50%;opacity:0.07;pointer-events:none}
-.hs1{width:300px;height:300px;background:linear-gradient(135deg,#6B0F24,#4A0916);top:-80px;right:-80px;animation:drift 8s ease-in-out infinite}
-.hs2{width:200px;height:200px;background:var(--gold);bottom:10%;left:-60px;animation:drift 10s ease-in-out infinite reverse}
-.hs3{width:150px;height:150px;background:linear-gradient(135deg,#6B0F24,#4A0916);bottom:20%;right:5%;animation:drift 7s ease-in-out infinite 1s}
-@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(15px,-20px)}}
-
-.h-badge{background:linear-gradient(135deg,rgba(138,21,56,0.08),rgba(201,162,78,0.08));border:1px solid rgba(201,162,78,0.2);border-radius:50px;padding:8px 24px;font-size:14px;font-weight:700;color:var(--gold);margin-bottom:28px;z-index:2}
-.h-title{font-size:clamp(44px,7vw,72px);font-weight:900;text-align:center;line-height:1.15;z-index:2;margin-bottom:12px}
-.h-accent{background:linear-gradient(135deg,#6B0F24,#4A0916);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.h-sub{color:var(--muted);font-size:clamp(16px,2.5vw,20px);font-weight:600;text-align:center;max-width:520px;line-height:1.8;z-index:2;margin-bottom:20px}
-.h-falcon{width:clamp(200px,35vw,300px);z-index:2;filter:drop-shadow(0 24px 48px rgba(138,21,56,0.15));margin-bottom:28px;animation:float 4s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(1deg)}}
-.h-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;z-index:2}
-.btn-p{display:flex;align-items:center;gap:10px;background:#fff;color:var(--dark);padding:14px 28px;border-radius:16px;font-size:16px;font-weight:800;box-shadow:0 4px 20px rgba(0,0,0,0.06);border:1px solid var(--card-border);transition:all 0.3s cubic-bezier(.16,1,.3,1)}
-.btn-p:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(201,162,78,0.2);border-color:var(--gold)}
-.btn-p img{width:24px;height:24px;object-fit:contain}
-.btn-p.soon{opacity:0.35;pointer-events:none}
-.btn-sub{font-size:10px;color:var(--muted);font-weight:600}
-
-/* ═══════════ STATS ═══════════ */
-.stats-wrap{padding:60px 24px;background:#fff}
-.stats{display:flex;justify-content:center;gap:clamp(30px,6vw,80px);flex-wrap:wrap}
-.stat{text-align:center}
-.s-num{font-size:clamp(40px,6vw,56px);font-weight:900;background:linear-gradient(135deg,var(--maroon),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.s-label{font-size:14px;font-weight:700;color:var(--muted)}
-
-/* ═══════════ SECTION SHARED ═══════════ */
-.sec{padding:80px 24px;position:relative}
-.sec-inner{max-width:1000px;margin:0 auto}
-.sec-label{text-align:center;font-size:13px;font-weight:800;color:var(--gold);margin-bottom:10px}
-.sec-title{text-align:center;font-size:clamp(28px,5vw,40px);font-weight:900;margin-bottom:14px;color:var(--dark)}
-.sec-sub{text-align:center;color:var(--muted);font-size:15px;font-weight:600;margin-bottom:48px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7}
-
-/* Angled divider */
-.angle-top{position:relative}.angle-top::before{content:'';position:absolute;top:-3vw;left:0;right:0;height:6vw;background:inherit;clip-path:polygon(0 50%,100% 0,100% 100%,0 100%)}
-
-/* ═══════════ WHY ═══════════ */
-.why-sec{background:#fff}
-.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-@media(max-width:800px){.why-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.why-grid{grid-template-columns:1fr;max-width:340px;margin:0 auto}}
-.why-card{background:#fff;border:1px solid var(--card-border);border-radius:24px;padding:30px 20px;text-align:center;transition:all 0.4s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
-.why-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(138,21,56,0.03),rgba(201,162,78,0.03));opacity:0;transition:opacity 0.3s}
-.why-card:hover{transform:translateY(-10px);box-shadow:0 20px 50px rgba(138,21,56,0.1);border-color:var(--gold)}
-.why-card:hover::before{opacity:1}
-.w-icon{width:110px;height:110px;object-fit:contain;margin-bottom:14px;display:block;margin-left:auto;margin-right:auto;filter:drop-shadow(0 8px 16px rgba(0,0,0,0.1))}
-.w-title{font-size:17px;font-weight:900;margin-bottom:8px;position:relative;z-index:1}
-.w-desc{font-size:13px;color:var(--muted);font-weight:600;line-height:1.6;position:relative;z-index:1}
-
-/* ═══════════ MODES ═══════════ */
-.modes-sec{background:var(--cream)}
-.modes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:900px;margin:0 auto}
-@media(max-width:700px){.modes-grid{grid-template-columns:1fr;max-width:320px}}
-.mode-card{background:#fff;border:1px solid var(--card-border);border-radius:28px;padding:34px 22px;text-align:center;transition:all 0.4s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
-.mode-card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 24px 56px rgba(138,21,56,0.12);border-color:var(--gold)}
-.mode-card img{width:150px;height:150px;object-fit:contain;margin-bottom:18px;filter:drop-shadow(0 8px 16px rgba(0,0,0,0.1));transition:transform 0.4s}
-.mode-card:hover img{transform:scale(1.08)}
-.m-name{font-size:20px;font-weight:900;margin-bottom:8px}
-.m-desc{font-size:13px;color:var(--muted);font-weight:600;line-height:1.6}
-
-/* ═══════════ CATEGORIES ═══════════ */
-.cats-sec{background:#fff}
-.cats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-@media(max-width:800px){.cats-grid{grid-template-columns:repeat(4,1fr)}}
-@media(max-width:550px){.cats-grid{grid-template-columns:repeat(3,1fr)}}
-.cat{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:1;transition:all 0.35s cubic-bezier(.16,1,.3,1);cursor:default}
-.cat:hover{transform:scale(1.06);z-index:2;box-shadow:0 16px 40px rgba(0,0,0,0.15)}
-.cat img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
-.cat:hover img{transform:scale(1.1)}
-.cat-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(26,8,16,0.85) 100%);display:flex;align-items:flex-end;justify-content:center;padding:12px}
-.cat-n{color:#fff;font-size:12px;font-weight:800;text-shadow:0 2px 8px rgba(0,0,0,0.6)}
-.cat-badge{position:absolute;top:8px;right:8px;background:var(--gold);color:var(--dark);font-size:9px;font-weight:900;padding:3px 10px;border-radius:20px}
-
-/* ═══════════ POWERUPS ═══════════ */
-.pu-sec{background:var(--cream)}
-.pu-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;max-width:900px;margin:0 auto}
-@media(max-width:700px){.pu-grid{grid-template-columns:repeat(5,1fr);gap:10px}}
-.pu-card{background:#fff;border:1px solid var(--card-border);border-radius:20px;padding:24px 14px;text-align:center;transition:all 0.4s cubic-bezier(.16,1,.3,1)}
-.pu-card:hover{transform:translateY(-8px);box-shadow:0 16px 40px rgba(138,21,56,0.1);border-color:var(--gold)}
-.pu-icon{width:90px;height:90px;object-fit:contain;margin-bottom:10px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.1))}
-.pu-emoji{display:none}
-.pu-name{font-size:15px;font-weight:900;margin-bottom:4px}
-.pu-desc{font-size:11px;color:var(--muted);font-weight:600;line-height:1.5}
-@media(max-width:480px){.pu-grid{grid-template-columns:repeat(5,1fr);gap:6px}.pu-card{padding:12px 6px;border-radius:14px}.pu-icon{width:50px;height:50px;margin-bottom:6px}.pu-name{font-size:11px}.pu-desc{font-size:9px}}
-
-/* ═══════════ HOW ═══════════ */
-.how-sec{background:var(--cream)}
-.how-steps{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;max-width:850px;margin:0 auto}
-.how-step{text-align:center;flex:1;min-width:180px;max-width:240px}
-.how-n{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--maroon),var(--gold));color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;margin:0 auto 14px;box-shadow:0 8px 24px rgba(138,21,56,0.25);transition:transform 0.3s}
-.how-step:hover .how-n{transform:scale(1.15)}
-.how-t{font-size:17px;font-weight:900;margin-bottom:6px}
-.how-d{font-size:13px;color:var(--muted);font-weight:600;line-height:1.6}
-
-/* ═══════════ SCREENSHOTS ═══════════ */
-.ss-sec{background:#fff;overflow:hidden}
-.ss-wrap{position:relative;max-width:1100px;margin:0 auto;padding:0 60px}
-.ss-track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:20px 10px;scrollbar-width:none;align-items:center;direction:ltr}
-.ss-track::-webkit-scrollbar{display:none}
-.ss-slide{flex:0 0 auto;scroll-snap-align:center}
-.ss-slide img{width:clamp(320px,50vw,480px);height:clamp(160px,25vw,240px);object-fit:contain;filter:drop-shadow(0 16px 40px rgba(0,0,0,0.12));transition:transform 0.3s}
-.ss-slide img:hover{transform:scale(1.03)}
-/* Arrow buttons — outside the scroll area */
-.ss-arrow{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:#fff;border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:var(--maroon);cursor:pointer;z-index:5;box-shadow:0 4px 16px rgba(0,0,0,0.1);transition:all 0.2s}
-.ss-arrow:hover{background:var(--maroon);color:#fff;box-shadow:0 8px 24px rgba(138,21,56,0.3)}
-.ss-prev{right:0}.ss-next{left:0}
-@media(max-width:600px){.ss-wrap{padding:0 16px}.ss-prev{right:-4px}.ss-next{left:-4px}.ss-arrow{width:36px;height:36px;font-size:18px}}
-/* Swipe hint */
-.ss-hint{text-align:center;color:var(--muted);font-size:13px;font-weight:600;margin-top:16px;opacity:0.7}
-
-/* ═══════════ FAQ ═══════════ */
-.faq-sec{background:var(--cream)}
-.faq-list{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
-.faq-item{background:#fff;border:1px solid var(--card-border);border-radius:16px;overflow:hidden;transition:border-color 0.3s}
-.faq-item.open{border-color:var(--gold)}
-.faq-q{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;font-size:15px;font-weight:800;color:var(--dark);transition:background 0.2s;gap:12px}
-.faq-q:hover{background:rgba(138,21,56,0.02)}
-.faq-arrow{font-size:18px;color:var(--muted);transition:transform 0.3s;flex-shrink:0}
-.faq-item.open .faq-arrow{transform:rotate(180deg);color:var(--gold)}
-.faq-a{padding:0 22px;max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.16,1,.3,1),padding 0.3s}
-.faq-item.open .faq-a{max-height:200px;padding:0 22px 18px}
-.faq-a p{font-size:13px;color:var(--muted);font-weight:600;line-height:1.8}
-@media(max-width:480px){.faq-q{padding:14px 16px;font-size:13px}.faq-a p{font-size:12px}}
-
-/* ═══════════ CTA ═══════════ */
-.cta{background:linear-gradient(135deg,#6B0F24,#4A0916);padding:100px 24px;text-align:center;position:relative;overflow:hidden}
-.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(201,162,78,0.12) 0%,transparent 60%)}
-.cta-t{font-size:clamp(32px,5vw,48px);font-weight:900;color:#fff;margin-bottom:14px;position:relative;z-index:2}
-.cta-s{color:rgba(255,255,255,0.7);font-size:18px;font-weight:600;margin-bottom:36px;position:relative;z-index:2}
-.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2}
-.btn-w{display:flex;align-items:center;gap:8px;background:#fff;color:var(--dark);padding:12px 24px;border-radius:14px;font-size:14px;font-weight:800;box-shadow:0 8px 30px rgba(0,0,0,0.2);transition:all 0.3s}
-.btn-w:hover{transform:translateY(-4px);box-shadow:0 16px 44px rgba(0,0,0,0.25)}
-.btn-w img{width:22px;height:22px}
-.btn-w .btn-sub{font-size:11px;color:#888;font-weight:600}
-.btn-w.soon{opacity:0.45}
-
-/* ═══════════ RATE ═══════════ */
-.rate-sec{background:#fff;padding:60px 24px;text-align:center}
-.rate-img{width:clamp(180px,30vw,240px);margin-bottom:24px;filter:drop-shadow(0 16px 40px rgba(0,0,0,0.1))}
-.rate-title{font-size:clamp(24px,4vw,34px);font-weight:900;margin-bottom:10px;color:var(--dark)}
-.rate-sub{color:var(--muted);font-size:clamp(13px,2vw,16px);font-weight:600;margin-bottom:28px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.7}
-.rate-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.rate-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#6B0F24,#4A0916);color:#fff;padding:14px 32px;border-radius:16px;font-size:16px;font-weight:800;box-shadow:0 8px 28px rgba(138,21,56,0.3);transition:all 0.3s}
-.rate-btn:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(138,21,56,0.4)}
-.rate-btn img{width:22px;height:22px}
-@media(max-width:480px){.rate-sec{padding:40px 16px}.rate-img{width:180px;margin-bottom:16px}.rate-title{font-size:20px;margin-bottom:8px}.rate-sub{font-size:12px;margin-bottom:20px}.rate-btn{padding:8px 18px;font-size:12px;border-radius:12px}.rate-btn img{width:18px;height:18px}}
-
-/* ═══════════ FOOTER ═══════════ */
-footer{background:#fff;padding:48px 24px;text-align:center;border-top:1px solid var(--card-border)}
-.f-soc{display:flex;justify-content:center;gap:16px;margin-bottom:22px}
-.f-soc a{width:46px;height:46px;border-radius:50%;background:rgba(138,21,56,0.06);border:1px solid rgba(138,21,56,0.08);display:flex;align-items:center;justify-content:center;transition:all 0.25s}
-.f-soc a:hover{background:rgba(138,21,56,0.1);transform:scale(1.08)}
-.f-soc img{width:24px;height:24px}
-.f-soc .f-dark{background:#000;border-color:#000}.f-soc .f-dark img{filter:brightness(0) invert(1)}
-.f-links{display:flex;justify-content:center;gap:20px;margin-bottom:18px;flex-wrap:wrap}
-.f-link{color:var(--muted);font-size:13px;font-weight:600;transition:color 0.2s}
-.f-link:hover{color:var(--maroon)}
-.f-copy{color:rgba(0,0,0,0.25);font-size:12px}
-
-/* ═══════════ MOBILE PORTRAIT ═══════════ */
-@media(max-width:480px){
-  /* Hero */
-  .hero{min-height:auto;padding:90px 16px 50px}
-  .h-falcon{width:180px;margin-bottom:20px}
-  .h-badge{font-size:12px;padding:6px 16px;margin-bottom:18px}
-  .h-sub{font-size:14px;margin-bottom:16px}
-  .h-btns{gap:6px}
-  .btn-p{padding:6px 10px;font-size:9px;border-radius:8px;box-shadow:0 3px 12px rgba(138,21,56,0.2);gap:6px}
-  .btn-p img{width:18px;height:18px}
-  .btn-p .btn-sub{font-size:7px}
-  .hero-shape{display:none}
-
-  /* Stats */
-  .stats-wrap{padding:30px 16px}
-  .s-num{font-size:32px}
-  .s-label{font-size:12px}
-
-  /* Sections shared */
-  .sec{padding:40px 16px}
-  .sec-title{font-size:24px;margin-bottom:10px}
-  .sec-sub{font-size:13px;margin-bottom:28px}
-  .sec-label{font-size:11px;letter-spacing:2px;margin-bottom:6px}
-
-  /* Why cards — 2 columns on mobile */
-  .why-grid{grid-template-columns:repeat(2,1fr)!important;gap:10px;max-width:100%!important}
-  .why-card{padding:16px 12px;border-radius:16px}
-  .w-icon{width:70px;height:70px;margin-bottom:8px}
-  .w-title{font-size:13px;margin-bottom:4px}
-  .w-desc{font-size:11px}
-
-  /* Modes — 3 columns on mobile */
-  .modes-grid{grid-template-columns:repeat(3,1fr)!important;gap:10px;max-width:100%!important}
-  .mode-card{padding:16px 10px;border-radius:18px}
-  .mode-card img{width:80px;height:80px;margin-bottom:10px}
-  .m-name{font-size:14px;margin-bottom:4px}
-  .m-desc{font-size:10px}
-
-  /* Categories — 4 columns on mobile */
-  .cats-grid{grid-template-columns:repeat(4,1fr)!important;gap:8px}
-  .cat{border-radius:10px}
-  .cat-n{font-size:9px}
-  .cat-badge{font-size:7px;padding:2px 6px;top:4px;right:4px}
-
-  /* How steps */
-  .how-steps{gap:16px}
-  .how-step{min-width:90px}
-  .how-n{width:40px;height:40px;font-size:18px;margin-bottom:8px}
-  .how-t{font-size:14px}
-  .how-d{font-size:11px}
-
-  /* Screenshots */
-  .ss-slide img{width:280px;height:140px}
-  .ss-arrow{display:none}
-  .ss-wrap{padding:0 8px}
-
-  /* CTA */
-  .cta{padding:50px 16px}
-  .cta-s{font-size:14px}
-  .btn-w{padding:6px 10px;font-size:9px;border-radius:8px;gap:6px}.btn-w img{width:18px;height:18px}.btn-w .btn-sub{font-size:7px}
-
-  /* Footer */
-  footer{padding:30px 16px}
-  .f-link{font-size:12px}
-}
-
-@media(prefers-reduced-motion:reduce){.rv{transition:none}.rv{opacity:1;transform:none}*{animation:none!important}}
-</style>
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://allamma.app/">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:site_name" content="اللمّة">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@AllammaApp">
+<meta name="theme-color" content="#7A1A2C">
+<link rel="canonical" href="https://allamma.app/">
+<link rel="icon" href="assets/landing/ui/favicon-64.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="assets/landing/ui/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap&text=0123456789%2B">
+<link rel="stylesheet" href="assets/landing/landing.css?v=1">
+<link rel="preload" as="image" href="assets/landing/ui/logo-wordmark.webp" type="image/webp">
+<script>document.documentElement.classList.add('js')</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"MobileApplication","name":"اللمّة","alternateName":"Al-Lammah","url":"https://allamma.app/","image":"https://allamma.app/falcon.png","description":"لعبة ثقافية جماعية للعائلة والأصدقاء — فريقين على جهاز واحد","applicationCategory":"GameApplication","operatingSystem":"iOS, Android","inLanguage":"ar","installUrl":["https://apps.apple.com/app/id6760367652","https://play.google.com/store/apps/details?id=com.allamma.app"],"sameAs":["https://www.instagram.com/allamma.app","https://www.tiktok.com/@allamma.app","https://x.com/AllammaApp"]},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"كيف يمكنني إنشاء لعبة في اللمّة؟","acceptedAnswer":{"@type":"Answer","text":"سجّل دخولك أولاً، ثم اضغط \"إبدأ اللعب\"، اختر نمط اللعب (لمّة، كلاسيكي، أو حروف)، حدد الإعدادات، وابدأ التحدي!"}},
+{"@type":"Question","name":"هل يمكن تجربة اللعبة قبل الشراء؟","acceptedAnswer":{"@type":"Answer","text":"كل حساب جديد يحصل على 3 تجارب مجانية — لعبة كلاسيكية، لعبة لمّة، ولعبة حروف."}},
+{"@type":"Question","name":"هل يمكنني استرجاع لعبة سابقة؟","acceptedAnswer":{"@type":"Answer","text":"نعم! جميع ألعابك محفوظة في \"جلساتي\". يمكنك استكمال أو إعادة أي لعبة سابقة بدون خصم نقاط."}},
+{"@type":"Question","name":"هل تتكرر الأسئلة إذا لعبت نفس الفئات؟","acceptedAnswer":{"@type":"Answer","text":"لا، الأسئلة ما تتكرر واحنا نضيف أسئلة جديدة بشكل مستمر! ولكن إذا لعبت من \"جلساتي\" تجيك نفس الأسئلة اللي جتك أول مرة."}},
+{"@type":"Question","name":"ما هي أنماط اللعب المتوفرة؟","acceptedAnswer":{"@type":"Answer","text":"نمط \"لمّة\" — سؤال وصورة، رسم، كلمات وأكثر! نمط \"كلاسيكي\" — أسئلة واختيار من متعدد. ونمط \"حروف مع اللمّة\" — اختر حرف وجاوب، كل 3 حروف متتالية = نقطة!"}},
+{"@type":"Question","name":"وين أحصل شرح للأنماط واللعبة؟","acceptedAnswer":{"@type":"Answer","text":"الشروحات موجودة على حسابنا في انستقرام @allamma.app وأيضاً في صفحة الشروحات."}}
+]}]}
+</script>
 </head>
 <body>
+<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
 
-<!-- NAV -->
-<nav id="nav">
-  <div class="n-logo">اللمّة</div>
-  <div class="n-links">
-    <a class="n-link" href="#why">ليش اللمّة</a>
-    <a class="n-link" href="#modes">أنماط اللعب</a>
-    <a class="n-link" href="#cats">الفئات</a>
-    <a class="n-link" href="links.html">الروابط</a>
-    <a class="n-link" href="tutorials.html">شروحات</a>
+<header class="site-head" id="nav">
+  <div class="wrap head-in">
+    <a href="./" class="logo" aria-label="اللمّة — الرئيسية" style="width:80px"></a>
+    <nav class="nav" aria-label="القائمة الرئيسية">
+      <a href="#why">ليش اللمّة</a>
+      <a href="#modes">أنماط اللعب</a>
+      <a href="#cats">الفئات</a>
+      <a href="links.html">الروابط</a>
+      <a href="tutorials.html">شروحات</a>
+    </nav>
+    <div class="head-end">
+      <a class="head-cta" href="#download">حمّل اللعبة</a>
+      <details class="menu">
+        <summary aria-label="القائمة"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></summary>
+        <div class="menu-panel">
+          <a href="#why">ليش اللمّة</a>
+          <a href="#modes">أنماط اللعب</a>
+          <a href="#cats">الفئات</a>
+          <a href="links.html">الروابط</a>
+          <a href="tutorials.html">شروحات</a>
+        </div>
+      </details>
+    </div>
   </div>
-</nav>
+</header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-shape hs1"></div>
-  <div class="hero-shape hs2"></div>
-  <div class="hero-shape hs3"></div>
+<main id="main">
 
-  <h1 class="h-title rv rv-d1">جمعتكم أحلى<br>مع <span class="h-accent">اللمّة</span></h1>
-  <p class="h-sub rv rv-d2">أسئلة متنوعة، تحديات ممتعة، وذكريات ما تنسى — لعبة جماعية ثقافية للعائلة والأصدقاء</p>
-  <img class="h-falcon rv rv-d3" src="falcon.png" alt="اللمّة">
-  <div class="h-btns rv rv-d4">
-    <a class="btn-p" href="https://apps.apple.com/app/id6760367652" target="_blank">
-      <img src="appstore.png" alt=""><div>App Store<div class="btn-sub">حمّل اللعبة</div></div>
-    </a>
-    <a class="btn-p" href="https://play.google.com/store/apps/details?id=com.allamma.app" target="_blank">
-      <img src="googleplay.png" alt=""><div>Google Play<div class="btn-sub">حمّل اللعبة</div></div>
-    </a>
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="hero-bg" aria-hidden="true"><span class="b1"></span><span class="b2"></span></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow"><b>للعائلة والأصدقاء</b>لعبة ثقافية جماعية</p>
+      <h1 id="hero-title"><span class="l1">جمعتكم</span><span class="l2">مع <em>اللمّة</em> أحلى.</span></h1>
+      <p class="lede"><strong>فريقين، جهاز واحد، وجلسة ما تنسى.</strong> أسئلة متنوعة، تحديات ممتعة، وذكريات ما تنسى — لعبة جماعية ثقافية للعائلة والأصدقاء.</p>
+      <div class="stores">
+        <a class="store" href="https://apps.apple.com/app/id6760367652" target="_blank" rel="noopener"><img src="assets/landing/ui/appstore.webp" alt="" width="28" height="28"><span><small>حمّلها من</small><b>App Store</b></span></a>
+        <a class="store" href="https://play.google.com/store/apps/details?id=com.allamma.app" target="_blank" rel="noopener"><img src="assets/landing/ui/googleplay.webp" alt="" width="28" height="28"><span><small>حمّلها من</small><b>Google Play</b></span></a>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="device" role="img" aria-label="لقطة متحركة من اللعبة: لوحة الأسئلة، سؤال بالصورة، كشف الجواب، ونقاط الفريق ترتفع">
+        <div class="device-frame"></div>
+        <div class="screen" id="game" data-team="1" aria-hidden="true">
+          <div class="g-tint"></div><div class="g-tint navy"></div>
+          <div class="g-bars">
+            <div class="g-bar"></div><div class="g-bar navy"></div>
+            <div class="g-barin">
+              <div class="chip c1"><span class="chip-bg"></span><span class="dot" style="background:#7A1A2C"></span>الصقور<span class="sc num" id="sc1">0</span><span class="tag">دوركم</span></div>
+              <div class="track"><i class="fm"></i><i class="fn"></i></div>
+              <div class="chip c2"><span class="chip-bg"></span><span class="dot" style="background:#3D6A9E"></span>النمور<span class="sc num" id="sc2">0</span><span class="tag">دوركم</span></div>
+              <div class="g-brand">اللمّة</div>
+            </div>
+          </div>
+          <div class="g-body">
+            <div class="panel"><span class="k">الدور على</span><span class="v"><span class="t1">الصقور</span><span class="t2">النمور</span></span><span class="s">اختاروا سؤال</span></div>
+            <div class="board">
+              <div class="bcard"><h4>شعارات</h4><div class="bcells"><div class="bcol"><span class="cell num">100</span><span class="cell num">200</span><span class="cell num">300</span></div><div class="bimg"><img src="assets/landing/cats/logos.webp" alt="" width="360" height="246" decoding="async"></div><div class="bcol"><span class="cell num used">100</span><span class="cell num">200</span><span class="cell num">300</span></div></div></div>
+              <div class="bcard"><h4>معالم</h4><div class="bcells"><div class="bcol"><span class="cell num">100</span><span class="cell num">200</span><span class="cell num">300</span></div><div class="bimg"><img src="assets/landing/cats/landmarks.webp" alt="" width="360" height="246" decoding="async"></div><div class="bcol"><span class="cell num">100</span><span class="cell num">200</span><span class="cell num" id="cB">300</span></div></div></div>
+              <div class="bcard"><h4>أفلام</h4><div class="bcells"><div class="bcol"><span class="cell num">100</span><span class="cell num">200</span><span class="cell num">300</span></div><div class="bimg"><img src="assets/landing/cats/movies.webp" alt="" width="360" height="246" decoding="async"></div><div class="bcol"><span class="cell num" id="cC">100</span><span class="cell num">200</span><span class="cell num used">300</span></div></div></div>
+              <div class="bcard"><h4>حيوانات</h4><div class="bcells"><div class="bcol"><span class="cell num">100</span><span class="cell num" id="cA">200</span><span class="cell num">300</span></div><div class="bimg"><img src="assets/landing/cats/animals.webp" alt="" width="360" height="246" decoding="async"></div><div class="bcol"><span class="cell num">100</span><span class="cell num">200</span><span class="cell num">300</span></div></div></div>
+              <div class="bcard"><h4>قصص الأنبياء</h4><div class="bcells"><div class="bcol"><span class="cell num">100</span><span class="cell num">200</span><span class="cell num">300</span></div><div class="bimg"><img src="assets/landing/cats/prophets.webp" alt="" width="360" height="246" decoding="async"></div><div class="bcol"><span class="cell num">100</span><span class="cell num">200</span><span class="cell num">300</span></div></div></div>
+              <div class="bcard"><h4>أعلام</h4><div class="bcells"><div class="bcol"><span class="cell num" id="cD">100</span><span class="cell num">200</span><span class="cell num">300</span></div><div class="bimg"><img src="assets/landing/cats/flags.webp" alt="" width="360" height="246" decoding="async"></div><div class="bcol"><span class="cell num">100</span><span class="cell num">200</span><span class="cell num">300</span></div></div></div>
+            </div>
+          </div>
+          <div class="q-layer">
+            <div class="q-main">
+              <div class="q-chips"><span id="qCat">حيوانات</span><span class="pts"><span class="num" id="qPts">200</span> نقطة</span></div>
+              <div class="q-img"><img id="qImg" src="assets/landing/ui/hippo-zoom.webp" alt="" width="720" height="480" loading="lazy" decoding="async"><img class="alt" id="qAlt" src="assets/landing/ui/hippo-full.webp" alt="" width="720" height="480" loading="lazy" decoding="async"><div class="q-ans"><span>الجواب</span><b id="qA2">فرس النهر</b></div></div>
+              <div class="q-text"><span class="qa" id="qQ">ما هذا الحيوان؟</span><span class="an" id="qA">فرس النهر</span></div>
+            </div>
+            <div class="q-side">
+              <div class="q-timer"><span class="q-who" id="qWho">سؤال الصقور</span>
+                <div class="ring"><svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="46"/><circle class="fg" cx="50" cy="50" r="46"/></svg><span class="n num" id="qN">30</span></div>
+              </div>
+              <div class="q-btn">كشف الجواب</div>
+            </div>
+          </div>
+          <div class="speech" id="say"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span id="sayT">فرس النهر!</span></div>
+          <div class="sheet"><h5>مين جاوب صح؟</h5><div class="row">
+            <div class="sbtn m" id="sbM"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>الصقور</div>
+            <div class="sbtn n" id="sbN"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>النمور</div>
+          </div></div>
+          <div class="fly num" id="fly">+200</div>
+          <div class="confetti" id="conf"></div>
+          <div class="turn"><span id="turnT">دور النمور</span></div>
+          <div class="island"></div>
+        </div>
+      </div>
+      <div class="stage-shadow" aria-hidden="true"></div>
+      <div class="falcon-hero" id="heroFalcon" aria-hidden="true">
+        <img class="point" src="assets/landing/falcon/point.webp" alt="" width="376" height="420" data-anim="point">
+        <img class="cheer" src="assets/landing/falcon/cheer.webp" alt="" width="304" height="420" data-anim="cheer" loading="lazy">
+      </div>
+    </div>
   </div>
-</section>
 
-<!-- STATS -->
-<div class="stats-wrap">
-  <div class="stats rv">
-    <div class="stat"><div class="s-num" data-t="3">0</div><div class="s-label">أنماط لعب</div></div>
-    <div class="stat"><div class="s-num" data-t="48" data-suffix="+">0</div><div class="s-label">فئة</div></div>
-    <div class="stat"><div class="s-num" data-t="7000" data-suffix="+">0</div><div class="s-label">سؤال</div></div>
-  </div>
-</div>
-
-<!-- WHY -->
-<section class="sec why-sec" id="why">
-  <div class="sec-inner">
-    <div class="sec-label rv">لماذا اللمّة؟</div>
-    <div class="sec-title rv">مب مجرّد لعبة</div>
-    <div class="sec-sub rv">تجربة جماعية تجمع بين التحدي والمتعة</div>
-    <div class="why-grid">
-      <div class="why-card rv"><img class="w-icon" src="why-modes.png" alt=""><div class="w-title">أنماط لعب مختلفة</div><div class="w-desc">لمّة، كلاسيكي، حروف — كل نمط له طعم</div></div>
-      <div class="why-card rv rv-d1"><img class="w-icon" src="why-cats.png" alt=""><div class="w-title">تحديات وفئات متنوعة</div><div class="w-desc">صور، أصوات، خرائط، رسم، ألغاز وأكثر</div></div>
-      <div class="why-card rv rv-d2"><img class="w-icon" src="why-family.png" alt=""><div class="w-title">لكل العائلة</div><div class="w-desc">مناسبة لكل الأعمار — جلسة عائلية ممتعة</div></div>
-      <div class="why-card rv rv-d3"><img class="w-icon" src="why-fun.png" alt=""><div class="w-title">تحدّي وضحك ومنافسة</div><div class="w-desc">الجو يحمّس والضحك ما يوقف!</div></div>
+  <div class="wrap">
+    <div class="stats" data-reveal id="stats">
+      <div class="stat"><span class="num" data-count="3">3</span><small>أنماط لعب</small></div>
+      <div class="stat"><span class="num" data-count="48" data-prefix="+">+48</span><small>فئة</small></div>
+      <div class="stat"><span class="num" data-count="7000" data-prefix="+">+7000</span><small>سؤال</small></div>
     </div>
   </div>
 </section>
 
-<!-- MODES -->
-<section class="sec modes-sec" id="modes">
-  <div class="sec-inner">
-    <div class="sec-label rv">أنماط اللعب</div>
-    <div class="sec-title rv">اختار تحدّيك</div>
-    <div class="sec-sub rv">ثلاث طرق لعب — كل وحدة لها طعم</div>
-    <div style="text-align:center;margin-bottom:28px"><a href="tutorials.html" style="display:inline-block;background:rgba(0,0,0,0.06);color:var(--dark);font-size:14px;font-weight:800;padding:12px 32px;border-radius:30px;transition:all 0.25s;border:1px solid rgba(0,0,0,0.08)" onmouseover="this.style.background='rgba(0,0,0,0.1)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(0,0,0,0.06)';this.style.transform='none'">شروحات</a></div>
-    <div class="modes-grid">
-      <div class="mode-card rv"><img src="mode-letters.png" alt=""><div class="m-name">حروف مع اللمّة</div><div class="m-desc">اختر حرف وجاوب — كل 3 متتالية = نقطة!</div></div>
-      <div class="mode-card rv rv-d1"><img src="mode-image.png" alt=""><div class="m-name">لمّة</div><div class="m-desc">سؤال وصورة، رسم، كلمات — تحديات متنوعة!</div></div>
-      <div class="mode-card rv rv-d2"><img src="mode-classic.png" alt=""><div class="m-name">كلاسيكي</div><div class="m-desc">اختيار من متعدد — اختبر معلوماتك!</div></div>
+<!-- ═══ WHY / STORY ═══ -->
+<section class="sec story" id="why" aria-labelledby="why-title">
+  <div class="wrap">
+    <header class="sec-head" data-reveal>
+      <span class="kicker">ليش اللمّة؟</span>
+      <h2 class="h2" id="why-title">مب مجرّد لعبة</h2>
+      <p class="sub">تجربة جماعية تجمع بين التحدي والمتعة</p>
+    </header>
+
+    <article class="chapter" id="draft">
+      <div class="ch-copy" data-reveal>
+        <span class="step num" aria-hidden="true">1</span>
+        <h3>اختاروا فئاتكم</h3>
+        <p>كل فريق يختار فئاته بالدور، والحماس يبدأ من أول اختيار.</p>
+        <ul><li>صور، أصوات، خرائط، رسم، ألغاز وأكثر</li><li>فريقين يتنافسون على جهاز واحد</li><li>مناسبة لكل الأعمار</li></ul>
+      </div>
+      <div class="box draft" data-play data-reveal style="--d:.1s" role="img" aria-label="الفريقين يختارون الفئات بالدور وكل فئة تطير لعمود فريقها">
+        <div class="box-in" aria-hidden="true">
+          <div class="col m"><h4><i></i>الصقور</h4><span class="slot s1 num">1</span><span class="slot s2 num">2</span><span class="slot s3 num">3</span></div>
+          <div class="col n"><h4><i></i>النمور</h4><span class="slot s1 num">1</span><span class="slot s2 num">2</span><span class="slot s3 num">3</span></div>
+          <div class="deck">
+            <div class="tile t1" style="--dx:152;--dy:0;--dl:.3s;z-index:1"><img src="assets/landing/cats/player-story.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>قصة لاعب</b><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
+            <div class="tile t2 tn" style="--dx:-152;--dy:0;--dl:1s;z-index:2"><img src="assets/landing/cats/cartoons.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>شخصيات كارتونية</b><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
+            <div class="tile t4" style="--dx:302;--dy:0;--dl:1.7s;z-index:3"><img src="assets/landing/cats/landmarks.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>معالم</b><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
+            <div class="tile t3 tn" style="--dx:-302;--dy:0;--dl:2.4s;z-index:4"><img src="assets/landing/cats/flags.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>أعلام</b><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
+            <div class="tile t5" style="--dx:152;--dy:0;--dl:3.1s;z-index:5"><img src="assets/landing/cats/animals.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>حيوانات</b><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
+            <div class="tile t6 tn" style="--dx:-152;--dy:0;--dl:3.8s;z-index:6"><img src="assets/landing/cats/movies.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>أفلام</b><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
+          </div>
+          <div class="ready">جاهزين؟ يلا نلعب</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="chapter flip" id="answer">
+      <div class="ch-copy" data-reveal>
+        <span class="step num" aria-hidden="true">2</span>
+        <h3>جاوبوا بصوت عالي</h3>
+        <p>لا كتابة ولا أزرار: قولوا الجواب بصوتكم، وبعدها اكشفوا البطاقة وشوفوا مين صاب.</p>
+        <ul><li>عدّاد وقت لكل سؤال</li><li>وسائل مساعدة تقلب اللعبة</li><li>الأسئلة ما تتكرر</li></ul>
+      </div>
+      <div class="box ask" data-play data-reveal style="--d:.1s" role="img" aria-label="سؤال بالصورة مع عدّاد الوقت، والفرق تجاوب بصوت عالي، وبعدها ينكشف الجواب">
+        <div class="box-in" aria-hidden="true">
+          <div class="qcard">
+            <div class="pic"><span class="lbl">الجواب</span><img class="zoom" src="assets/landing/ui/hippo-zoom.webp" alt="" width="720" height="480" loading="lazy" decoding="async"><img class="full" src="assets/landing/ui/hippo-full.webp" alt="" width="720" height="480" loading="lazy" decoding="async"></div>
+            <div class="qline"><span class="q">ما هذا الحيوان؟</span><span class="a">فرس النهر</span></div>
+          </div>
+          <div class="side">
+            <div class="ring"><svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="46"/><circle class="fg" cx="50" cy="50" r="46"/></svg><span class="n num" data-timer>30</span></div>
+            <span class="ring-cap">ثانية</span>
+            <div class="eq"><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <span class="bubble b1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>جاموس؟</span>
+          <span class="bubble b2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>فرس النهر!</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="chapter" id="win">
+      <div class="ch-copy" data-reveal>
+        <span class="step num" aria-hidden="true">3</span>
+        <h3>اكسبوا الجولة</h3>
+        <p>كل جواب صح يرفع نقاط فريقكم، والسباق يحتر لين آخر سؤال.</p>
+        <ul><li>أسئلة بـ <span class="num">100</span> و<span class="num">200</span> و<span class="num">300</span> نقطة</li><li>تحدّي وضحك ومنافسة</li><li>ألعابكم محفوظة في «جلساتي»</li></ul>
+      </div>
+      <div class="box win" data-play data-reveal style="--d:.1s" role="img" aria-label="سباق النقاط بين الفريقين، والفريق الفائز يحتفل مع الصقر">
+        <div class="box-in" aria-hidden="true">
+          <span class="glow"></span>
+          <div class="falc" data-falcon="trophy"><img src="assets/landing/falcon/trophy.webp" alt="" width="228" height="420" loading="lazy" decoding="async"></div>
+          <div class="race">
+            <div class="team t1"><b>الصقور</b><span class="num" data-to="500">0</span></div>
+            <div class="bar b1"><i></i></div>
+            <div class="team t2"><b>النمور</b><span class="num" data-to="300">0</span></div>
+            <div class="bar b2"><i></i></div>
+          </div>
+          <span class="plus num" style="right:calc(70*var(--u));top:calc(20*var(--u));--pd:.3s">+200</span>
+          <span class="plus num" style="right:calc(150*var(--u));top:calc(20*var(--u));--pd:1.1s">+300</span>
+          <div class="champ"><small>مبروك!</small><strong>الصقور فازوا</strong><span><span class="num">500</span> نقطة</span></div>
+        </div>
+      </div>
+    </article>
+
+    <div class="values">
+      <div class="value" data-reveal><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg></span><h4>أنماط لعب مختلفة</h4><p>لمّة، كلاسيكي، حروف — كل نمط له طعم</p></div>
+      <div class="value" data-reveal style="--d:.08s"><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg></span><h4>تحديات وفئات متنوعة</h4><p>صور، أصوات، خرائط، رسم، ألغاز وأكثر</p></div>
+      <div class="value" data-reveal style="--d:.16s"><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3.5 19c.6-3 2.8-5 5.5-5s4.9 2 5.5 5M14.5 14.6c.8-.4 1.6-.6 2.5-.6 2.2 0 3.9 1.6 4.4 4"/></svg></span><h4>لكل العائلة</h4><p>مناسبة لكل الأعمار — جلسة عائلية ممتعة</p></div>
+      <div class="value" data-reveal style="--d:.24s"><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 6h3v2a3 3 0 0 1-3 3M7 6H4v2a3 3 0 0 0 3 3"/></svg></span><h4>تحدّي وضحك ومنافسة</h4><p>الجو يحمّس والضحك ما يوقف!</p></div>
     </div>
   </div>
 </section>
 
-<!-- CATEGORIES -->
-<section class="sec cats-sec" id="cats">
-  <div class="sec-inner">
-    <div class="sec-label rv">الفئات</div>
-    <div class="sec-title rv">+46 فئة تغطي كل شي</div>
-    <div class="sec-sub rv">فئات متجددة — من الرياضة للتاريخ، ومن الأصوات للخرائط</div>
-    <div class="cats-grid">
-      <div class="cat rv"><img src="cat-player-story.png" alt=""><div class="cat-ov"><span class="cat-n">قصة لاعب</span></div><div class="cat-badge">جديد</div></div>
-      <div class="cat rv"><img src="cat-whoami.png" alt=""><div class="cat-ov"><span class="cat-n">من أنا</span></div><div class="cat-badge">جديد</div></div>
-      <div class="cat rv"><img src="cat-prophets.png" alt=""><div class="cat-ov"><span class="cat-n">قصص الأنبياء</span></div><div class="cat-badge">جديد</div></div>
-      <div class="cat rv"><img src="cat-worldcup.png" alt=""><div class="cat-ov"><span class="cat-n">كأس العالم</span></div><div class="cat-badge">جديد</div></div>
-      <div class="cat rv"><img src="cat-realmadrid.png" alt=""><div class="cat-ov"><span class="cat-n">ريال مدريد</span></div><div class="cat-badge">جديد</div></div>
-      <div class="cat rv"><img src="cat-cartoons.png" alt=""><div class="cat-ov"><span class="cat-n">شخصيات كارتونية</span></div><div class="cat-badge">جديد</div></div>
-      <div class="cat rv"><img src="cat-stadiums.png" alt=""><div class="cat-ov"><span class="cat-n">ملاعب كرة</span></div><div class="cat-badge">جديد</div></div>
-      <div class="cat rv"><img src="cat-commentator.png" alt=""><div class="cat-ov"><span class="cat-n">صوت المعلّق</span></div><div class="cat-badge">جديد</div></div>
-      <div class="cat rv"><img src="cat-formula.jpg" alt=""><div class="cat-ov"><span class="cat-n">فورمولا 1</span></div><div class="cat-badge">جديد</div></div>
-      <div class="cat rv"><img src="cat-jamiya.jpg" alt=""><div class="cat-ov"><span class="cat-n">جمعية</span></div><div class="cat-badge">جديد</div></div>
-      <div class="cat rv"><img src="cat-banat.jpg" alt=""><div class="cat-ov"><span class="cat-n">بنات وبس</span></div><div class="cat-badge">جديد</div></div>
-      <div class="cat rv"><img src="cat-khaleeji.jpg" alt=""><div class="cat-ov"><span class="cat-n">فن خليجي</span></div><div class="cat-badge">جديد</div></div>
-      <div class="cat rv"><img src="cat-languages.png" alt=""><div class="cat-ov"><span class="cat-n">لغات</span></div><div class="cat-badge">جديد</div></div>
-      <div class="cat rv"><img src="cat-guess-sound.png" alt=""><div class="cat-ov"><span class="cat-n">خمن الصوت</span></div><div class="cat-badge">جديد</div></div>
-      <div class="cat rv"><img src="cat-maps.png" alt=""><div class="cat-ov"><span class="cat-n">خرائط</span></div></div>
-      <div class="cat rv"><img src="cat-flags.jpg" alt=""><div class="cat-ov"><span class="cat-n">أعلام</span></div></div>
-      <div class="cat rv"><img src="cat-famous.jpg" alt=""><div class="cat-ov"><span class="cat-n">شخصيات</span></div></div>
-      <div class="cat rv"><img src="cat-logos.jpg" alt=""><div class="cat-ov"><span class="cat-n">شعارات</span></div></div>
-      <div class="cat rv"><img src="cat-puzzles.png" alt=""><div class="cat-ov"><span class="cat-n">ألغاز</span></div></div>
-      <div class="cat rv"><img src="cat-movies.jpg" alt=""><div class="cat-ov"><span class="cat-n">أفلام</span></div></div>
-      <div class="cat rv"><img src="cat-sports.jpg" alt=""><div class="cat-ov"><span class="cat-n">رياضة</span></div></div>
-      <div class="cat rv"><img src="cat-animals.jpg" alt=""><div class="cat-ov"><span class="cat-n">حيوانات</span></div></div>
-      <div class="cat rv"><img src="cat-landmarks.jpg" alt=""><div class="cat-ov"><span class="cat-n">معالم</span></div></div>
-      <div class="cat rv"><img src="cat-drawing.png" alt=""><div class="cat-ov"><span class="cat-n">رسم</span></div></div>
-      <div class="cat rv"><img src="cat-charades.png" alt=""><div class="cat-ov"><span class="cat-n">ولا كلمة</span></div></div>
-      <div class="cat rv"><img src="cat-qatari-culture.png" alt=""><div class="cat-ov"><span class="cat-n">الثقافة القطرية</span></div></div>
-      <div class="cat rv"><img src="cat-clubs.jpg" alt=""><div class="cat-ov"><span class="cat-n">أندية</span></div></div>
-      <div class="cat rv"><img src="cat-fashion.jpg" alt=""><div class="cat-ov"><span class="cat-n">ماركات</span></div></div>
-      <div class="cat rv"><img src="cat-letters.jpg" alt=""><div class="cat-ov"><span class="cat-n">حروف</span></div></div>
-      <div class="cat rv"><img src="cat-cities.jpg" alt=""><div class="cat-ov"><span class="cat-n">مدن</span></div></div>
-      <div class="cat rv"><img src="cat-videogames.jpg" alt=""><div class="cat-ov"><span class="cat-n">ألعاب فيديو</span></div></div>
-      <div class="cat rv"><img src="cat-religion.jpg" alt=""><div class="cat-ov"><span class="cat-n">دين</span></div></div>
-      <div class="cat rv"><img src="cat-letters-religion.jpg" alt=""><div class="cat-ov"><span class="cat-n">حروف دين</span></div></div>
-      <div class="cat rv"><img src="cat-technology.jpg" alt=""><div class="cat-ov"><span class="cat-n">تقنية</span></div></div>
-      <div class="cat rv"><img src="cat-history.jpg" alt=""><div class="cat-ov"><span class="cat-n">تاريخ</span></div></div>
-      <div class="cat rv"><img src="cat-inventions.png" alt=""><div class="cat-ov"><span class="cat-n">اختراعات</span></div></div>
-      <div class="cat rv"><img src="cat-geography.jpg" alt=""><div class="cat-ov"><span class="cat-n">جغرافيا</span></div></div>
-      <div class="cat rv"><img src="cat-culture.jpg" alt=""><div class="cat-ov"><span class="cat-n">ثقافة عامة</span></div></div>
-      <div class="cat rv"><img src="cat-entertainment.jpg" alt=""><div class="cat-ov"><span class="cat-n">ترفيه</span></div></div>
-      <div class="cat rv"><img src="cat-food.jpg" alt=""><div class="cat-ov"><span class="cat-n">طعام ومطبخ</span></div></div>
-      <div class="cat rv"><img src="cat-economy.jpg" alt=""><div class="cat-ov"><span class="cat-n">اقتصاد</span></div></div>
-      <div class="cat rv"><img src="cat-math.jpg" alt=""><div class="cat-ov"><span class="cat-n">رياضيات</span></div></div>
-      <div class="cat rv"><img src="cat-medicine.jpg" alt=""><div class="cat-ov"><span class="cat-n">طب</span></div></div>
-      <div class="cat rv"><img src="cat-cars.jpg" alt=""><div class="cat-ov"><span class="cat-n">سيارات</span></div></div>
-      <div class="cat rv"><img src="cat-space.jpg" alt=""><div class="cat-ov"><span class="cat-n">فضاء وكون</span></div></div>
-      <div class="cat rv"><img src="cat-literature.jpg" alt=""><div class="cat-ov"><span class="cat-n">أدب</span></div></div>
+<!-- ═══ MODES ═══ -->
+<section class="sec" id="modes" aria-labelledby="modes-title">
+  <div class="wrap">
+    <header class="sec-head" data-reveal>
+      <span class="kicker n">أنماط اللعب</span>
+      <h2 class="h2" id="modes-title">اختار تحدّيك</h2>
+      <p class="sub">ثلاث طرق لعب — كل وحدة لها طعم</p>
+    </header>
+    <div class="modes">
+      <article class="mode" data-reveal>
+        <div class="art" data-falcon="mode-image"><img class="still" src="assets/landing/falcon/mode-image.webp" alt="" width="230" height="320" loading="lazy" decoding="async"></div>
+        <div class="txt"><h3>لمّة</h3><p>سؤال وصورة، رسم، كلمات — تحديات متنوعة!</p></div>
+      </article>
+      <article class="mode mn" data-reveal style="--d:.1s">
+        <div class="art" data-falcon="mode-letters"><img class="still" src="assets/landing/falcon/mode-letters.webp" alt="" width="410" height="320" loading="lazy" decoding="async"></div>
+        <div class="txt"><h3>حروف مع اللمّة</h3><p>اختر حرف وجاوب — كل 3 متتالية = نقطة!</p></div>
+      </article>
+      <article class="mode mg" data-reveal style="--d:.2s">
+        <div class="art" data-falcon="mode-classic"><img class="still" src="assets/landing/falcon/mode-classic.webp" alt="" width="330" height="320" loading="lazy" decoding="async"></div>
+        <div class="txt"><h3>كلاسيكي</h3><p>اختيار من متعدد — اختبر معلوماتك!</p></div>
+      </article>
+    </div>
+    <div class="tut-link" data-reveal><a class="btn-ghost" href="tutorials.html">شروحات<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></div>
+  </div>
+</section>
+
+<!-- ═══ CATEGORIES ═══ -->
+<section class="sec cats" id="cats" aria-labelledby="cats-title">
+  <div class="wrap">
+    <header class="sec-head" data-reveal>
+      <span class="kicker g">الفئات</span>
+      <h2 class="h2" id="cats-title">+46 فئة تغطي كل شي</h2>
+      <p class="sub">فئات متجددة — من الرياضة للتاريخ، ومن الأصوات للخرائط</p>
+    </header>
+  </div>
+  <div class="wall" id="wall">
+    <div class="wrow"><div class="wtrack" style="--dur:92s"><ul><li class="ctile"><img src="assets/landing/cats/player-story.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>قصة لاعب</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/whoami.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>من أنا</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/prophets.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>قصص الأنبياء</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/worldcup.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>كأس العالم</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/realmadrid.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>ريال مدريد</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/cartoons.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>شخصيات كارتونية</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/stadiums.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>ملاعب كرة</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/commentator.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>صوت المعلّق</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/formula1.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>فورمولا 1</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/jamiya.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>جمعية</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/banat.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>بنات وبس</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/khaleeji.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>فن خليجي</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/languages.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>لغات</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/guess-sound.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>خمن الصوت</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/medicine.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>طب</b></li><li class="ctile"><img src="assets/landing/cats/literature.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>أدب</b></li></ul><ul class="dup" aria-hidden="true"><li class="ctile"><img src="assets/landing/cats/player-story.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>قصة لاعب</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/whoami.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>من أنا</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/prophets.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>قصص الأنبياء</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/worldcup.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>كأس العالم</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/realmadrid.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>ريال مدريد</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/cartoons.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>شخصيات كارتونية</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/stadiums.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>ملاعب كرة</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/commentator.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>صوت المعلّق</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/formula1.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>فورمولا 1</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/jamiya.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>جمعية</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/banat.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>بنات وبس</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/khaleeji.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>فن خليجي</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/languages.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>لغات</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/guess-sound.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>خمن الصوت</b><span class="new">جديد</span></li><li class="ctile"><img src="assets/landing/cats/medicine.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>طب</b></li><li class="ctile"><img src="assets/landing/cats/literature.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>أدب</b></li></ul></div></div>
+    <div class="wrow rev"><div class="wtrack" style="--dur:78s"><ul><li class="ctile"><img src="assets/landing/cats/maps.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>خرائط</b></li><li class="ctile"><img src="assets/landing/cats/famous.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>شخصيات</b></li><li class="ctile"><img src="assets/landing/cats/puzzles.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>ألغاز</b></li><li class="ctile"><img src="assets/landing/cats/sports.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>رياضة</b></li><li class="ctile"><img src="assets/landing/cats/landmarks.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>معالم</b></li><li class="ctile"><img src="assets/landing/cats/charades.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>ولا كلمة</b></li><li class="ctile"><img src="assets/landing/cats/clubs.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>أندية</b></li><li class="ctile"><img src="assets/landing/cats/letters.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>حروف</b></li><li class="ctile"><img src="assets/landing/cats/videogames.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>ألعاب فيديو</b></li><li class="ctile"><img src="assets/landing/cats/letters-religion.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>حروف دين</b></li><li class="ctile"><img src="assets/landing/cats/history.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>تاريخ</b></li><li class="ctile"><img src="assets/landing/cats/geography.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>جغرافيا</b></li><li class="ctile"><img src="assets/landing/cats/entertainment.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>ترفيه</b></li><li class="ctile"><img src="assets/landing/cats/economy.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>اقتصاد</b></li><li class="ctile"><img src="assets/landing/cats/cars.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>سيارات</b></li></ul><ul class="dup" aria-hidden="true"><li class="ctile"><img src="assets/landing/cats/maps.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>خرائط</b></li><li class="ctile"><img src="assets/landing/cats/famous.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>شخصيات</b></li><li class="ctile"><img src="assets/landing/cats/puzzles.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>ألغاز</b></li><li class="ctile"><img src="assets/landing/cats/sports.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>رياضة</b></li><li class="ctile"><img src="assets/landing/cats/landmarks.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>معالم</b></li><li class="ctile"><img src="assets/landing/cats/charades.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>ولا كلمة</b></li><li class="ctile"><img src="assets/landing/cats/clubs.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>أندية</b></li><li class="ctile"><img src="assets/landing/cats/letters.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>حروف</b></li><li class="ctile"><img src="assets/landing/cats/videogames.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>ألعاب فيديو</b></li><li class="ctile"><img src="assets/landing/cats/letters-religion.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>حروف دين</b></li><li class="ctile"><img src="assets/landing/cats/history.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>تاريخ</b></li><li class="ctile"><img src="assets/landing/cats/geography.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>جغرافيا</b></li><li class="ctile"><img src="assets/landing/cats/entertainment.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>ترفيه</b></li><li class="ctile"><img src="assets/landing/cats/economy.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>اقتصاد</b></li><li class="ctile"><img src="assets/landing/cats/cars.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>سيارات</b></li></ul></div></div>
+    <div class="wrow"><div class="wtrack" style="--dur:104s"><ul><li class="ctile"><img src="assets/landing/cats/flags.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>أعلام</b></li><li class="ctile"><img src="assets/landing/cats/logos.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>شعارات</b></li><li class="ctile"><img src="assets/landing/cats/movies.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>أفلام</b></li><li class="ctile"><img src="assets/landing/cats/animals.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>حيوانات</b></li><li class="ctile"><img src="assets/landing/cats/drawing.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>رسم</b></li><li class="ctile"><img src="assets/landing/cats/qatari-culture.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>الثقافة القطرية</b></li><li class="ctile"><img src="assets/landing/cats/fashion.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>ماركات</b></li><li class="ctile"><img src="assets/landing/cats/cities.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>مدن</b></li><li class="ctile"><img src="assets/landing/cats/religion.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>دين</b></li><li class="ctile"><img src="assets/landing/cats/technology.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>تقنية</b></li><li class="ctile"><img src="assets/landing/cats/inventions.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>اختراعات</b></li><li class="ctile"><img src="assets/landing/cats/culture.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>ثقافة عامة</b></li><li class="ctile"><img src="assets/landing/cats/food.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>طعام ومطبخ</b></li><li class="ctile"><img src="assets/landing/cats/math.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>رياضيات</b></li><li class="ctile"><img src="assets/landing/cats/space.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>فضاء وكون</b></li></ul><ul class="dup" aria-hidden="true"><li class="ctile"><img src="assets/landing/cats/flags.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>أعلام</b></li><li class="ctile"><img src="assets/landing/cats/logos.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>شعارات</b></li><li class="ctile"><img src="assets/landing/cats/movies.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>أفلام</b></li><li class="ctile"><img src="assets/landing/cats/animals.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>حيوانات</b></li><li class="ctile"><img src="assets/landing/cats/drawing.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>رسم</b></li><li class="ctile"><img src="assets/landing/cats/qatari-culture.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>الثقافة القطرية</b></li><li class="ctile"><img src="assets/landing/cats/fashion.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>ماركات</b></li><li class="ctile"><img src="assets/landing/cats/cities.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>مدن</b></li><li class="ctile"><img src="assets/landing/cats/religion.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>دين</b></li><li class="ctile"><img src="assets/landing/cats/technology.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>تقنية</b></li><li class="ctile"><img src="assets/landing/cats/inventions.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>اختراعات</b></li><li class="ctile"><img src="assets/landing/cats/culture.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>ثقافة عامة</b></li><li class="ctile"><img src="assets/landing/cats/food.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>طعام ومطبخ</b></li><li class="ctile"><img src="assets/landing/cats/math.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>رياضيات</b></li><li class="ctile"><img src="assets/landing/cats/space.webp" alt="" width="360" height="246" loading="lazy" decoding="async"><b>فضاء وكون</b></li></ul></div></div>
+  </div>
+</section>
+
+<!-- ═══ HELPERS ═══ -->
+<section class="sec" id="helpers" aria-labelledby="helpers-title">
+  <div class="wrap">
+    <header class="sec-head" data-reveal>
+      <span class="kicker">وسائل المساعدة</span>
+      <h2 class="h2" id="helpers-title">اختر <span class="num">3</span> من <span class="num">5</span></h2>
+      <p class="sub">كل فريق يختار 3 وسائل مساعدة قبل بداية اللعب</p>
+    </header>
+    <div class="helpers" id="helperGrid">
+      <button type="button" class="hcard" aria-pressed="false" data-reveal style="--d:0.00s"><span class="tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><img src="assets/landing/ui/powerup-bomb.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><b>قنبلة</b><span>حذف إجابتين خطأ</span></button>
+      <button type="button" class="hcard" aria-pressed="false" data-reveal style="--d:0.07s"><span class="tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><img src="assets/landing/ui/powerup-double.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><b>إجابتين</b><span>فرصة ثانية للإجابة</span></button>
+      <button type="button" class="hcard" aria-pressed="false" data-reveal style="--d:0.14s"><span class="tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><img src="assets/landing/ui/powerup-friend.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><b>صديق</b><span>استعن بصديق</span></button>
+      <button type="button" class="hcard" aria-pressed="false" data-reveal style="--d:0.21s"><span class="tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><img src="assets/landing/ui/powerup-freeze.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><b>تجميد</b><span>أوقف العدّاد</span></button>
+      <button type="button" class="hcard" aria-pressed="false" data-reveal style="--d:0.28s"><span class="tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><img src="assets/landing/ui/powerup-swap.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><b>تبديل</b><span>بدّل السؤال</span></button>
+    </div>
+    <div class="pickbar no-js-hide" aria-live="polite"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span id="pickTxt">جرّب: اختر 3 وسائل</span></div>
+  </div>
+</section>
+
+<!-- ═══ HOW ═══ -->
+<section class="sec how" aria-labelledby="how-title">
+  <div class="wrap">
+    <header class="sec-head" data-reveal>
+      <span class="kicker n">كيف تلعب؟</span>
+      <h2 class="h2" id="how-title">ثلاث خطوات بس</h2>
+      <p class="sub">سهلة وسريعة — وبعدها المتعة تبدأ</p>
+    </header>
+    <ol class="steps" data-reveal-line>
+      <li><span class="n num">1</span><h3>حمّل اللعبة</h3><p>نزّلها من App Store أو Google Play</p></li>
+      <li style="--d:.25s"><span class="n num">2</span><h3>اختر النمط</h3><p>لمّة، كلاسيكي، أو حروف</p></li>
+      <li style="--d:.5s"><span class="n num">3</span><h3>ابدأ التحدي</h3><p>العب مع عائلتك وأصدقائك!</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ═══ SCREENSHOTS ═══ -->
+<section class="sec shots" aria-labelledby="shots-title">
+  <div class="wrap">
+    <header class="sec-head" data-reveal>
+      <span class="kicker">من داخل اللعبة</span>
+      <h2 class="h2" id="shots-title">شوفها بنفسك</h2>
+      <p class="sub">اسحب لمشاهدة المزيد</p>
+    </header>
+  </div>
+  <div class="strack" id="strack" tabindex="0" aria-label="صور من داخل اللعبة">
+    <figure class="shot"><div class="frame"><img src="assets/landing/shots/home.webp" alt="الرئيسية" width="1100" height="506" loading="lazy" decoding="async"></div><figcaption>الرئيسية</figcaption></figure>
+    <figure class="shot"><div class="frame"><img src="assets/landing/shots/picker.webp" alt="اختيار الفئات" width="1100" height="506" loading="lazy" decoding="async"></div><figcaption>اختيار الفئات</figcaption></figure>
+    <figure class="shot"><div class="frame"><img src="assets/landing/shots/board.webp" alt="لوحة الأسئلة" width="1100" height="506" loading="lazy" decoding="async"></div><figcaption>لوحة الأسئلة</figcaption></figure>
+    <figure class="shot"><div class="frame"><img src="assets/landing/shots/question.webp" alt="سؤال بالصورة" width="1100" height="506" loading="lazy" decoding="async"></div><figcaption>سؤال بالصورة</figcaption></figure>
+    <figure class="shot"><div class="frame"><img src="assets/landing/shots/reveal.webp" alt="كشف الجواب" width="1100" height="506" loading="lazy" decoding="async"></div><figcaption>كشف الجواب</figcaption></figure>
+    <figure class="shot"><div class="frame"><img src="assets/landing/shots/classic.webp" alt="سؤال كلاسيكي" width="1100" height="506" loading="lazy" decoding="async"></div><figcaption>سؤال كلاسيكي</figcaption></figure>
+    <figure class="shot"><div class="frame"><img src="assets/landing/shots/board-navy.webp" alt="دور الفريق الثاني" width="1100" height="506" loading="lazy" decoding="async"></div><figcaption>دور الفريق الثاني</figcaption></figure>
+    <figure class="shot"><div class="frame"><img src="assets/landing/shots/results.webp" alt="النتيجة" width="1100" height="506" loading="lazy" decoding="async"></div><figcaption>النتيجة</figcaption></figure>
+  </div>
+  <div class="scontrols no-js-hide">
+    <button class="sbtnr" id="sPrev" aria-label="الصورة السابقة"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+    <button class="sbtnr" id="sNext" aria-label="الصورة التالية"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="sec" id="faq" aria-labelledby="faq-title" style="background:var(--bg)">
+  <div class="wrap">
+    <header class="sec-head" data-reveal>
+      <span class="kicker">الأسئلة الشائعة</span>
+      <h2 class="h2" id="faq-title">عندك سؤال؟</h2>
+      <p class="sub">أجوبة لأكثر الأسئلة تكراراً</p>
+    </header>
+    <div class="faq">
+      <details data-reveal><summary>كيف يمكنني إنشاء لعبة في اللمّة؟<span class="pm" aria-hidden="true"></span></summary><div class="a"><p>سجّل دخولك أولاً، ثم اضغط "إبدأ اللعب"، اختر نمط اللعب (لمّة، كلاسيكي، أو حروف)، حدد الإعدادات، وابدأ التحدي!</p></div></details>
+      <details data-reveal><summary>هل يمكن تجربة اللعبة قبل الشراء؟<span class="pm" aria-hidden="true"></span></summary><div class="a"><p>كل حساب جديد يحصل على 3 تجارب مجانية — لعبة كلاسيكية، لعبة لمّة، ولعبة حروف.</p></div></details>
+      <details data-reveal><summary>هل يمكنني استرجاع لعبة سابقة؟<span class="pm" aria-hidden="true"></span></summary><div class="a"><p>نعم! جميع ألعابك محفوظة في "جلساتي". يمكنك استكمال أو إعادة أي لعبة سابقة بدون خصم نقاط.</p></div></details>
+      <details data-reveal><summary>هل تتكرر الأسئلة إذا لعبت نفس الفئات؟<span class="pm" aria-hidden="true"></span></summary><div class="a"><p>لا، الأسئلة ما تتكرر واحنا نضيف أسئلة جديدة بشكل مستمر! ولكن إذا لعبت من "جلساتي" تجيك نفس الأسئلة اللي جتك أول مرة.</p></div></details>
+      <details data-reveal><summary>ما هي أنماط اللعب المتوفرة؟<span class="pm" aria-hidden="true"></span></summary><div class="a"><p>نمط "لمّة" — سؤال وصورة، رسم، كلمات وأكثر! نمط "كلاسيكي" — أسئلة واختيار من متعدد. ونمط "حروف مع اللمّة" — اختر حرف وجاوب، كل 3 حروف متتالية = نقطة!</p></div></details>
+      <details data-reveal><summary>وين أحصل شرح للأنماط واللعبة؟<span class="pm" aria-hidden="true"></span></summary><div class="a"><p>الشروحات موجودة على حسابنا في انستقرام @allamma.app وأيضاً في صفحة <a href="tutorials.html">الشروحات</a>.</p></div></details>
     </div>
   </div>
 </section>
 
-<!-- POWERUPS -->
-<section class="sec pu-sec">
-  <div class="sec-inner">
-    <div class="sec-label rv">وسائل المساعدة</div>
-    <div class="sec-title rv">اختر 3 من 5</div>
-    <div class="sec-sub rv">كل فريق يختار 3 وسائل مساعدة قبل بداية اللعب</div>
-    <div class="pu-grid">
-      <div class="pu-card rv"><img class="pu-icon" src="powerup-bomb.png" alt=""><div class="pu-emoji">💣</div><div class="pu-name">قنبلة</div><div class="pu-desc">حذف إجابتين خطأ</div></div>
-      <div class="pu-card rv rv-d1"><img class="pu-icon" src="powerup-double.png" alt=""><div class="pu-emoji">🎯</div><div class="pu-name">إجابتين</div><div class="pu-desc">فرصة ثانية للإجابة</div></div>
-      <div class="pu-card rv rv-d2"><img class="pu-icon" src="powerup-friend.png" alt=""><div class="pu-emoji">🤝</div><div class="pu-name">صديق</div><div class="pu-desc">استعن بصديق</div></div>
-      <div class="pu-card rv rv-d3"><img class="pu-icon" src="powerup-freeze.png" alt=""><div class="pu-emoji">❄️</div><div class="pu-name">تجميد</div><div class="pu-desc">أوقف العدّاد</div></div>
-      <div class="pu-card rv rv-d4"><img class="pu-icon" src="powerup-swap.png" alt=""><div class="pu-emoji">🔄</div><div class="pu-name">تبديل</div><div class="pu-desc">بدّل السؤال</div></div>
+<!-- ═══ FINAL CTA + RATE ═══ -->
+<section class="final" id="download" aria-labelledby="cta-title">
+  <div class="wrap">
+    <div class="cta" data-reveal>
+      <span class="navy-side" aria-hidden="true"></span>
+      <div class="cta-copy">
+        <h2 id="cta-title">جاهز للتحدي؟</h2>
+        <p>حمّل اللمّة الحين وخلّ الجلسة تبدأ!</p>
+        <div class="stores">
+          <a class="store light" href="https://apps.apple.com/app/id6760367652" target="_blank" rel="noopener"><img src="assets/landing/ui/appstore.webp" alt="" width="28" height="28" loading="lazy"><span><small>حمّلها من</small><b>App Store</b></span></a>
+          <a class="store light" href="https://play.google.com/store/apps/details?id=com.allamma.app" target="_blank" rel="noopener"><img src="assets/landing/ui/googleplay.webp" alt="" width="28" height="28" loading="lazy"><span><small>حمّلها من</small><b>Google Play</b></span></a>
+        </div>
+      </div>
+      <div class="cta-art" aria-hidden="true"><span class="disc"></span><div class="falc" data-falcon="cheer"><img src="assets/landing/falcon/cheer.webp" alt="" width="304" height="420" loading="lazy" decoding="async"></div></div>
     </div>
-  </div>
-</section>
 
-<!-- HOW -->
-<section class="sec how-sec">
-  <div class="sec-inner">
-    <div class="sec-label rv">كيف تلعب؟</div>
-    <div class="sec-title rv">ثلاث خطوات بس</div>
-    <div class="sec-sub rv">سهلة وسريعة — وبعدها المتعة تبدأ</div>
-    <div class="how-steps">
-      <div class="how-step rv"><div class="how-n">1</div><div class="how-t">حمّل اللعبة</div><div class="how-d">نزّلها من App Store أو Google Play</div></div>
-      <div class="how-step rv rv-d1"><div class="how-n">2</div><div class="how-t">اختر النمط</div><div class="how-d">لمّة، كلاسيكي، أو حروف</div></div>
-      <div class="how-step rv rv-d2"><div class="how-n">3</div><div class="how-t">ابدأ التحدي</div><div class="how-d">العب مع عائلتك وأصدقائك!</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- SCREENSHOTS -->
-<section class="sec ss-sec">
-  <div class="sec-inner">
-    <div class="sec-label rv">من داخل اللعبة</div>
-    <div class="sec-title rv">شوفها بنفسك</div>
-    <div class="sec-sub rv">اسحب لمشاهدة المزيد</div>
-    <div class="ss-wrap rv">
-      <div class="ss-track" id="ssTrack">
-        <div class="ss-slide"><img src="ss1.png?v=2" alt="عن اللعبة"></div>
-        <div class="ss-slide"><img src="ss2.png?v=2" alt="أنماط اللعب"></div>
-        <div class="ss-slide"><img src="ss3.png?v=2" alt="فئات جديدة"></div>
-        <div class="ss-slide"><img src="ss4.png?v=2" alt="لوحة الأسئلة"></div>
-        <div class="ss-slide"><img src="ss5.png?v=2" alt="نمط حروف"></div>
-        <div class="ss-slide"><img src="ss6.png?v=2" alt="قوانين اللعبة"></div>
-        <div class="ss-slide"><img src="ss7.png?v=2" alt="نمط حروف"></div>
-        <div class="ss-slide"><img src="ss8.png?v=2" alt="نمط رسم"></div>
-        <div class="ss-slide"><img src="ss9.png?v=2" alt="نتيجة اللعبة"></div>
-      </div>
-      <button class="ss-arrow ss-prev" onclick="ssScroll(1)">›</button>
-      <button class="ss-arrow ss-next" onclick="ssScroll(-1)">‹</button>
-      <div class="ss-hint">← اسحب لمشاهدة المزيد →</div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="sec faq-sec">
-  <div class="sec-inner">
-    <div class="sec-label rv">الأسئلة الشائعة</div>
-    <div class="sec-title rv">عندك سؤال؟</div>
-    <div class="sec-sub rv">أجوبة لأكثر الأسئلة تكراراً</div>
-    <div class="faq-list">
-      <div class="faq-item rv" onclick="this.classList.toggle('open')">
-        <div class="faq-q">كيف يمكنني إنشاء لعبة في اللمّة؟<span class="faq-arrow">▼</span></div>
-        <div class="faq-a"><p>سجّل دخولك أولاً، ثم اضغط "إبدأ اللعب"، اختر نمط اللعب (لمّة، كلاسيكي، أو حروف)، حدد الإعدادات، وابدأ التحدي!</p></div>
-      </div>
-      <div class="faq-item rv rv-d1" onclick="this.classList.toggle('open')">
-        <div class="faq-q">هل يمكن تجربة اللعبة قبل الشراء؟<span class="faq-arrow">▼</span></div>
-        <div class="faq-a"><p>كل حساب جديد يحصل على 3 تجارب مجانية — لعبة كلاسيكية، لعبة لمّة، ولعبة حروف.</p></div>
-      </div>
-      <div class="faq-item rv rv-d2" onclick="this.classList.toggle('open')">
-        <div class="faq-q">هل يمكنني استرجاع لعبة سابقة؟<span class="faq-arrow">▼</span></div>
-        <div class="faq-a"><p>نعم! جميع ألعابك محفوظة في "جلساتي". يمكنك استكمال أو إعادة أي لعبة سابقة بدون خصم نقاط.</p></div>
-      </div>
-      <div class="faq-item rv rv-d3" onclick="this.classList.toggle('open')">
-        <div class="faq-q">هل تتكرر الأسئلة إذا لعبت نفس الفئات؟<span class="faq-arrow">▼</span></div>
-        <div class="faq-a"><p>لا، الأسئلة ما تتكرر واحنا نضيف أسئلة جديدة بشكل مستمر! ولكن إذا لعبت من "جلساتي" تجيك نفس الأسئلة اللي جتك أول مرة.</p></div>
-      </div>
-      <div class="faq-item rv rv-d4" onclick="this.classList.toggle('open')">
-        <div class="faq-q">ما هي أنماط اللعب المتوفرة؟<span class="faq-arrow">▼</span></div>
-        <div class="faq-a"><p>نمط "لمّة" — سؤال وصورة، رسم، كلمات وأكثر! نمط "كلاسيكي" — أسئلة واختيار من متعدد. ونمط "حروف مع اللمّة" — اختر حرف وجاوب، كل 3 حروف متتالية = نقطة!</p></div>
-      </div>
-      <div class="faq-item rv" onclick="this.classList.toggle('open')">
-        <div class="faq-q">وين أحصل شرح للأنماط واللعبة؟<span class="faq-arrow">▼</span></div>
-        <div class="faq-a"><p>الشروحات موجودة على حسابنا في انستقرام @allamma.app وأيضاً في صفحة <a href="tutorials.html" style="color:var(--maroon);text-decoration:underline">الشروحات</a>.</p></div>
+    <div class="rate" data-reveal>
+      <span class="stars" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></svg></span>
+      <div><h3>عجبتك اللمّة؟ قيّمنا!</h3><p>تقييمك يساعدنا نوصل لناس أكثر ونطوّر اللعبة — كل نجمة تفرق!</p></div>
+      <div class="rate-btns">
+        <a class="rate-btn" href="https://apps.apple.com/app/id6760367652?action=write-review" target="_blank" rel="noopener"><img src="assets/landing/ui/appstore.webp" alt="" width="22" height="22" loading="lazy"><span><small>قيّمنا على</small><b>App Store</b></span></a>
+        <a class="rate-btn" href="https://play.google.com/store/apps/details?id=com.allamma.app" target="_blank" rel="noopener"><img src="assets/landing/ui/googleplay.webp" alt="" width="22" height="22" loading="lazy"><span><small>قيّمنا على</small><b>Google Play</b></span></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta">
-  <h2 class="cta-t rv">جاهز للتحدي؟</h2>
-  <p class="cta-s rv">حمّل اللمّة الحين وخلّ الجلسة تبدأ!</p>
-  <div class="cta-btns rv">
-    <a class="btn-w" href="https://apps.apple.com/app/id6760367652" target="_blank">
-      <img src="appstore.png" alt=""><div>App Store<div class="btn-sub">حمّل اللعبة</div></div>
-    </a>
-    <a class="btn-w" href="https://play.google.com/store/apps/details?id=com.allamma.app" target="_blank">
-      <img src="googleplay.png" alt=""><div>Google Play<div class="btn-sub">حمّل اللعبة</div></div>
-    </a>
-  </div>
-</section>
+</main>
 
-<!-- RATE -->
-<section class="rate-sec">
-  <img class="rate-img rv" src="falcon-rate.png" alt="قيّم اللمّة">
-  <div class="rate-title rv">عجبتك اللمّة؟ قيّمنا!</div>
-  <div class="rate-sub rv">تقييمك يساعدنا نوصل لناس أكثر ونطوّر اللعبة — كل نجمة تفرق!</div>
-  <div class="rate-btns rv">
-    <a class="rate-btn" href="https://apps.apple.com/app/id6760367652?action=write-review" target="_blank">
-      <img src="appstore.png" alt="">قيّم على App Store
-    </a>
-    <a class="rate-btn" href="https://play.google.com/store/apps/details?id=com.allamma.app" target="_blank">
-      <img src="googleplay.png" alt="">قيّم على Google Play
-    </a>
+<footer class="site-foot">
+  <div class="wrap">
+    <span class="logo" role="img" aria-label="اللمّة" style="width:99px"></span>
+    <div class="soc">
+      <a href="https://www.instagram.com/allamma.app" target="_blank" rel="noopener" aria-label="انستقرام"><img src="instagram.png" alt="" width="22" height="22" loading="lazy"></a>
+      <a href="https://www.tiktok.com/@allamma.app" target="_blank" rel="noopener" aria-label="تيك توك"><img src="tiktok.png" alt="" width="22" height="22" loading="lazy"></a>
+      <a href="https://x.com/AllammaApp" target="_blank" rel="noopener" aria-label="إكس"><img src="x.png" alt="" width="22" height="22" loading="lazy"></a>
+    </div>
+    <div class="flinks">
+      <a href="links.html">روابط التحميل</a>
+      <a href="privacy.html">سياسة الخصوصية</a>
+      <a href="terms.html">الشروط والأحكام</a>
+    </div>
+    <div class="copy">© 2026 اللمّة — جميع الحقوق محفوظة | allamma.app</div>
   </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="f-soc">
-    <a class="f-dark" href="https://www.instagram.com/allamma.app" target="_blank"><img src="instagram.png" alt=""></a>
-    <a class="f-dark" href="https://www.tiktok.com/@allamma.app" target="_blank"><img src="tiktok.png" alt=""></a>
-    <a class="f-dark" href="https://x.com/AllammaApp" target="_blank"><img src="x.png" alt=""></a>
-  </div>
-  <div class="f-links">
-    <a class="f-link" href="links.html">روابط التحميل</a>
-    <a class="f-link" href="privacy.html">سياسة الخصوصية</a>
-    <a class="f-link" href="terms.html">الشروط والأحكام</a>
-  </div>
-  <div class="f-copy">© 2026 اللمّة — جميع الحقوق محفوظة | allamma.app</div>
 </footer>
 
-<script>
-// Scroll reveal
-const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-
-// Nav shadow on scroll
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)},{passive:true});
-
-// Counter animation
-const cio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('[data-t]').forEach(el=>{const t=+el.dataset.t,s=el.dataset.suffix||'',dur=1800,st=Date.now();const tick=()=>{const p=Math.min((Date.now()-st)/dur,1),ez=1-Math.pow(1-p,4);el.textContent=Math.floor(ez*t);if(p<1)requestAnimationFrame(tick);else el.textContent=t+s};tick()});cio.unobserve(e.target)}})},{threshold:0.5});
-document.querySelectorAll('.stats').forEach(el=>cio.observe(el));
-
-// Screenshot horizontal scroll
-const ssTrack=document.getElementById('ssTrack');
-function ssScroll(dir){const w=ssTrack.querySelector('.ss-slide').offsetWidth+28;ssTrack.scrollBy({left:dir*w,behavior:'smooth'})}
-</script>
+<script src="assets/landing/landing.js?v=1" defer></script>
 </body>
 </html>
