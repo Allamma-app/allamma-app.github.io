@@ -226,7 +226,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .stat + .stat::before{content:"";position:absolute;right:0;top:22%;bottom:22%;width:1px;background:var(--line)}
 .stat .num{display:block;font-size:clamp(30px,5vw,48px);line-height:1.1;color:var(--maroon)}
 .stat:nth-child(2) .num{color:var(--navy)}
-.stat:nth-child(3) .num{color:var(--gold)}
+.stat:nth-child(3) .num{color:var(--gold-ink)}
 .stat small{font-size:14px;font-weight:700;color:var(--muted)}
 
 /* ═══════════ SECTIONS ═══════════ */
@@ -489,7 +489,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .flinks{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 22px;margin-bottom:14px}
 .flinks a{font-weight:700;font-size:14px;color:var(--muted)}
 .flinks a:hover{color:var(--maroon)}
-.copy{font-size:13px;color:#8F8487}
+.copy{font-size:13px;color:#6E6266}
 
 /* ═══════════ RESPONSIVE ═══════════ */
 @media (max-width:1000px){
