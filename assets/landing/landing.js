@@ -114,9 +114,9 @@
     var q = { cat: $('#qCat'), pts: $('#qPts'), img: $('#qImg'), alt: $('#qAlt'), q: $('#qQ'), a: $('#qA'), a2: $('#qA2'), who: $('#qWho'), n: $('#qN') };
     var fly = $('#fly'), say = $('#sayT'), turnT = $('#turnT'), conf = $('#conf');
     var rounds = [
-      { team: 1, cell: 'cA', cat: 'حيوانات', pts: 200, img: 'hippo-zoom', alt: 'hippo-full', q: 'ما هذا الحيوان؟', a: 'فرس النهر', say: 'فرس النهر!' },
+      { team: 1, cell: 'cA', cat: 'خرائط', pts: 200, img: 'map-ITA-wide', alt: 'map-ITA-wide', q: 'ما اسم هذه الدولة؟', a: 'إيطاليا', say: 'إيطاليا!' },
       { team: 2, cell: 'cB', cat: 'معالم', pts: 300, img: 'clock-zoom', alt: 'bigben-full', q: 'ما هذا المعلم؟', a: 'ساعة بيغ بن', say: 'بيغ بن!' },
-      { team: 1, cell: 'cC', cat: 'أفلام', pts: 100, img: 'hippo-zoom', alt: 'hippo-full', q: 'ما هذا الحيوان؟', a: 'فرس النهر', say: 'فرس النهر!', quick: true },
+      { team: 1, cell: 'cC', cat: 'خرائط', pts: 100, img: 'map-ITA-wide', alt: 'map-ITA-wide', q: 'ما اسم هذه الدولة؟', a: 'إيطاليا', say: 'إيطاليا!', quick: true },
       { team: 2, cell: 'cD', cat: 'أعلام', pts: 100, img: 'clock-zoom', alt: 'bigben-full', q: 'ما هذا المعلم؟', a: 'ساعة بيغ بن', say: 'بيغ بن!', quick: true }
     ];
     var timers = [], idx = 0, running = false, visible = true;
