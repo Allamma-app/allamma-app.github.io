@@ -160,7 +160,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .screen.s-q .g-body,.screen.s-r .g-body{opacity:0}
 .q-main{flex:1;background:#fff;border-radius:calc(22*var(--u));box-shadow:0 calc(8*var(--u)) calc(20*var(--u)) rgba(58,16,24,.08);padding:calc(14*var(--u)) calc(18*var(--u));display:flex;flex-direction:column;gap:calc(8*var(--u))}
 .q-chips{display:flex;gap:calc(6*var(--u))}
-.q-chips span{font-size:calc(11.5*var(--u));font-weight:800;padding:calc(1*var(--u)) calc(11*var(--u));border-radius:calc(12*var(--u));border:calc(1.2*var(--u)) solid var(--line)}
+.q-chips>span{font-size:calc(11.5*var(--u));font-weight:800;padding:calc(1*var(--u)) calc(11*var(--u));border-radius:calc(12*var(--u));border:calc(1.2*var(--u)) solid var(--line)}
 .q-chips .pts{background:#F8EBCB;border-color:#EFD9A3;color:var(--gold-ink)}
 .q-img{position:relative;flex:1;border-radius:calc(14*var(--u));overflow:hidden;background:#EEE}
 .q-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s}

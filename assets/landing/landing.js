@@ -116,8 +116,8 @@
     var rounds = [
       { team: 1, cell: 'cA', cat: 'خرائط', pts: 200, img: 'map-ITA-wide', alt: 'map-ITA-wide', q: 'ما اسم هذه الدولة؟', a: 'إيطاليا', say: 'إيطاليا!' },
       { team: 2, cell: 'cB', cat: 'معالم', pts: 300, img: 'clock-zoom', alt: 'bigben-full', q: 'ما هذا المعلم؟', a: 'ساعة بيغ بن', say: 'بيغ بن!' },
-      { team: 1, cell: 'cC', cat: 'خرائط', pts: 100, img: 'map-ITA-wide', alt: 'map-ITA-wide', q: 'ما اسم هذه الدولة؟', a: 'إيطاليا', say: 'إيطاليا!', quick: true },
-      { team: 2, cell: 'cD', cat: 'أعلام', pts: 100, img: 'clock-zoom', alt: 'bigben-full', q: 'ما هذا المعلم؟', a: 'ساعة بيغ بن', say: 'بيغ بن!', quick: true }
+      { team: 1, cell: 'cC', cat: 'خرائط', pts: 100, img: 'map-JPN-wide', alt: 'map-JPN-wide', q: 'ما اسم هذه الدولة؟', a: 'اليابان', say: 'اليابان!', quick: true },
+      { team: 2, cell: 'cD', cat: 'معالم', pts: 100, img: 'clock-zoom', alt: 'bigben-full', q: 'ما هذا المعلم؟', a: 'ساعة بيغ بن', say: 'بيغ بن!', quick: true }
     ];
     var timers = [], idx = 0, running = false, visible = true;
     function T(fn, ms) { timers.push(later(fn, ms)); }
@@ -138,7 +138,7 @@
 
     // preload question images once the page has loaded
     later(function () {
-      ['clock-zoom', 'bigben-full'].forEach(function (n) { var im = new Image(); im.src = 'assets/landing/ui/' + n + '.webp'; });
+      ['clock-zoom', 'bigben-full', 'map-JPN-wide'].forEach(function (n) { var im = new Image(); im.src = 'assets/landing/ui/' + n + '.webp'; });
     }, 5000);
 
     // hero falcon: point (idle) + cheer, as transparent video after load
